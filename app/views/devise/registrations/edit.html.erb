@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6 col-md-4"></div>
+  <div class="col-xs-6 col-md-4"><h2>Modificar datos <%= current_user.name %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :Email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+<div class="field">
+    <%= f.label :Nombre %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Apellido %><br />
+    <%= f.text_field :apellido, autofocus: true %>
+  </div>
+
+<div class="field">
+
+ 
+    <%= f.label :Localidad %><br />
+    <%= f.text_field :localidad, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :DNI %><br />
+    <%= f.text_field :dni, autofocus: true %>
+  </div>
+
+  
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Contraseña %> <i>(Dejar este espacio en blanco si no desea cambiarlo)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> caracteres como minimo</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Confirmar_contraseña %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contraseña_actual %> <i>(Necesitamos su contraseña actual para confirmar los cambios)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Listo" %>
+  </div>
+<% end %>
+
+<h3>Quiero cancelar mi cuenta</h3>
+
+<p> <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Esta seguro? :(" }, method: :delete %></p>
+
+<%= link_to "Atras", :back %>
+</div>
+  <div class="col-xs-6 col-md-4"></div>
+  </div>
+</div>
+
+
+

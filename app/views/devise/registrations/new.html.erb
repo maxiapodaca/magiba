@@ -1,0 +1,73 @@
+
+<div class="container-fluid">
+
+
+  <div class="row">
+    <div class="col-xs-6 col-md-4"></div>
+  <div class="col-xs-6 col-md-4"><h2>Registarme</h2><%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+
+
+            <font face="arial" size="4" color="orange">
+                Recuerda que debes ser mayor de edad para registrarte en nuestro sistema
+            </font> 
+            
+  <div class="field">
+    <%= f.label :Email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+<div class="field">
+    <%= f.label :Nombre %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Apellido %><br />
+    <%= f.text_field :apellido, autofocus: true %>
+  </div>
+  
+
+   <div class="field">
+  
+
+</div>
+  <div class="field">
+   
+    <%= f.label :Localidad %><br />
+    <%= f.text_field :localidad, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Dni %><br />
+    <%= f.text_field :dni, autofocus: true %>
+  </div>
+
+
+    <%= f.label :Contraseña %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> caracteres como minimo)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  
+
+  <div class="field">
+    <%= f.label :Confirmar_contraseña
+     %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Registrarme" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %></div>
+  <div class="col-xs-6 col-md-4"></div>
+  </div>
+</div>
+
+
+
+
