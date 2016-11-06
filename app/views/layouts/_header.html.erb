@@ -13,6 +13,7 @@
   <div class="col-md-4"><% if user_signed_in? %>
 			<%= link_to "Modificar mis datos",edit_user_registration_path %>
 			<%= link_to "Cerrar Sesión", destroy_user_session_path, method:'delete' , class:'btn btn-default' %>
+			
 		<% else %>
 			<%= link_to "Iniciar Sesión", new_user_session_path , class:'btn btn-default' %>
 			<%= link_to "Registrarme","/users/sign_up", class:'btn btn-default'%>
