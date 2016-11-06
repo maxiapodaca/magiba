@@ -1,0 +1,55 @@
+<div class="panel-group">
+
+	<div class="col-md-3 col-md-3 list group">
+
+				<% if user_signed_in? %>
+
+					<% if current_user.admin? %>
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<p>
+								Menú administrador:
+							</p>
+					 
+							<p> <%= link_to "Ver listado de Logros" %> </p> 
+							<p> <%= link_to "Dar de alta Logro"%> </p>
+							<p> <%= link_to "Ver reportes de ganancias" %> </p>
+							<p> <%= link_to "Ver reportes de usuarios" %> </p>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<p>
+								Menú usuario:
+							</p>
+
+							<p> <%= link_to "Ver mis favores"%> </p>
+							<p> <%= link_to "Ver listado de favores",favors_path %> </p>
+							<p> <%= link_to "Comprar puntos" %> </p>
+						</div>
+					</div>
+
+					<% else %>
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<p> <%= link_to "Ver mis favores"%> </p>
+								<p> <%= link_to "Ver listado de favores",favors_path %> </p>
+								<p> <%= link_to "Comprar puntos" %> </p>
+							</div>
+						</div>
+					<% end %>
+				 
+				<% else %>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<font face="arial" size="10" color="green">
+									<p> <%= link_to "Ver mis favores"%> </p>
+								</font>
+							<p> <%= link_to "Ver listado de favores",favors_path %> </p>
+							<p> <%= link_to "Comprar puntos" %> </p>
+					</div>
+						</div>
+				<% end %>
+</div>
