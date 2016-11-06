@@ -21,3 +21,15 @@ Favor.where(titulo: 'Karl', descripcion: "Karl es mi perrito y necesita de algui
 Es muy juguetón y muy buena compañía.", localidad:"La Plata", imagen: "http://fotos.subefotos.com/a38ac6029b9e59fb1136d8e3a2ec4baco.jpg").first_or_create
 
 Favor.where(titulo: 'Restaurar obra de arte', descripcion: "La imagen de la izquierda es la original y la de la derecha mi intento por restaurarla. ¿Alguien me haría la gauchada de acomodarla para que se parezca más a la original? ", localidad:"La Plata", imagen: "http://fotos.subefotos.com/c8ec5edfb098fed2c5278b8ae0d26bc3o.jpg").first_or_create
+
+
+puts "Cargo algunos usuarios"
+if User.where(email: 'barby@live.com.ar').empty?
+    u1=User.create(email: 'barby@live.com.ar',name: 'Barbara', apellido: 'Acosta', telefono: '4527175', dni: '37363795',localidad: 'La Plata', password: 'contraseña' , password_confirmation: 'contraseña', admin: 'true')
+end
+if User.where(email: 'otro@live.com.ar').empty?
+    u2=User.create(email: 'otro@live.com.ar', name: 'Otra', apellido: 'Persona',telefono: '1234567', dni: '12365678', localidad: 'La Plata', password: 'contraseña',  password_confirmation: 'contraseña', admin: 'false')
+end
+if User.where(email: 'gina@live.com.ar').empty?
+    u3=User.create(email: 'gina@live.com.ar', name: 'Gina', apellido: 'Galvez Huerta',telefono: '4418635', dni: '34569874', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'true')
+end
