@@ -22,12 +22,15 @@ class LogrosController < ApplicationController
   def create
    
     @logro = Logro.new(params.require(:logro).permit(:nombre,:descripcion,:marca, :limite_inferior_rango,:limite_superior_rango))
-    if @logro.save
-      flash[:notice] = "Se creo"
-      redirect_to logros_path
+    if (@logro.save and @logro.limite_inferior_rango < @logro.limite_superior_rango) 
+       flash[:notice] = "Se creo"
+       redirect_to logros_path
     else
-     flash[:notice] = "NO Se creo"
-      render :new
+     flash[:notice] = "Error!"
+     if (@logro.limite_inferior_rango > @logro.limite_superior_rango) 
+        flash[:notice] = "Error, los límites del rango de puntos, el límite inferior debe ser menor que el límite superior."
+     end
+     render :new
     end
     #require(:nombre, :limite_inferior_rango, :limite_superior_rango, :marca).permit(:estado, :logro_id))
   end

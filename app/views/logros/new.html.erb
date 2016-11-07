@@ -1,4 +1,7 @@
 <div class="container">
+<div class="panel-group">
+
+  <div class="col-md-8 col-md-8 list group">
    <h1 > Crear nuevo logro </h1> 
   <%= link_to "Volver al menú de logros", logros_path, class: 'btn btn-info btn-xs' %>
 
@@ -24,7 +27,7 @@
       <p> </p>
       
       <div class="row">
-       <div class="col-md-2">
+       <div class="col-md-5">
           <%= f.label :rango_de_puntos %>
           <%= f.text_field :limite_inferior_rango, class: 'form-control', label: 'limite_inferior_rango' , placeholder: 'Límite inferior' %>
           <%= f.text_field :limite_superior_rango, class: 'form-control', label: 'limite_superior_rango', placeholder: 'Límite superior' %>
@@ -34,9 +37,9 @@
       
 
       <div class='row'>
-       <div class="col-md-2">
-          <%= f.label :'categoría activa' %><br>
-          <%= f.check_box :marca, label: 'categoría activa', checked:"checked" %>
+       <div class="col-md-5">
+          <%= f.label :'categoría activa' %>
+          <%= f.check_box :marca, label: 'categoría activa'            , checked:"checked" %>
        </div>
       </div> 
 
@@ -50,3 +53,5 @@
       <% end %>
     </div>
   <% end %>
+  </div>
+</div>
