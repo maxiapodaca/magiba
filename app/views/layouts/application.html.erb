@@ -14,7 +14,9 @@
        <%= render "layouts/header" %>
        <% if user_signed_in? %>
 
-          <p>Bienvenido, <%= current_user.name %> </p>    
+
+       <FONT COLOR="#000000"><h3>Bienvenido, <%= current_user.name %> <%= current_user.apellido %> </h3></FONT>
+              
 
        <% end %>
 

@@ -9,7 +9,7 @@
 
 
 
-            <font face="arial" size="4" color="orange">
+           <font face="arial" size="4" color="orange">
                 Recuerda que debes ser mayor de edad para registrarte en nuestro sistema
             </font> 
             
@@ -28,6 +28,13 @@
     <%= f.text_field :apellido, autofocus: true %>
   </div>
   
+<div class="datepicker">
+            <label for="name">            
+            <p>Introduce tu edad: 
+                <input type="number" name="edad" min="18" max="99"  required="required">
+            </p>
+            </div>
+
 
    <div class="field">
    <%= f.label :Telefono %><br />

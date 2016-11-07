@@ -26,8 +26,9 @@
   </div>
 
 
-<div class="field">
+ 
 
+<div class="field">
  
     <%= f.label :Localidad %><br />
     <%= f.text_field :localidad, autofocus: true %>
@@ -71,7 +72,9 @@
 
 <p> <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Esta seguro? :(" }, method: :delete %></p>
 
-<%= link_to "Atras", root_path %>
+<div class="actions">
+<%= link_to "Atras", root_path , class:'btn btn-default' %>
+</div>
 </div>
 
   <div class="col-xs-6 col-md-4"> <%= link_to "Cambiar mi contrasena", edit_user_password_path(resource_name) %><br />
