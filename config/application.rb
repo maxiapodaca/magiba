@@ -22,6 +22,10 @@ module Gauchada
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
    # ActionMailer::Base.smtp_settings =  {  
+
+    
+    config.active_record.raise_in_transactional_callbacks = true
+    config.i18n.default_locale = :es
     
   end
 end
