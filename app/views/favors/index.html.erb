@@ -1,12 +1,26 @@
 <div class="container-fluid">
 	<div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
 
 	<div class="jumbotron"> 
-		<td><P ALIGN=right>
-                   <a class="btn btn-primary btn-lg" href="/favors/new" role="button"> Publicá una gauchada! </a>
-         <P ALIGN=left>
-		<font face="arial" size="5" color="orange"> A continuación se encuentra el listado de los favores: </font>
+		<td> <P ALIGN=right>
+			<% if user_signed_in? %>
+	            <a class="btn btn-primary btn-lg" href="/favors/new" role="button">
+	            	Publicá una gauchada!
+	            </a>
+	        <% end %>
+
+        <P ALIGN=left>
+
+        <p>
+
+
+        </p>
+		
+		<font face="arial" size="6" color="orange">
+			A continuación se encuentra el listado de los favores:
+		</font>
+		
 		<p>
 
 		</p>  
@@ -14,10 +28,10 @@
 
  			<tr>
 				<th>
-					<font face="arial" size="4" color="orange"> Favor </font>
+					<font face="arial" size="5" color="orange"> Favor </font>
 				</th>
 				<th>
-					<font face="arial" size="4" color="orange"> Detalle  </font>
+					<font face="arial" size="5" color="orange"> Detalle  </font>
 				</th>
 			</tr>
 
@@ -25,27 +39,42 @@
 
 				<tr> 
 					<td>
-						<font face="arial" size="3" color="black"> <%= f.titulo %> </font>
+						<font face="arial" size="3" color="black">
+							<%= f.titulo %>
+						</font>
 					</td>
 					<td>
-						<font face="arial" size="3" color="black"> <%= f.descripcion.truncate(30) %> </font>
+						<font face="arial" size="3" color="black">
+							<%= f.descripcion.truncate(30) %>
+						</font>
 					</td>
-					<td>
-						<font face="arial" size="3" color="black">  <%= link_to "Ver detalle", f %> </font>
-					</td>
-					<td>
-						<font face="arial" size="3" color="black">  <%= link_to "Editar", edit_favor_path(f) %> </font>
-					</td>
-					<td>
-						<font face="arial" size="3" color="black">  <%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar el favor?' } %> </font>
-					</td>
+
+					<% if user_signed_in? %>
+						<td>
+							<font face="arial" size="3" color="black"> 
+								<%= link_to "Ver detalle", f %>
+							</font>
+						</td>
+
+						<td>
+							<font face="arial" size="3" color="black">
+								<%= link_to "Editar", edit_favor_path(f) %>
+							</font>
+						</td>
+						<td>
+							<font face="arial" size="3" color="black">
+								<%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar el favor?' } %>
+							</font>
+						</td>
+
+					<% end %>
 				</tr> 
 	
 			<% end %>
 
 		</table>
 		<p>
-			<a class="btn btn-primary btn-lg" href="/welcome/index" role="button"> Volver </a>
+			<a class="btn btn-primary btn-lg" href="/" role="button"> Volver </a>
 		</p> 
 	</div>	
 </div>
