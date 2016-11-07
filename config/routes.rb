@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
     
   get 'usuarios/new'
 
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   get 'usuarios/destroy'
 
   resources :logros
+
+  resources :favors
 
   #get 'welcome/index'
 

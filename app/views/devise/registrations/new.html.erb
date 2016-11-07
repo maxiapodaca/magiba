@@ -3,13 +3,13 @@
 
 
   <div class="row">
-    <div class="col-xs-6 col-md-4"></div>
+    <div class="col-xs-8"></div>
   <div class="col-xs-6 col-md-4"><h2>Registarme</h2><%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
 
 
-            <font face="arial" size="4" color="orange">
+           <font face="arial" size="4" color="orange">
                 Recuerda que debes ser mayor de edad para registrarte en nuestro sistema
             </font> 
             
@@ -28,9 +28,17 @@
     <%= f.text_field :apellido, autofocus: true %>
   </div>
   
+<div class="datepicker">
+            <label for="name">            
+            <p>Introduce tu edad: 
+                <input type="number" name="edad" min="18" max="99"  required="required">
+            </p>
+            </div>
+
 
    <div class="field">
-  
+   <%= f.label :Telefono %><br />
+    <%= f.text_field :telefono, autofocus: true %>
 
 </div>
   <div class="field">

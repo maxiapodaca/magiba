@@ -1,0 +1,54 @@
+<div class="container-fluid">
+	<div class="row">
+    <div class="col-lg-9">
+
+	<div class="jumbotron"> 
+		<td><P ALIGN=right>
+        <P ALIGN=left>         
+			<font face="arial" size="5" color="orange"> A continuacion se encuentra el detalle del favor  </font>
+		
+		<p>
+
+		</p>  
+  	
+  		<table class="table">
+  			
+ 			<tr>
+
+ 				<th>
+ 					<font face="arial" size="4" color="orange">  Titulo </font>
+ 				</th>
+ 				
+				<th>
+					<font face="arial" size="4" color="orange">  Detalle </font>
+				</th>
+				
+
+				<th>
+					<font face="arial" size="4" color="orange">  Imagen </font>
+				</th>
+
+			</tr>
+
+				<td>
+					<font face="arial" size="3" color="black"> <%= @favor.titulo %> </font>
+				</td>
+                
+                <td>
+               		<font face="arial" size="3" color="black"> <%= @favor.descripcion %> </font>
+                </td>
+
+                <td>
+                	<%= image_tag @favor.imagen, size: '350x350' %>
+                </td>
+
+		</table>
+
+
+		<p>
+			<a class="btn btn-primary btn-lg" href="/favors" role="button"> Volver </a>
+		</p> 
+
+
+	</div>
+	
