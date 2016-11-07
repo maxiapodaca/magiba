@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 puts "Cargo algunos favores"
 Favor.where(titulo:'Busco acompañante de viaje', descripcion: "Soy camionero y busco una persona que me acompañe en mi viaje hasta Rawson porque sufro problemas de sueño. 
 Saldríamos el primer fin de semana de octubre y retornaríamos el fin de semana siguiente. 
