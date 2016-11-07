@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20161104143902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "favors", force: :cascade do |t|
+    t.string   "titulo"
+    t.string   "descripcion"
+    t.string   "localidad"
+    t.string   "imagen",          default: "http://fotos.subefotos.com/c4472a12d1a15e9517d1cd0862cdfd23o.png"
+    t.string   "fecha_caducidad"
+    t.string   "id_ganador"
+    t.datetime "created_at",                                                                                   null: false
+    t.datetime "updated_at",                                                                                   null: false
+  end
 
   create_table "logros", force: :cascade do |t|
     t.string   "nombre"
@@ -25,17 +35,6 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.integer  "limite_superior_rango"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-
-  create_table "favors", force: :cascade do |t|
-    t.string   "titulo"
-    t.string   "descripcion"
-    t.string   "localidad"
-    t.string   "imagen"
-    t.string   "fecha_caducidad"
-    t.string   "id_ganador"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-
   end
 
   create_table "users", force: :cascade do |t|
