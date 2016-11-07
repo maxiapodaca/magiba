@@ -1,0 +1,50 @@
+<div class="container">
+  <h1> Editar logro </h1>
+  <%= link_to "Volver al menú de logros", logros_path, class: 'btn btn-info btn-sm' %>
+  <%= form_for(@logro) do |f| %>
+    
+    <div class="row">
+      <div class="col-md-2">
+        <%= f.label :logro_nombre, 'Nombre' %>
+        <%= f.text_field :nombre, class: 'form-control', label: 'Nombre', :cols => 5, :rows => 1 %>
+        </div>
+      </div>
+
+      <p> </p>
+
+    <div class="row">
+      <div class="col-md-5">
+        <%= f.label :descripcion %>
+          <%= f.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese la descripcion' %>
+        </div>
+      </div>
+      <p> </p>
+      <div class="row">
+       <div class="col-md-2">
+         <%= f.label :"Rango_de_puntos:" %>
+        </div>
+      </div>
+
+      <div class="row">
+       <div class="col-md-2">
+          <%= f.text_field :limite_inferior_rango, class: 'form-control', label: 'limite_inferior_rango' , placeholder: 'Límite inferior' %>
+        </div>
+      </div>
+
+      <div class="row">
+       <div class="col-md-2">
+          <%= f.text_field :limite_superior_rango, class: 'form-control', label: 'limite_superior_rango', placeholder: 'Límite superior' %>
+        </div>
+      </div>
+
+      <div class='row'>
+       <div class="col-md-2">
+          <%= f.label :'categoría activa' %><br>
+          <%= f.check_box :marca, label: 'categoría activa', checked:"checked" %>
+       </div>
+      </div> 
+
+      <%= f.submit "Crear logro", class: 'btn btn-primary' %>
+    </div>
+<% end %>
+</div>

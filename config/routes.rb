@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+    
+  get 'usuarios/new'
+
+  get 'usuarios/show'
+
+  get 'usuarios/edit'
+
+  get 'usuarios/index'
+
+  get 'usuarios/create'
+
+  get 'usuarios/update'
+
+  get 'usuarios/destroy'
+
+  resources :logros
+
   #get 'welcome/index'
 
   root 'home#index'

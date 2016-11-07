@@ -1,0 +1,10 @@
+<h1>Logros#create</h1>
+<p>Find me in app/views/logros/create.html.erb</p>
+<% if @logro.errors.any? %>
+   <ul>
+      <% @logro.errors.each do |atributo, mensaje| %>
+      <li> <%= mensaje %> </li>
+      <% end %>
+   </ul>
+  <% flash[:notice] = "NO Se creo"%>
+<% end %>
