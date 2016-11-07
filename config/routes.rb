@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :favors
+
   #get 'welcome/index'
 
   root 'home#index'
