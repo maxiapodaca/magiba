@@ -77,4 +77,29 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
+
+
+
+  #Agregue esto
+
+  Encoding.default_external = Encoding::UTF_8
+  
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
+
+  # Do not dump schema after migrations.
+  config.action_mailer.default_url_options = { host: "https://warm-savannah-22843.herokuapp.com/" }
+  #config.active_record.dump_schema_after_migration = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'gmail.com',
+  user_name:            'gauchada.ingsoft@gmail.com',
+  password:             'contr123456',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+
+
 end
