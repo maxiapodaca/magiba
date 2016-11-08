@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.integer  "limite_superior_rango"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-
   end
 
   create_table "users", force: :cascade do |t|
