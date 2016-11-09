@@ -26,7 +26,7 @@ Favor.where(titulo: 'Restaurar obra de arte', descripcion: "La imagen de la izqu
 
 puts "Cargo algunos usuarios"
 if User.where(email: 'barby@live.com.ar').empty?
-    u1=User.create(email: 'barby@live.com.ar',name:'Barbara', apellido: 'Acosta', telefono: '4527175', dni: '37363795',localidad: 'La Plata', password: 'contraseña' , password_confirmation: 'contraseña', admin: 'false',logro_id:100)
+    u1=User.create(email: 'barby@live.com.ar',name:'Barbara', apellido: 'Acosta', telefono: '4527175', dni: '37363795',localidad: 'La Plata', password: 'contraseña' , password_confirmation: 'contraseña', admin: 'false',logro_id:101)
 end
 if User.where(email: 'maximiliano.apodaca@gmail.com.ar').empty?
     u2=User.create(email: 'maximiliano.apodaca@gmail.com.ar', name: 'Maximiliano', apellido: 'Apodaca',telefono: '4255588', dni: '37370098', localidad: 'La Plata', password: 'contraseña',  password_confirmation: 'contraseña', admin: 'false',logro_id:107)
