@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.string   "nombre"
     t.text     "descripcion"
     t.boolean  "marca"
+    t.string   "campo"
     t.integer  "limite_inferior_rango"
     t.integer  "limite_superior_rango"
     t.datetime "created_at",            null: false
@@ -41,6 +42,8 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "name"
+    t.integer  "logro_id"
+    t.integer  "puntos"
     t.boolean  "admin",                  default: false
     t.string   "apellido"
     t.string   "dni",                    default: "",    null: false

@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-8"></div>
-  <div class="col-xs-6 col-md-4"><h2>Modificar datos de <%= current_user.name %></h2>
+    <div class="col-xs-6 col-md-4"></div>
+  <div class="col-xs-6 col-md-4"><h2>Modificar datos <%= current_user.name %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -24,8 +24,6 @@
     <%= f.label :Telefono %><br />
     <%= f.text_field :telefono, autofocus: true %>
   </div>
-
-
  
 
 <div class="field">
@@ -45,7 +43,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Contraseña %> <i>(Dejar este espacio en blanco si no desea cambiar su contraseña)</i><br />
+    <%= f.label :Contraseña %> <i>(Dejar este espacio en blanco si no desea cambiarlo)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
@@ -67,10 +65,8 @@
     <%= f.submit "Listo" %>
   </div>
     
-
-    <h3>Quiero cancelar mi cuenta</h3>
-
-<p> <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Esta seguro? :(" }, method: :delete %></p>
+</div>
+    
 
 <div class="actions">
 <%= link_to "Atras", root_path , class:'btn btn-default' %>

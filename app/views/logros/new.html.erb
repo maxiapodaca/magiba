@@ -1,57 +1,47 @@
-<div class="container">
-<div class="panel-group">
-
-  <div class="col-md-8 col-md-8 list group">
-   <h1 > Crear nuevo logro </h1> 
-  <%= link_to "Volver al menú de logros", logros_path, class: 'btn btn-info btn-xs' %>
-
-  <%= form_for(@logro) do |f| %>
-
-
-    
-    <div class="row">
-      <div class="col-md-2">
-        <%= f.label :nombre %>
-        <%= f.text_field :nombre, class: 'form-control', label: 'Nombre', :cols => 5, :rows => 1 %>
+  <div class="col-md-6 col-md-4 list group">  
+  <div class="panel-group">
+    <div class="panel panel-default">   
+      <div class="panel-body">
+          <h1 class="text-center"> Crear nuevo Logro </h1> 
+          <%= link_to "Volver al menú de logros", logros_path, class: 'btn btn-info btn-xs' %>
+          <%= form_for(@logro) do |f| %>
+            <div class="row">
+              <div class="col-md-3">
+                <%= f.label :nombre %>
+                <%= f.text_field :nombre, class: 'form-control', label: 'Nombre', :cols => 5, :rows => 1 %>
+              </div>
+            </div>
+            <p> </p>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.label :descripcion %>
+                <%= f.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese la descripcion' %>
+              </div>
+            </div>
+            <p> </p>
+            <div class="row">
+              <div class="col-md-4">
+                <%= f.label :rango_de_puntos %>
+                <%= f.text_field :limite_inferior_rango, class: 'form-control', label: 'limite_inferior_rango' , placeholder: 'Límite   inferior' %>
+                <%= f.text_field :limite_superior_rango, class: 'form-control', label: 'limite_superior_rango', placeholder: 'Límite superior' %>
+              </div>
+            </div>
+            <div class='row'>
+              <div class="col-md-5">
+                <%= f.label :'categoría activa' %>
+                <%= f.check_box :marca, label: 'categoría activa', checked:"checked" %>
+              </div>
+            </div> 
+            <%= f.submit "Crear logro", class: 'btn btn-primary' %>
+            <% if @logro.errors.any? %>
+              <ul>
+                <% @logro.errors.each do |atributo, mensaje| %>
+                  <li> <%= mensaje %> </li>
+                <% end %>
+              </ul>
+            <% end %>
+          <% end %>
         </div>
       </div>
-
-      <p> </p>
-
-    <div class="row">
-      <div class="col-md-5">
-        <%= f.label :descripcion %>
-          <%= f.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese la descripcion' %>
-        </div>
-      </div>
-      <p> </p>
-      
-      <div class="row">
-       <div class="col-md-5">
-          <%= f.label :rango_de_puntos %>
-          <%= f.text_field :limite_inferior_rango, class: 'form-control', label: 'limite_inferior_rango' , placeholder: 'Límite inferior' %>
-          <%= f.text_field :limite_superior_rango, class: 'form-control', label: 'limite_superior_rango', placeholder: 'Límite superior' %>
-        </div>
-      </div>
-
-      
-
-      <div class='row'>
-       <div class="col-md-5">
-          <%= f.label :'categoría activa' %>
-          <%= f.check_box :marca, label: 'categoría activa'            , checked:"checked" %>
-       </div>
-      </div> 
-
-      <%= f.submit "Crear logro", class: 'btn btn-primary' %>
-      <% if @logro.errors.any? %>
-        <ul>
-          <% @logro.errors.each do |atributo, mensaje| %>
-          <li> <%= mensaje %> </li>
-        <% end %>
-        </ul>
-      <% end %>
     </div>
-  <% end %>
   </div>
-</div>

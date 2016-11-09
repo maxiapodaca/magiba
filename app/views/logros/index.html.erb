@@ -1,63 +1,90 @@
 
 <div class="panel-group">
 
-	<div class="col-md-8 col-md-4 list group">
-		<h1 class="text-center"> Menú de Logros </h1>
-			<table class="table">
+	<div class="col-md-10 col-md-4 list group">
+		<div class="panel panel-default">		
+			<div class="panel-body">
+				<h1 class="text-center"> Menú de Logros </h1>
+				<table class="table">
+					<tr>
+						<th> Nombre </th>
+						<th> Descripción </th>
+						<th> Límite inferior </th>
+						<th> Límite superior  </th>
+						<th> Estado </th>
+					</tr>	
+					<% @conflictos=false %>
+					<% @discontinuidad=false %>
 
-			<tr>
-				<th> Nombre </th>
-				<th> Descripción </th>
-				<th> Límite inferior del rango</th>
-				<th> Límite superior del rango </th>
-				<th> Categoría activa </th>
-			</tr>
-
-			<% @inf_ant=1500 %>
-			<% @sup_ant=0 %>
-
-			<% logros = Logro.all %>
-			<% logros.each do |l| %>
-			<tr>
-				<td> <%= l.nombre %> </td>
-				<td> <%= l.descripcion %> </td>	
-				<td> <%= l.limite_inferior_rango %> </td>
-				<td> <%= l.limite_superior_rango %> </td>
-				<div class="row">
-					<% if l.marca %>
-						<div class="col-md-3">
-							<td> <%= "Activo    " %>
-						</div>
-						<div class="col-md-5">  
-						<%= link_to "Desactivar", l,method: :delete, class: 'btn btn-danger btn-sm' %> </td>
-						</div>
-					<% else %>
-						<div class="col-md-5">
-							<td> <%= "Desactivado" %>
-						</div>
-						<div class="col-md-5">
-						 <%= link_to "Activar", l,method: :delete, class: 'btn btn-success btn-sm' %> </td>
-						 </div>
+					<% logros = Logro.all %>
+					<% if logros.count != 0 %>
+						<% @inf_ant=logros.first.limite_inferior_rango %>
 					<% end %>
-				
-      			</div>
-			
-				<% if l.limite_inferior_rango < @sup_ant %>
-					<p> Conflicto con los límites de puntos de otros logros </p>
+					<% @sup_ant=@inf_ant %>
+					<% logros.each do |l| %>
+						<tr>
+							<td> <%= l.nombre %> </td>
+								<td> <%= l.descripcion %> </td>	
+								<% if l.limite_inferior_rango != nil %>
+									<% if l.limite_inferior_rango < @sup_ant %>
+											<td><FONT COLOR=red>  ¡<%= l.limite_inferior_rango %>!*  </FONT></td>
+											<% @conflictos=true %>
+									<% else %>
+										<% if l.limite_inferior_rango != @sup_ant %>
+											<td><FONT COLOR=orange>  ¡<%= l.limite_inferior_rango %>!*  </FONT></td>
+											<% @discontinuidad=true %>
+										<% else %>
+											<td> <%= l.limite_inferior_rango %> </td>
+										<% end %>	
+									<% end %>
+									<td> <%= l.limite_superior_rango %> </td>
+									<% if l.users.count!=0 %>
+										<% if l.marca %>
+											<div class="col-md-5">
+												<td> <%= "Activo    " %> </td>
+											</div>
+											<div class="col-md-5">  
+												<td> <%= link_to "Desactivar", l,method: :delete, class: 'btn btn-warning btn-sm' %> </td>
+											</div>
+										<% else %>
+											<div class="col-md-5">
+												<td> <%= "Desactivado" %> </td>
+											</div>
+											<div class="col-md-5">
+												<td> <%= link_to "Activar", l,method: :delete, class: 'btn btn-success btn-sm' %> </td>
+								 			</div>
+										<% end %>
+									<% else %>
+										<% if l.marca %>
+											<div class="col-md-5">
+												<td> <%= "Activo    " %> </td>
+											</div>
+										<% else %>
+											<div class="col-md-5">
+												<td> <%= "Desactivado" %> </td>
+											</div>
+										<% end %>
+										<div class="col-md-5">
+											<td> <%= link_to "Eliminar", l,method: :delete, class: 'btn btn-danger	 btn-sm' %> </td>
+									 	</div>
+									<% end %>
+									<% @inf_ant=l.limite_inferior_rango %>
+									<% @sup_ant=l.limite_superior_rango %>			
+									<td>
+										<%= link_to "Editar",edit_logro_path(l), class: 'btn btn-info btn-sm' %>
+				   					</td>
+								</tr>
+							<% end %>
+						<% end %>
+					</table>
+				<h1 class="text-center"> <%= link_to "Crear nuevo logro", new_logro_path, class: 'btn btn-info btn-lg' %> </h1>
+				<% if @conflictos %>
+					<p> <FONT COLOR=red>  Error! Los rangos de puntos de los logros (*) se superponen.  </FONT> </p>
 				<% end %>
-				<% if l.limite_superior_rango < l.limite_inferior_rango %>
-					<p>  Error, los límites están invertidos. </p>
+				<% if @discontinuidad %>
+					<p> <FONT COLOR=orange>  Advertencia! Los rangos de puntos de los logros (*) no son continuos.  </FONT> </p>
 				<% end %>
-				<% @inf_ant=l.limite_inferior_rango %>
-				<% @sup_ant=l.limite_superior_rango %>
-			
-				<td>
-					<%= link_to "Editar",edit_logro_path(l), class: 'btn btn-info btn-sm' %>
-			    </td>
-			</tr>
-		<% end %>
-
-	</table>
-	<h1 class="text-center"> <%= link_to "Crear nuevo logro", new_logro_path, class: 'btn btn-info btn-lg' %> </h1>
+			</div>
+		</div>
 	</div>
 </div>

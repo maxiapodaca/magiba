@@ -1,6 +1,6 @@
 <div class="panel-group">
 
-	<div class="col-md-3 col-md-3 list group">
+	<div class="col-md-2 col-md-2 list group">
 
 		<% if user_signed_in? %>
 
@@ -14,10 +14,7 @@
 						</p>
 						</font>
 				 
-						<p> <%= link_to "Ver listado de Logros" %> </p> 
-						<p> <%= link_to "Dar de alta Logro"%> </p>
-						<p> <%= link_to "Modificar un Logro"%> </p>
-						<p> <%= link_to "Eliminar un Logro"%> </p>
+						<p> <%= link_to "Menú de Logros", logros_path %> </p>
 						<p> <%= link_to "Ver reportes de ganancias" %> </p>
 						<p> <%= link_to "Ver reportes de usuarios" %> </p>
 					</div>
@@ -30,8 +27,8 @@
 							Menú usuario:
 						</p>
 						</font>
-
-						<p> <%= link_to "Ver mis favores"%> </p>
+						<p> <%= link_to "Ver Listado de gauchadas", favors_path %> </p>
+						<p> <%= link_to "Ver mis gauchadas"%> </p>
 						<p> <%= link_to "Comprar puntos" %> </p>
 					</div>
 				</div>
@@ -40,7 +37,8 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<p> <%= link_to "Ver mis favores"%> </p>
+						<p> <%= link_to "Ver Listado de gauchadas", favors_path %> </p>
+						<p> <%= link_to "Ver mis gauchadas"%> </p>
 						<p> <%= link_to "Comprar puntos" %> </p>
 					</div>
 				</div>

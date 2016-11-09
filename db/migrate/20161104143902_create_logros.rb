@@ -6,6 +6,7 @@ class CreateLogros < ActiveRecord::Migration
       t.boolean :marca
       t.integer :limite_inferior_rango
       t.integer :limite_superior_rango
+      t.string :campo
 
       t.timestamps null: false
     end

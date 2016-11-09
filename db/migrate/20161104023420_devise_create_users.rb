@@ -11,6 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :dni, null:false, default:""
       t.string :localidad, null:false, default:""
       t.string :telefono
+      t.integer :logro_id
             ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
