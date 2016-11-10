@@ -1,2 +1,10 @@
 <h1>Logros#update</h1>
-<p>Find me in app/views/logros/update.html.erb</p>
+<p>Find me in app/views/logros/create.html.erb</p>
+<% if @logro.errors.any? %>
+   <ul>
+      <% @logro.errors.each do |atributo, mensaje| %>
+      <li> <%= mensaje %> </li>
+      <% end %>
+   </ul>
+  <% flash[:notice] = "No se editó logro!"%>
+<% end %>
