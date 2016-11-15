@@ -46,7 +46,7 @@
 					<div class="jumbotron"> 
 						<td> <P ALIGN=right>
 							<% if user_signed_in? %>
-					            <a class="btn btn-primary btn-lg" href="/favors/new" role="button">
+					            <a class="btn btn-default btn-lg" href="/favors/new" role="button">
 					            	Publicá una gauchada!
 					            </a>
 					        <% end %>
@@ -58,7 +58,7 @@
 
 				        </p>
 						
-						<font face="arial" size="6" color="orange">
+						<font face="arial" size="6" color="black">
 							A continuación se encuentra el listado de las gauchadas:
 						</font>
 						
@@ -68,11 +68,17 @@
 				  		<table class="table">
 
 				 			<tr>
+				 				<th>
+									<font face="arial" size="5" color="orange"> Imagen  </font>
+								</th>
 								<th>
 									<font face="arial" size="5" color="orange"> Gauchadas </font>
 								</th>
 								<th>
 									<font face="arial" size="5" color="orange"> Detalle  </font>
+								</th>
+								<th>
+									<font face="arial" size="5" color="orange"> Ciudad </font>
 								</th>
 							</tr>
 
@@ -80,6 +86,11 @@
 							<% @favores.each do |f| %>
 
 								<tr> 
+									<td>
+										<font face="arial" size="3" color="black">
+											<%= image_tag f.imagen, size: '100x100' %>
+										</font>
+									</td>
 									<td>
 										<font face="arial" size="3" color="black">
 											<%= f.titulo %>
@@ -90,7 +101,12 @@
 											<%= f.descripcion.truncate(50) %>
 										</font>
 									</td>
-
+									<td>
+										<font face="arial" size="3" color="black">
+											<%= f.localidad %>
+										</font>
+									</td>
+									
 									<% if user_signed_in? %>
 										<td>
 											<font face="arial" size="3" color="black"> 
@@ -107,13 +123,14 @@
 										<% end %>
 
 									<% end %>
+
 								</tr> 
 					
 							<% end %>
 
 						</table>
 						<p>
-							<a class="btn btn-primary btn-lg" href="/" role="button"> Volver </a>
+							<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
 						</p> 
 					</div>	
 				</div>
