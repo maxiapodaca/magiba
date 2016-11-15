@@ -3,6 +3,35 @@ Rails.application.routes.draw do
   resources :cards
   resources :compras
 
+    
+  get 'postulaciones/index'
+
+  get 'postulaciones/show'
+
+  get 'postulaciones/new'
+
+  get 'postulaciones/edit'
+
+  get 'postulaciones/create'
+
+  get 'postulaciones/update'
+
+  get 'postulaciones/destroy'
+
+  get 'postulacion/index'
+
+  get 'postulacion/show'
+
+  get 'postulacion/new'
+
+  get 'postulacion/edit'
+
+  get 'postulacion/create'
+
+  get 'postulacion/update'
+
+  get 'postulacion/destroy'
+
   get 'usuarios/new'
 
   get 'usuarios/show'

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :compra
   has_many :cards
   belongs_to :logro
+  belongs_to :postulacion
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable 
 

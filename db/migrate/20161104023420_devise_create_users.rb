@@ -5,13 +5,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       #validarusuario
+      t.integer :logro_id
       t.string :name
       t.boolean :admin, default:false 
       t.string :apellido
       t.string :dni, null:false, default:""
       t.string :localidad, null:false, default:""
       t.string :telefono
-      t.integer :logro_id
             ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
