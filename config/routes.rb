@@ -1,51 +1,12 @@
 Rails.application.routes.draw do
 
-    
-  get 'postulaciones/index'
 
-  get 'postulaciones/show'
-
-  get 'postulaciones/new'
-
-  get 'postulaciones/edit'
-
-  get 'postulaciones/create'
-
-  get 'postulaciones/update'
-
-  get 'postulaciones/destroy'
-
-  get 'postulacion/index'
-
-  get 'postulacion/show'
-
-  get 'postulacion/new'
-
-  get 'postulacion/edit'
-
-  get 'postulacion/create'
-
-  get 'postulacion/update'
-
-  get 'postulacion/destroy'
-
-  get 'usuarios/new'
-
-  get 'usuarios/show'
-
-  get 'usuarios/edit'
-
-  get 'usuarios/index'
-
-  get 'usuarios/create'
-
-  get 'usuarios/update'
-
-  get 'usuarios/destroy'
 
   resources :logros
 
   resources :favors
+
+  resources :postulaciones
 
   #get 'welcome/index'
 

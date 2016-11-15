@@ -44,4 +44,4 @@ class FavorsController < ApplicationController
     @favor = Favor.find(params[:id])
   end
   
-end
+end 

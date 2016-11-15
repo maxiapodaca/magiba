@@ -1,5 +1,6 @@
 class PostulacionesController < ApplicationController
   def index
+    @postulaciones = Postulacion.all.order(:id)
   end
 
   def show
@@ -12,11 +13,18 @@ class PostulacionesController < ApplicationController
   end
 
   def create
+
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+
+  def get_postulacion
+    @postulacion = Postulacion.find(params[:id])
   end
 end
