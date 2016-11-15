@@ -1,11 +1,11 @@
 <div class="container-fluid">
 	<div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-10">
 
 	<div class="jumbotron"> 
 		<td><P ALIGN=right>
         <P ALIGN=left>         
-			<font face="arial" size="5" color="orange"> A continuacion se encuentra el detalle del favor  </font>
+			<font face="arial" size="5" color="black"> A continuacion se encuentra el detalle del favor  </font>
 		
 		<p>
 
@@ -16,7 +16,19 @@
  			<tr>
 
  				<th>
+					<font face="arial" size="4" color="orange">  Imagen </font>
+				</th>
+
+ 				<th>
  					<font face="arial" size="4" color="orange">  Titulo </font>
+ 				</th>
+
+ 				<th>
+ 					<font face="arial" size="4" color="orange">  Ciudad </font>
+ 				</th>
+
+ 				<th>
+ 					<font face="arial" size="4" color="orange">  Fecha </font>
  				</th>
  				
 				<th>
@@ -24,29 +36,36 @@
 				</th>
 				
 
-				<th>
-					<font face="arial" size="4" color="orange">  Imagen </font>
-				</th>
+				
 
 			</tr>
 
 				<td>
+                	<%= image_tag @favor.imagen, size: '200x200' %>
+                </td>
+
+				<td>
 					<font face="arial" size="3" color="black"> <%= @favor.titulo %> </font>
+				</td>
+
+				<td>
+					<font face="arial" size="3" color="black"> <%= @favor.localidad %> </font>
+				</td>
+
+				<td>
+					<font face="arial" size="3" color="black"> <%= @favor.created_at %> </font>
 				</td>
                 
                 <td>
                		<font face="arial" size="3" color="black"> <%= @favor.descripcion %> </font>
                 </td>
 
-                <td>
-                	<%= image_tag @favor.imagen, size: '350x350' %>
-                </td>
-
 		</table>
 
+		<%= render "comments/commentsIndex" %>
 
 		<p>
-			<a class="btn btn-primary btn-lg" href="/favors" role="button"> Volver </a>
+			<a class="btn btn-default btn-lg" href="/favors" role="button"> Volver </a>
 		</p> 
 
 

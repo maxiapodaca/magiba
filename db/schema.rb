@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104143902) do
+ActiveRecord::Schema.define(version: 20161115154807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "favor_id"
+    t.string   "detalle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favors", force: :cascade do |t|
     t.string   "titulo"
@@ -23,8 +31,8 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.string   "imagen",          default: "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
     t.string   "fecha_caducidad"
     t.string   "id_ganador"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                                                                                   null: false
+    t.datetime "updated_at",                                                                                   null: false
   end
 
   create_table "logros", force: :cascade do |t|
@@ -33,13 +41,25 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.boolean  "marca"
     t.integer  "limite_inferior_rango"
     t.integer  "limite_superior_rango"
+    t.string   "campo"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "postulacions", force: :cascade do |t|
+    t.integer  "id_favor"
+    t.integer  "id_userfav"
+    t.string   "fecha"
+    t.string   "descripcion"
+    t.boolean  "es_ganador"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
+    t.integer  "logro_id"
     t.string   "name"
     t.boolean  "admin",                  default: false
     t.string   "apellido"

@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
 
     
+  get 'comments/index'
+
+  get 'comments/show'
+
+  get 'comments/new'
+
+  get 'comments/edit'
+
+  get 'comments/create'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
   get 'postulaciones/index'
 
   get 'postulaciones/show'
@@ -46,6 +60,7 @@ Rails.application.routes.draw do
   resources :logros
 
   resources :favors
+  get "favors/mis_favores"
 
   #get 'welcome/index'
 

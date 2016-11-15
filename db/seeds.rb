@@ -50,3 +50,25 @@ Logro.create(id: '104', nombre:'Tipazo', descripcion: " Los usuarios recurren a 
 Logro.create(id: '105', nombre:'Héroe', descripcion: " Más bueno que Lassie atado.", limite_inferior_rango: '10', limite_superior_rango:'20', marca: 'true' )
 Logro.create(id: '106', nombre:'Nobleza gaucha', descripcion: " Está a punto de convertirse en leyenda.", limite_inferior_rango: '20', limite_superior_rango:'50', marca: 'true' )
 Logro.create(id: '107', nombre:'Dios', descripcion: " El tipo te da lo que le pidas, ayuda a todo el mundo.", limite_inferior_rango: '50', limite_superior_rango:'100', marca: 'true' )
+
+
+puts "Cargo comentarios"
+Comment.where(favor_id: '2', user_id: '1', detalle:'que edad tiene el burrito?').first_or_create
+Comment.where(favor_id: '2', user_id: '2', detalle:'Para cuando lo necesitarias?').first_or_create
+Comment.where(favor_id: '2', user_id: '3', detalle:'Cual es tu problema fisico?').first_or_create
+Comment.where(favor_id: '2', user_id: '4', detalle:'Ay que linnndooo').first_or_create
+
+Comment.where(favor_id: '1', user_id: '2', detalle:'Cuanto tiempo de viaje?').first_or_create
+Comment.where(favor_id: '1', user_id: '5', detalle:'Me podrias dejar de pasada en otro lugar?').first_or_create
+Comment.where(favor_id: '1', user_id: '5', detalle:'Prefiero terere').first_or_create
+
+Comment.where(favor_id: '3', user_id: '1', detalle:'En que zona ocurrio el accidente?').first_or_create
+Comment.where(favor_id: '3', user_id: '5', detalle:'a que hora fue el accidente?').first_or_create
+Comment.where(favor_id: '3', user_id: '3', detalle:'no se puede hacer eso u.u').first_or_create
+
+Comment.where(favor_id: '4', user_id: '4', detalle:'Ese perro tiene cara de malo').first_or_create
+Comment.where(favor_id: '4', user_id: '2', detalle:'Me lo puedo llevar a mi casa?').first_or_create
+Comment.where(favor_id: '4', user_id: '5', detalle:'Esta castrado?').first_or_create
+
+Comment.where(favor_id: '5', user_id: '2', detalle:'noo mira como dejaste la obra').first_or_create
+Comment.where(favor_id: '5', user_id: '3', detalle:'Eso no se puede restaurar').first_or_create
