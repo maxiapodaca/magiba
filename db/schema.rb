@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.string   "titulo"
     t.string   "descripcion"
     t.string   "localidad"
-    t.string   "imagen"
+    t.string   "imagen",          default: "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
     t.string   "fecha_caducidad"
     t.string   "id_ganador"
     t.datetime "created_at",      null: false
