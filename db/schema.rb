@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20161104143902) do
     t.boolean  "marca"
     t.integer  "limite_inferior_rango"
     t.integer  "limite_superior_rango"
-    t.string   "campo"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20161104143902) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
-    t.integer  "logro_id"
     t.string   "name"
     t.boolean  "admin",                  default: false
     t.string   "apellido"
