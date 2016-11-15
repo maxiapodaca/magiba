@@ -44,12 +44,4 @@ if User.where(email: 'nancy@gmail.com').empty?
 	u6=User.create(email: 'nancy@gmail.com', name: 'Nancy', apellido: 'Diaz',telefono: '425110564', dni: '26278818', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'true', logro_id:101)
 end
 
-puts "Cargo algunos logros"
-Logro.create(id: '100', nombre:'Político', descripcion: " Persona tacaña, que sólo pide favores y no hace ninguno a nadie.", limite_inferior_rango: '-100', limite_superior_rango:'0', marca: 'true' )
-Logro.create(id: '101', nombre:'Observador', descripcion: " No interactua con otros usuarios.", limite_inferior_rango: '0', limite_superior_rango:'1', marca: 'true' )
-Logro.create(id: '102', nombre:'Buen tipo', descripcion: " Ha hecho algún que otro favor.", limite_inferior_rango: '1', limite_superior_rango:'2', marca: 'true' )
-Logro.create(id: '103', nombre:'Gran tipo', descripcion: " Acostumbra a realizar favores.", limite_inferior_rango: '2', limite_superior_rango:'5', marca: 'true' )
-Logro.create(id: '104', nombre:'Tipazo', descripcion: " Los usuarios recurren a él frecuentemente.", limite_inferior_rango: '5', limite_superior_rango:'10', marca: 'true' )
-Logro.create(id: '105', nombre:'Héroe', descripcion: " Más bueno que Lassie atado.", limite_inferior_rango: '10', limite_superior_rango:'20', marca: 'true' )
-Logro.create(id: '106', nombre:'Nobleza gaucha', descripcion: " Está a punto de convertirse en leyenda.", limite_inferior_rango: '20', limite_superior_rango:'50', marca: 'true' )
-Logro.create(id: '107', nombre:'Dios', descripcion: " El tipo te da lo que le pidas, ayuda a todo el mundo.", limite_inferior_rango: '50', limite_superior_rango:'100', marca: 'true' )
+
