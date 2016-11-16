@@ -2,11 +2,10 @@ class FavorsController < ApplicationController
   before_action :get_favor, only: [:edit, :update, :destroy, :show]
 
 
- # def mis_favores
-  #   @f = Favor.all.order(:id)
-   #  if()
+  def mis_favores
+     @f = Favor.all.order(:id)
 
-  #end
+  end
 
   def index
     @favores = Favor.all.order(:id)
@@ -21,8 +20,10 @@ class FavorsController < ApplicationController
   end
   
   def create
-    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion))
+    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad))
     if @favor.save
+      current_user.puntos= current_user.puntos - 1
+      current_user.save
       redirect_to favors_path
     else
       render 'new'
@@ -30,7 +31,7 @@ class FavorsController < ApplicationController
   end
 
   def update
-    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion))
+    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad))
       redirect_to favors_path
     else
      render 'edit'

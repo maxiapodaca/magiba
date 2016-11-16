@@ -62,8 +62,9 @@ Rails.application.routes.draw do
 
   resources :logros
 
-  resources :favors
-  get "favors/mis_favores"
+  resources :favors do
+    get "mis_favores", on: :collection
+  end
 
   #get 'welcome/index'
 
