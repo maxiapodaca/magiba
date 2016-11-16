@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116155100) do
+
+ActiveRecord::Schema.define(version: 20161116165759) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.integer  "numero"
+    t.integer  "anio_vencimiento"
+    t.integer  "mes_vencimiento"
+    t.string   "nombre_prop"
+    t.string   "apellido_prop"
+    t.string   "dni_titular"
+    t.string   "cod_seguridad"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "favor_id"
+    t.string   "detalle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "compras", force: :cascade do |t|
+    t.integer  "cantidad_de_puntos"
+    t.integer  "precio_de_compra"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "favors", force: :cascade do |t|
     t.string   "titulo"
@@ -26,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161116155100) do
     t.datetime "created_at",                                                                                   null: false
     t.datetime "updated_at",                                                                                   null: false
     t.integer  "user_id"
+
   end
 
   create_table "logros", force: :cascade do |t|
@@ -39,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161116155100) do
     t.datetime "updated_at",            null: false
   end
 
+
   create_table "postulations", force: :cascade do |t|
     t.string   "descripcion"
     t.integer  "favor_id"
@@ -47,6 +80,7 @@ ActiveRecord::Schema.define(version: 20161116155100) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.date     "fecha"
+
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,6 +103,7 @@ ActiveRecord::Schema.define(version: 20161116155100) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "puntos",                 default: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

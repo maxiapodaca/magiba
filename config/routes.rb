@@ -1,10 +1,31 @@
 Rails.application.routes.draw do
 
+  resources :cards
+  resources :compras
+
+    
+  get 'comments/index'
+
+  get 'comments/show'
+
+  get 'comments/new'
+
+  get 'comments/edit'
+
+  get 'comments/create'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
+  get 'postulaciones/index'
+
 
 
   resources :logros
 
   resources :favors
+  get "favors/mis_favores"
 
   resources :postulations
   get "postulations/misPostulaciones"

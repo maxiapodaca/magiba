@@ -1,6 +1,13 @@
 class FavorsController < ApplicationController
   before_action :get_favor, only: [:edit, :update, :destroy, :show]
 
+
+ # def mis_favores
+  #   @f = Favor.all.order(:id)
+   #  if()
+
+  #end
+
   def index
     @favores = Favor.all.order(:id)
   end
