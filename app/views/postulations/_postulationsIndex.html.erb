@@ -1,0 +1,88 @@
+<div class="container-fluid">
+	<div class="row">
+    <div class="col-md-10">
+
+	<div class="jumbotron"> 
+		
+
+        <p>
+
+
+        </p>
+		
+		<font face="arial" size="6" color="black">
+			A continuación se encuentra el listado de las postulaciones:
+		</font>
+		
+		<p>
+
+		</p>  
+  		<table class="table">
+
+ 			<tr>
+				<th>
+					<font face="arial" size="5" color="orange"> Descripcion </font>
+				</th>
+
+                <th>
+					<font face="arial" size="5" color="orange"> Fecha de postulacion </font>
+				</th>
+
+				<th>
+					<font face="arial" size="5" color="orange"> Email del usuario </font>
+				</th>
+
+				<th>
+					<font face="arial" size="5" color="orange"> Nombre del usuario  </font>
+				</th>
+
+				<th>
+				 </th>
+				 <th>
+				 </th>
+
+				
+			</tr>
+            
+			<% @postulation.each do |p| %>
+
+				<tr> 
+					<td>
+						<font face="arial" size="3" color="black">
+							<%= p.descripcion %>
+						</font>
+					</td>
+
+                    <td>
+						<font face="arial" size="3" color="black">
+							<%= p.fecha %>
+						</font>
+					</td>
+
+					<td>
+						<font face="arial" size="3" color="black">
+							<%= p.user.email%>
+						</font>
+					</td>
+
+					<td>
+						<font face="arial" size="3" color="black">
+							<%= p.user.name %>
+							<%= p.user.apellido %>
+						</font>
+					</td>
+					<td>
+						<%= link_to "Aceptar",edit_postulation_path(:user_id), class: 'btn btn-info btn-sm' %>
+				   	</td>
+
+				</tr> 
+	
+			<% end %>
+
+		</table>
+		<p>
+			<a class="btn btn-warning btn-lg" href="/" role="button"> Volver </a>
+		</p> 
+	</div>	
+</div>
+

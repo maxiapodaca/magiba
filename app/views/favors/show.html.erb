@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-10">
 
 	<div class="jumbotron"> 
 		<td><P ALIGN=right>
@@ -27,8 +27,12 @@
 				<th>
 					<font face="arial" size="4" color="orange">  Imagen </font>
 				</th>
-              
 
+               <% if (user_signed_in?) && (@favor.user != current_user) %>
+               <th>
+					<font face="arial" size="4" color="orange">  Quiero ayudar! </font>
+				</th>
+               <% end %>
                 
 			</tr>
 
@@ -43,10 +47,42 @@
                 <td>
                 	<%= image_tag @favor.imagen, size: '350x350' %>
                 </td>
+
                 
-                <td>
-               		<a class="btn btn-default btn-lg" href="/postulaciones" role="button"> Quiero ayudar! </a>
-                </td>
+                
+                
+                <% if (user_signed_in?) && (@favor.user != current_user) %>
+                  <td>
+               		<%= form_for(Postulation.new) do |p| %>
+               
+                      <p>
+
+                        <font face="arial" size="3" color="grey"><%= p.label :Indicar_la_fecha_en_la_que_puedo_resolver_la_gauchada %></font>
+					       
+					     <%= p.date_field :fecha %>					
+				    
+				     </p>
+				    <p>
+					    
+                        <font face="arial" size="3" color="grey"> <%= p.label :descripcion %> </font>
+					    
+
+
+		                <%= p.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese una breve descripcion de tu postulacion' %>
+				    </p>
+                    
+				     <p>								
+					     <%= p.hidden_field :favor_id, value:@favor.id %> 
+					
+				     </p>
+
+				       <%= p.submit 'Guardar' %>
+			
+	                 <% end %>
+                     </td>
+               <% end %>
+
+               
                  
 
 		</table>

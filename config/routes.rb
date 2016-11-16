@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   resources :favors
 
-  resources :postulaciones
-
+  resources :postulations
+  get "postulations/misPostulaciones"
   #get 'welcome/index'
 
   root 'home#index'

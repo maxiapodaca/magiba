@@ -14,7 +14,8 @@ class FavorsController < ApplicationController
   end
   
   def create
-    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion))
+    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad))
+    @favor.user = current_user
     if @favor.save
       redirect_to favors_path
     else
@@ -23,7 +24,7 @@ class FavorsController < ApplicationController
   end
 
   def update
-    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion))
+    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad))
       redirect_to favors_path
     else
      render 'edit'

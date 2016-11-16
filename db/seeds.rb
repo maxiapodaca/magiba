@@ -50,3 +50,6 @@ Logro.create(id: '104', nombre:'Tipazo', descripcion: " Los usuarios recurren a 
 Logro.create(id: '105', nombre:'Héroe', descripcion: " Más bueno que Lassie atado.", limite_inferior_rango: '10', limite_superior_rango:'20', marca: 'true' )
 Logro.create(id: '106', nombre:'Nobleza gaucha', descripcion: " Está a punto de convertirse en leyenda.", limite_inferior_rango: '20', limite_superior_rango:'50', marca: 'true' )
 Logro.create(id: '107', nombre:'Dios', descripcion: " El tipo te da lo que le pidas, ayuda a todo el mundo.", limite_inferior_rango: '50', limite_superior_rango:'100', marca: 'true' )
+
+puts "cargo postulaciones"
+Postulation.where(name:'Barby', user_id:'2', fecha: '12/12/2016' , descripcion: 'quiero ayudarte').first_or_create

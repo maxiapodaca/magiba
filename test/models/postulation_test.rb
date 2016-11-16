@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostulacionTest < ActiveSupport::TestCase
+class PostulationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
