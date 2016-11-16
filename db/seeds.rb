@@ -72,3 +72,4 @@ Comment.where(favor_id: '4', user_id: '5', detalle:'Esta castrado?').first_or_cr
 
 Comment.where(favor_id: '5', user_id: '2', detalle:'noo mira como dejaste la obra').first_or_create
 Comment.where(favor_id: '5', user_id: '3', detalle:'Eso no se puede restaurar').first_or_create
+

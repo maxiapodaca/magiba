@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :cards
+  resources :compras
+
     
   get 'comments/index'
 
