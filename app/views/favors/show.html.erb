@@ -47,11 +47,14 @@
                 <td>
                 	<%= image_tag @favor.imagen, size: '350x350' %>
                 </td>
+                    
+                               
+                 
 
-                
-                
-                
-                <% if (user_signed_in?) && (@favor.user != current_user) %>
+		</table>
+
+       <table class="table">
+    <% if (user_signed_in?) && (@favor.user != current_user) %>
                   <td>
                		<%= form_for(Postulation.new) do |p| %>
                
@@ -80,18 +83,20 @@
 			
 	                 <% end %>
 
+                    </td>
                <% end %>
 
-                </td>
-                 
 
-		</table>
+        </table>
 
-       
+
 		<p>
 			<a class="btn btn-warning btn-lg" href="/favors" role="button"> Volver </a>
 		</p> 
 
 
 	</div>
+	</div>
+	</div>
+	</dive>
 	
