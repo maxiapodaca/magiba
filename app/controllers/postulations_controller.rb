@@ -26,7 +26,6 @@ class PostulationsController < ApplicationController
   end
 
   def update
-
     @postulation.update_attributes(params.require(:postulation).permit(:name))
      redirect_to favors_path
   end
@@ -37,4 +36,5 @@ class PostulationsController < ApplicationController
   def edit
     @postulation = Postulation.all.order(:id)
   end
+
 end
