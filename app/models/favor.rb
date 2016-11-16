@@ -1,4 +1,6 @@
 class Favor < ActiveRecord::Base
+	belongs_to :user
+	has_many :comments
 	validates_presence_of :titulo
 	validates_presence_of :descripcion
 	#validates_presence_of :localidad

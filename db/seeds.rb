@@ -41,4 +41,35 @@ if User.where(email: 'nancy@gmail.com').empty?
 	u6=User.create(email: 'nancy@gmail.com', name: 'Nancy', apellido: 'Diaz',telefono: '425110564', dni: '26278818', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'true', logro_id: '101')
 end
 
+puts "Cargo algunos logros"
+Logro.create(id: '100', nombre:'Político', descripcion: " Persona tacaña, que sólo pide favores y no hace ninguno a nadie.", limite_inferior_rango: '-100', limite_superior_rango:'0', marca: 'true' )
+Logro.create(id: '101', nombre:'Observador', descripcion: " No interactua con otros usuarios.", limite_inferior_rango: '0', limite_superior_rango:'1', marca: 'true' )
+Logro.create(id: '102', nombre:'Buen tipo', descripcion: " Ha hecho algún que otro favor.", limite_inferior_rango: '1', limite_superior_rango:'2', marca: 'true' )
+Logro.create(id: '103', nombre:'Gran tipo', descripcion: " Acostumbra a realizar favores.", limite_inferior_rango: '2', limite_superior_rango:'5', marca: 'true' )
+Logro.create(id: '104', nombre:'Tipazo', descripcion: " Los usuarios recurren a él frecuentemente.", limite_inferior_rango: '5', limite_superior_rango:'10', marca: 'true' )
+Logro.create(id: '105', nombre:'Héroe', descripcion: " Más bueno que Lassie atado.", limite_inferior_rango: '10', limite_superior_rango:'20', marca: 'true' )
+Logro.create(id: '106', nombre:'Nobleza gaucha', descripcion: " Está a punto de convertirse en leyenda.", limite_inferior_rango: '20', limite_superior_rango:'50', marca: 'true' )
+Logro.create(id: '107', nombre:'Dios', descripcion: " El tipo te da lo que le pidas, ayuda a todo el mundo.", limite_inferior_rango: '50', limite_superior_rango:'100', marca: 'true' )
+
+
+puts "Cargo comentarios"
+Comment.where(favor_id: '2', user_id: '1', detalle:'que edad tiene el burrito?').first_or_create
+Comment.where(favor_id: '2', user_id: '2', detalle:'Para cuando lo necesitarias?').first_or_create
+Comment.where(favor_id: '2', user_id: '3', detalle:'Cual es tu problema fisico?').first_or_create
+Comment.where(favor_id: '2', user_id: '4', detalle:'Ay que linnndooo').first_or_create
+
+Comment.where(favor_id: '1', user_id: '2', detalle:'Cuanto tiempo de viaje?').first_or_create
+Comment.where(favor_id: '1', user_id: '5', detalle:'Me podrias dejar de pasada en otro lugar?').first_or_create
+Comment.where(favor_id: '1', user_id: '5', detalle:'Prefiero terere').first_or_create
+
+Comment.where(favor_id: '3', user_id: '1', detalle:'En que zona ocurrio el accidente?').first_or_create
+Comment.where(favor_id: '3', user_id: '5', detalle:'a que hora fue el accidente?').first_or_create
+Comment.where(favor_id: '3', user_id: '3', detalle:'no se puede hacer eso u.u').first_or_create
+
+Comment.where(favor_id: '4', user_id: '4', detalle:'Ese perro tiene cara de malo').first_or_create
+Comment.where(favor_id: '4', user_id: '2', detalle:'Me lo puedo llevar a mi casa?').first_or_create
+Comment.where(favor_id: '4', user_id: '5', detalle:'Esta castrado?').first_or_create
+
+Comment.where(favor_id: '5', user_id: '2', detalle:'noo mira como dejaste la obra').first_or_create
+Comment.where(favor_id: '5', user_id: '3', detalle:'Eso no se puede restaurar').first_or_create
 

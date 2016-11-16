@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :cards
   belongs_to :logro
   belongs_to :postulacion
+  has_many :favors
+  has_many :comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable 
 
