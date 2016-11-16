@@ -52,6 +52,10 @@ Logro.create(id: '106', nombre:'Nobleza gaucha', descripcion: " Está a punto de
 Logro.create(id: '107', nombre:'Dios', descripcion: " El tipo te da lo que le pidas, ayuda a todo el mundo.", limite_inferior_rango: '50', limite_superior_rango:'100', marca: 'true' )
 
 
+puts "cargo postulaciones"
+Postulation.where(name:'Barby', user_id:'2', fecha: '12/12/2016' , descripcion: 'quiero ayudarte').first_or_create
+
+
 puts "Cargo comentarios"
 Comment.where(favor_id: '2', user_id: '1', detalle:'que edad tiene el burrito?').first_or_create
 Comment.where(favor_id: '2', user_id: '2', detalle:'Para cuando lo necesitarias?').first_or_create
@@ -72,4 +76,3 @@ Comment.where(favor_id: '4', user_id: '5', detalle:'Esta castrado?').first_or_cr
 
 Comment.where(favor_id: '5', user_id: '2', detalle:'noo mira como dejaste la obra').first_or_create
 Comment.where(favor_id: '5', user_id: '3', detalle:'Eso no se puede restaurar').first_or_create
-

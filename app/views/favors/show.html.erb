@@ -38,6 +38,12 @@
 
 				
 
+               <% if (user_signed_in?) && (@favor.user != current_user) %>
+               <th>
+					<font face="arial" size="4" color="orange">  Quiero ayudar! </font>
+				</th>
+               <% end %>
+                
 			</tr>
 
 				<td>
@@ -60,12 +66,62 @@
                		<font face="arial" size="3" color="black"> <%= @favor.descripcion %> </font>
                 </td>
 
+<<<<<<< HEAD
+                <td>
+                	<%= image_tag @favor.imagen, size: '350x350' %>
+                </td>
+
+                
+                
+                
+                <% if (user_signed_in?) && (@favor.user != current_user) %>
+                  <td>
+               		<%= form_for(Postulation.new) do |p| %>
+               
+                      <p>
+
+                        <font face="arial" size="3" color="grey"><%= p.label :Indicar_la_fecha_en_la_que_puedo_resolver_la_gauchada %></font>
+					       
+					     <%= p.date_field :fecha %>					
+				    
+				     </p>
+				    <p>
+					    
+                        <font face="arial" size="3" color="grey"> <%= p.label :descripcion %> </font>
+					    
+
+
+		                <%= p.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese una breve descripcion de tu postulacion' %>
+				    </p>
+                    
+				     <p>								
+					     <%= p.hidden_field :favor_id, value:@favor.id %> 
+					
+				     </p>
+
+				       <%= p.submit 'Guardar' %>
+			
+	                 <% end %>
+                     </td>
+               <% end %>
+
+               
+                 
+
+		</table>
+=======
 		</table>
 
 		<%= render "comments/commentsIndex" %>
+>>>>>>> 80f1abf6ecc8ed2583789ea1d6db7735d992e292
 
+       
 		<p>
+<<<<<<< HEAD
+			<a class="btn btn-warning btn-lg" href="/favors" role="button"> Volver </a>
+=======
 			<a class="btn btn-default btn-lg" href="/favors" role="button"> Volver </a>
+>>>>>>> 80f1abf6ecc8ed2583789ea1d6db7735d992e292
 		</p> 
 
 

@@ -21,6 +21,7 @@ class FavorsController < ApplicationController
   
   def create
     @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad))
+    @favor.user = current_user
     if @favor.save
       current_user.puntos= current_user.puntos - 1
       current_user.save
@@ -52,4 +53,4 @@ class FavorsController < ApplicationController
     @favor = Favor.find(params[:id])
   end
   
-end
+end 

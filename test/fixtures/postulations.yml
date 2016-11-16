@@ -1,15 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id_favor: 1
-  id_userfav: 1
   fecha: MyString
   descripcion: MyString
-  es_ganador: false
 
 two:
-  id_favor: 1
-  id_userfav: 1
   fecha: MyString
   descripcion: MyString
-  es_ganador: false

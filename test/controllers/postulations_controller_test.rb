@@ -1,13 +1,8 @@
 require 'test_helper'
 
-class PostulacionesControllerTest < ActionController::TestCase
+class PostulationsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
-    assert_response :success
-  end
-
-  test "should get show" do
-    get :show
     assert_response :success
   end
 
@@ -16,8 +11,8 @@ class PostulacionesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit
+  test "should get show" do
+    get :show
     assert_response :success
   end
 
@@ -33,6 +28,11 @@ class PostulacionesControllerTest < ActionController::TestCase
 
   test "should get destroy" do
     get :destroy
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit
     assert_response :success
   end
 
