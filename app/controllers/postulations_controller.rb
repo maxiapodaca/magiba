@@ -34,9 +34,6 @@ class PostulationsController < ApplicationController
   def destroy
   end
 
-  def misPostulaciones
-  end
-
   def edit
     @postulation = Postulation.all.order(:id)
   end

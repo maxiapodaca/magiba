@@ -45,6 +45,8 @@ class FavorsController < ApplicationController
   end
 
   def show
+    @favor.visitas= @favor.visitas + 1
+    @favor.save
   end
 
   private

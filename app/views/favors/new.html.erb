@@ -4,7 +4,7 @@
 
 			<div class="jumbotron"> 
 				
-				<font face="arial" size="7" color="orange"> Publicar una gauchada </font>
+				<font face="arial" size="7" color="Black"> Publicar una gauchada </font>
 
 				<% if (current_user.puntos) >=  1 %>
 
@@ -45,21 +45,26 @@
 
 				<% else %>
 					<p>
-						<a class="btn btn-default btn-lg" href="/cards/new" role="button">
+						<font face="arial" size="5" > Parece que te quedaste sin puntos! </font>
+					</p>
+
+					<p>
+						<font face="arial" size="4" > Podrías hacerle la gauchada a alguien o.. Comprar puntos </font>
+					</p>
+
+					<p>
+						<a class="btn btn-default btn-lg" href="/favors" role="button">
+							Ver el listado de gauchadas
+		            	</a>
+
+		            	<a class="btn btn-default btn-lg" href="/compras/new" role="button">
 							Comprar puntos
 		            	</a>
+
 					</p>
 				<% end %>
 		 
-
-				<p>
-
-					<%= link_to "Volver al listado de gauchadas", href="/favors" %>
-					
-				</p> 
-						
-
-			</div>
+		 	</div>
 		</div>
 	</div>
 	
