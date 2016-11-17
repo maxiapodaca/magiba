@@ -8,7 +8,10 @@ class FavorsController < ApplicationController
   end
 
   def index
-    @favores = Favor.all.order(:id)
+    @favores = Favor.order("created_at DESC")
+    if params[:titulo].present? 
+      @favores = Favor.where('titulo LIKE ?',"%#{params[:titulo]}%")
+    end
   end
 
   def new
