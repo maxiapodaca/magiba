@@ -3,8 +3,8 @@ class FavorsController < ApplicationController
 
 
   def mis_favores
-    @favores = Favor.all.order(:id)
-
+    @favores = current_user.favors.all.order(:id)
+    
   end
 
   def index
@@ -23,7 +23,7 @@ class FavorsController < ApplicationController
   end
   
   def create
-    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad))
+    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
     @favor.user = current_user
     if @favor.save
       current_user.puntos= current_user.puntos - 1
@@ -35,8 +35,8 @@ class FavorsController < ApplicationController
   end
 
   def update
-    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad))
-      redirect_to favors_path
+    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
+      redirect_to mis_favores_favors_path
     else
      render 'edit'
     end
@@ -44,7 +44,11 @@ class FavorsController < ApplicationController
 
   def destroy
     @favor.destroy
-    redirect_to favors_path
+    if (@favor.user == current_user)
+      redirect_to mis_favores_favors_path
+    else
+      redirect_to favors_path
+    end
   end
 
   def show

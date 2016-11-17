@@ -1,7 +1,30 @@
+		<% if user_signed_in? %>
+
+			<div class="panel panel-default">
+
+				<div class="col-md-10 ">
+
+					<div class="panel-body">
+						
+						<P ALIGN=left>
+
+						    <a class="btn btn-default btn-lg" href="/favors" role="button">
+				            	Ordenar por cantidad de visitas
+				            </a>
+
+					</div>
+				</div>
+			</div>
+
+		<% end %>
+
+
+<P ALIGN=right>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-md-10 col-md-offset-2">
 			<div class="jumbotron"> 
+
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<font face="arial" size="5" color="orange">
@@ -82,9 +105,12 @@
 					<% end %>
 
 				</table>
-				<p>
-					<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
-				</p> 
+
+				<% if user_signed_in? %>
+					<p>
+						<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
+					</p> 
+				<% end %>
 
 			</div>	
 		</div>
