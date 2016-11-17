@@ -3,7 +3,7 @@ class FavorsController < ApplicationController
 
 
   def mis_favores
-     @f = Favor.all.order(:id)
+    @favores = Favor.all.order(:id)
 
   end
 
@@ -45,6 +45,8 @@ class FavorsController < ApplicationController
   end
 
   def show
+    @favor.visitas= @favor.visitas + 1
+    @favor.save
   end
 
   private

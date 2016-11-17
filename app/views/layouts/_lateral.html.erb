@@ -27,9 +27,12 @@
 							Menú usuario:
 						</p>
 						</font>
+
 						<p> <%= link_to "Inicio", favors_path %> </p>
-						<p> <%= link_to "Ver mis gauchadas"%> </p>
+						<p> <%= link_to "Ver mis gauchadas", mis_favores_favors_path %> </p>
+						<p> <%= link_to "Ver Listado de gauchadas", favors_path %> </p>
 						<p> <%= link_to "Comprar puntos" %> </p>
+						<p> <%= link_to "Ver postulaciones a mis gauchadas", postulations_path %> </p>
 					</div>
 				</div>
 
@@ -40,8 +43,7 @@
 						<p> <%= link_to "Inicio", favors_path %> </p>
 						<p> <%= link_to "Mis gauchadas", mis_favores_favors_path %> </p>
 						<p> <%= link_to "Comprar puntos" %> </p>
-						<p> <%= link_to "Mis postulaciones", postulations_path %> </p>
-						
+						<p> <%= link_to "Mis postulaciones", postulations_path %> </p>					
 					</div>
 				</div>
 
