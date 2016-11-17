@@ -14,7 +14,11 @@
         <% if user_signed_in? %>
             <td> <P ALIGN=left>
             	<h0>
-				<%= current_user.name %> <%= current_user.apellido %>
+
+            	<font face="arial" size="4" color="brown">
+				<%= current_user.name %> <%= current_user.apellido %>						
+				</font>
+				
 				</h0>
 		<% end %>			
     </div>

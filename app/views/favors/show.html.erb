@@ -63,7 +63,7 @@
 					<% if (user_signed_in?) && (@favor.user != current_user) %>
 						<tr>
 				            <th>
-								<font face="arial" size="4" color="orange">
+								<font face="vijaya" size="8" color="orange">
 									Quiero ayudar!
 								</font>
 							</th>
@@ -77,7 +77,7 @@
 			               
 			                    <p>
 			                    	<font face="arial" size="3" color="grey">
-			                    		<%= p.label :Indicar_la_fecha_en_la_que_puedo_resolver_la_gauchada %>
+			                    		<%= p.label :Indicar_la_fecha_en_la_que_puede_resolver_la_gauchada %>
 			                    	</font>
 								       
 								    <%= p.date_field :fecha %>
@@ -97,6 +97,12 @@
 
 						    	<%= p.submit 'Guardar' %>
 						    <% end %>
+						</td>
+					<% end %>
+
+					<% if (user_signed_in?) && (@favor.user == current_user) %>
+		               	<td>
+			            	<%= render "postulations/postulationsIndex" %>
 						</td>
 					<% end %>
 				    
