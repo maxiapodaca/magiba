@@ -1,6 +1,8 @@
 class PostulationsController < ApplicationController
   def index
-    @postulation = Postulation.all.order(:id)
+    #@postulation = Postulation.all.order(:id)
+    #@postulation.favor = Favor.find(params[:id])
+    
   end
 
   def new
@@ -19,8 +21,10 @@ class PostulationsController < ApplicationController
     @postulation= Postulation.new(params.require(:postulation).permit(:favor_id, :fecha, :descripcion ))
     @postulation.user = current_user
     if @postulation.save
+      flash[:notice] = "Se ha postulado exitosamente."
       redirect_to favor_path(@postulation.favor)
     else
+      flash[:notice] = "Problemas en postulacion del logro, complete todos los campos."     
       redirect_to :back
     end
   end
@@ -31,6 +35,12 @@ class PostulationsController < ApplicationController
   end
 
   def destroy
+    if @postulation.aceptar
+        @postulation.aceptar=false
+    else
+        @postulation.aceptar=true
+    end
+      @postulation.save
   end
 
   def edit

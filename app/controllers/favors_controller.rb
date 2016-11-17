@@ -4,7 +4,7 @@ class FavorsController < ApplicationController
 
   def mis_favores
     @favores = Favor.all.order(:id)
-
+    
   end
 
   def index
