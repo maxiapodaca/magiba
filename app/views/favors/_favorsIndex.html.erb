@@ -1,95 +1,89 @@
 <div class="container-fluid">
 	<div class="row">
-    <div class="col-md-10">
-
-	<div class="jumbotron"> 
-		<td> <P ALIGN=right>
-			<% if user_signed_in? %>
-	            <a class="btn btn-default btn-lg" href="/favors/new" role="button">
-	            	Publicá una gauchada!
-	            </a>
-	        <% end %>
-
-        <P ALIGN=left>
-
-        <p>
-
-
-        </p>
-		
-		<font face="arial" size="6" color="black">
-			A continuación se encuentra el listado de las gauchadas:
-		</font>
-		
-		<p>
-
-		</p>  
-  		<table class="table">
-
- 			<tr>
- 				<th>
-					<font face="arial" size="5" color="orange"> Imagen  </font>
-				</th>
-				<th>
-					<font face="arial" size="5" color="orange"> Gauchadas </font>
-				</th>
-				<th>
-					<font face="arial" size="5" color="orange"> Detalle  </font>
-				</th>
-				<th>
-					<font face="arial" size="5" color="orange"> Ciudad </font>
-				</th>
-			</tr>
-
-			<% @favores = Favor.all.order(:id) %>
-			<% @favores.each do |f| %>
-
-				<tr> 
-					<td>
-						<font face="arial" size="3" color="black">
-							<%= image_tag f.imagen, size: '100x100' %>
-						</font>
-					</td>
-					<td>
-						<font face="arial" size="3" color="black">
-							<%= f.titulo %>
-						</font>
-					</td>
-					<td>
-						<font face="arial" size="3" color="black">
-							<%= f.descripcion.truncate(50) %>
-						</font>
-					</td>
-					<td>
-						<font face="arial" size="3" color="black">
-							<%= f.localidad %>
-						</font>
-					</td>
-					
+		<div class="col-md-10">
+			<div class="jumbotron"> 
+				<P ALIGN=right>
 					<% if user_signed_in? %>
-						<td>
-							<font face="arial" size="3" color="black"> 
-								<%= link_to "Ver detalle", f %>
-							</font>
-						</td>
+			            <a class="btn btn-default btn-lg" href="/favors/new" role="button">
+			            	Publicá una gauchada!
+			            </a>
+			        <% end %>
 
-						<% if current_user.admin? %>
-						<td>
-							<font face="arial" size="3" color="black">
-								<%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar la gauchada?' } %>
-							</font>
-						</td>
-						<% end %>
+		        <P ALIGN=left>
+				
+				<font face="arial" size="6" color="black">
+					A continuación se encuentra el listado de las gauchadas:
+				</font>
+				  
+		  		<table class="table">
 
+		 			<tr>
+		 				<th>
+							<font face="arial" size="5" color="orange"> Imagen  </font>
+						</th>
+						<th>
+							<font face="arial" size="5" color="orange"> Titulo </font>
+						</th>
+						<th>
+							<font face="arial" size="5" color="orange"> Detalle  </font>
+						</th>
+						<th>
+							<font face="arial" size="5" color="orange"> Ciudad </font>
+						</th>
+					</tr>
+
+					<% @favores = Favor.all.order(:id) %>
+					<% @favores.each do |f| %>
+
+						<tr> 
+							<td>
+								<font face="arial" size="3" color="black">
+									<%= image_tag f.imagen, size: '100x100' %>
+								</font>
+							</td>
+							<td>
+								<font face="arial" size="3" color="black">
+									<%= f.titulo %>
+								</font>
+							</td>
+							<td>
+								<font face="arial" size="3" color="black">
+									<%= f.descripcion.truncate(50) %>
+								</font>
+							</td>
+							<td>
+								<font face="arial" size="3" color="black">
+									<%= f.localidad %>
+								</font>
+							</td>
+							
+							<% if user_signed_in? %>
+								<td>
+									<font face="arial" size="3" color="black"> 
+										<%= link_to "Ver detalle", f %>
+									</font>
+								</td>
+
+								<% if current_user.admin? %>
+									<td>
+										<font face="arial" size="3" color="black">
+											<%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar la gauchada?' } %>
+										</font>
+									</td>
+								<% end %>
+
+							<% end %>
+
+						</tr> 
+			
 					<% end %>
 
-				</tr> 
-	
-			<% end %>
+				</table>
+				<p>
+					<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
+				</p> 
 
-		</table>
-		<p>
-			<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
-		</p> 
-	</div>	
+			</div>	
+		</div>
+	</div>
 </div>

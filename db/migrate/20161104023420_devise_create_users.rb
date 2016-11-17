@@ -6,7 +6,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :encrypted_password, null: false, default: ""
       #validarusuario
       t.integer :logro_id
-      t.puntos :integer, default: "1"
       t.string :name
       t.boolean :admin, default:false 
       t.string :apellido
