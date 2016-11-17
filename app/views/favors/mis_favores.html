@@ -1,1 +1,90 @@
-<p> kjhsfjshjcbsjb</p>
+<div class="container-fluid">
+	<div class="row">
+	    <div class="col-md-10">
+
+			<div class="jumbotron"> 
+				<P ALIGN=right>
+			            <a class="btn btn-default btn-lg" href="/favors/new" role="button">
+			            	Publicá una gauchada!
+			            </a>
+
+		        <P ALIGN=left>
+				
+				<font face="arial" size="6" color="black">
+					Mis gauchadas
+				</font>
+				
+				 
+		  		<table class="table">
+
+		 			<tr>
+		 				<th>
+							<font face="arial" size="5" color="orange"> Imagen  </font>
+						</th>
+						<th>
+							<font face="arial" size="5" color="orange"> Titulo </font>
+						</th>
+						<th>
+							<font face="arial" size="5" color="orange"> Detalle  </font>
+						</th>
+						<th>
+							<font face="arial" size="5" color="orange"> Ciudad </font>
+						</th>
+					</tr>
+
+					
+					<% @favores.each do |f| %>
+
+						<% if f.user.id == current_user.id %>
+
+							<tr> 
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= image_tag f.imagen, size: '100x100' %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= f.titulo %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= f.descripcion.truncate(50) %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= f.localidad %>
+									</font>
+								</td>
+								
+								
+								<td>
+									<font face="arial" size="3" color="black"> 
+										<%= link_to "Ver detalle", f %>
+									</font>
+								</td>
+
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar su gauchada?' } %>
+									</font>
+								</td>
+
+							</tr> 
+						
+						<% end %>
+
+					<% end %>
+
+				</table>
+
+				<p>
+					<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
+				</p> 
+
+			</div>
+		</div>
+	</div>	
+</div>

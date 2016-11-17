@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20161116220402) do
 
   # These are extensions that must be enabled in order to support this database
@@ -55,8 +54,9 @@ ActiveRecord::Schema.define(version: 20161116220402) do
     t.string   "id_ganador"
     t.datetime "created_at",                                                                                   null: false
     t.datetime "updated_at",                                                                                   null: false
-    t.integer  "user_id"
     t.integer  "visitas",         default: 0
+    t.integer  "user_id"
+    t.integer  "comment_id"
   end
 
   create_table "logros", force: :cascade do |t|
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 20161116220402) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.integer  "puntos",                 default: 1
+    t.integer  "favor_id"
+    t.integer  "comment_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

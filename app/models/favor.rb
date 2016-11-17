@@ -2,17 +2,13 @@ class Favor < ActiveRecord::Base
 
 	belongs_to :user
 	has_many :comments
-	validates_presence_of :titulo
+	has_many :postulations
+
+	default_scope -> {order("updated_at")}
 
 	validates_presence_of :descripcion
-	#validates_presence_of :localidad
-	#validates_uniqueness_of :name
-	default_scope -> {order("updated_at")}
 	validates :titulo, presence: true, length: { minimum: 4 }
-	#validates :descripcion, presence: true, length: { minimum: 4 }
-
 	validates :localidad, presence: true, length: { minimum: 4 }
 	#has_many :preguntas
-	has_many :postulations
-	belongs_to :user
+	
 end
