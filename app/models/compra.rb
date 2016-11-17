@@ -1,3 +1,3 @@
 class Compra < ActiveRecord::Base
-	has_one :card
+	belongs_to :card
 end
