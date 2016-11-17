@@ -28,11 +28,7 @@
 					<font face="arial" size="4" color="orange">  Imagen </font>
 				</th>
 
-               <% if (user_signed_in?) && (@favor.user != current_user) %>
-               <th>
-					<font face="arial" size="4" color="orange">  Quiero ayudar! </font>
-				</th>
-               <% end %>
+               
                 
 			</tr>
 
@@ -54,7 +50,12 @@
 		</table>
 
        <table class="table">
-    <% if (user_signed_in?) && (@favor.user != current_user) %>
+             % if (user_signed_in?) && (@favor.user != current_user) %>
+               <th>
+					<font face="arial" size="4" color="orange">  Quiero ayudar! </font>
+				</th>
+               <% end %>
+               <% if (user_signed_in?) && (@favor.user != current_user) %>
                   <td>
                		<%= form_for(Postulation.new) do |p| %>
                
@@ -68,9 +69,6 @@
 				    <p>
 					    
                         <font face="arial" size="3" color="grey"> <%= p.label :descripcion %> </font>
-					    
-
-
 		                <%= p.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese una breve descripcion de tu postulacion' %>
 				    </p>
                     
