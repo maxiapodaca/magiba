@@ -32,7 +32,7 @@
 						</th>
 					</tr>
 
-					<% @favores = Favor.all.order(:id) %>
+					<% @favores = Favor.all.order(:created_at) %>
 					<% @favores.each do |f| %>
 
 						<tr> 
