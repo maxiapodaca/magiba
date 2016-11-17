@@ -3,7 +3,7 @@ class FavorsController < ApplicationController
 
 
   def mis_favores
-    @favores = Favor.all.order(:id)
+    @favores = current_user.favors.all.order(:id)
     
   end
 
@@ -41,7 +41,11 @@ class FavorsController < ApplicationController
 
   def destroy
     @favor.destroy
-    redirect_to favors_path
+    if (@favor.user == current_user)
+      redirect_to mis_favores_favors_path
+    else
+      redirect_to favors_path
+    end
   end
 
   def show

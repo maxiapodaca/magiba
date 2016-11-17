@@ -17,26 +17,31 @@
 				 
 		  		<table class="table">
 
-		 			<tr>
-		 				<th>
-							<font face="arial" size="5" color="orange"> Imagen  </font>
-						</th>
-						<th>
-							<font face="arial" size="5" color="orange"> Titulo </font>
-						</th>
-						<th>
-							<font face="arial" size="5" color="orange"> Detalle  </font>
-						</th>
-						<th>
-							<font face="arial" size="5" color="orange"> Ciudad </font>
-						</th>						   
+		  			<% if @favores.empty? %>
 
-					</tr>
+		  				<font face="arial" size="6" color="black">
+							Todavia no pediste ninguna gauchada!
+						</font>
 
-					
-					<% @favores.each do |f| %>
+			 		<% else %>
 
-						<% if f.user.id == current_user.id %>
+			 			<tr>
+			 				<th>
+								<font face="arial" size="5" color="orange"> Imagen  </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Titulo </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Detalle  </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Ciudad </font>
+							</th>						   
+
+						</tr>
+
+						<% @favores.each do |f| %>
 
 							<tr> 
 								<td>
@@ -78,8 +83,8 @@
 									</font>
 								</td>
 
-							</tr> 
-						
+							</tr>
+
 						<% end %>
 
 					<% end %>

@@ -1,27 +1,21 @@
-<div class="panel-group">
+<div class="container-fluid">
 
-	<div class="col-md-10">
-		<div class="panel panel-default">
-			
-			<div class="panel-body">
-
-				<% if user_signed_in? %>
-					<h1>
-						Bienvenido a Gauchada! 
-					</h1>
-				<% else %>
-					<h1>
-						Bienvenido a Gauchada!
-					</h1>
-					<h2>
-						Inicia sesión para ver todo el contenido y pedir gauchadas!
-					</h2>
-				<%end%>
-			
-			</div>
-
+	<% if user_signed_in? %>
+		<div class="col-md-10 ">
+			<h1>
+				Bienvenido a Gauchada! 
+			</h1>
 		</div>
-	</div>
+	<% else %>
+		<div class="col-md-10 col-md-offset-2">
+			<h1>
+				Bienvenido a Gauchada!
+			</h1>
+			<h2>
+				Inicia sesión para ver todo el contenido y pedir gauchadas!
+			</h2>
+		</div>
+	<%end%>
 	
 	<%= render "favors/favorsIndex" %>
 	
