@@ -14,7 +14,7 @@ class FavorsController < ApplicationController
       @favores = Favor.all.order(:id)
 
     if params[:titulo].present? 
-      @favores = Favor.where('titulo LIKE ?',"%#{params[:titulo]}%")
+      @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
     end
   end
 
