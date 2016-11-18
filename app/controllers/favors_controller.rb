@@ -13,6 +13,9 @@ class FavorsController < ApplicationController
       @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
     else
       @favores = Favor.all.order(:id)
+
+    if params[:titulo].present? 
+      @favores = Favor.where('titulo LIKE ?',"%#{params[:titulo]}%")
     end
   end
 

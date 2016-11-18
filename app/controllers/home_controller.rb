@@ -7,5 +7,12 @@ class HomeController < ApplicationController
     else
       @favores = Favor.all.order(:id)
     end
+
+    if user_signed_in? 
+      if params[:titulo].present? 
+        @favores = Favor.where('titulo LIKE ?',"%#{params[:titulo]}%")
+      end
+    end
+
   end
 end
