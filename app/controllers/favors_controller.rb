@@ -1,7 +1,6 @@
 class FavorsController < ApplicationController
   before_action :get_favor, only: [:edit, :update, :destroy, :show]
 
-
   def mis_favores
     @favores = current_user.favors.all
   end
@@ -67,4 +66,4 @@ class FavorsController < ApplicationController
     @favor = Favor.find(params[:id])
   end
   
-end 
+end
