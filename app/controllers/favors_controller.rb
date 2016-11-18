@@ -10,7 +10,7 @@ class FavorsController < ApplicationController
   def index
     @favores = Favor.order("created_at DESC")
     if params[:titulo].present? 
-      @favores = Favor.where('titulo LIKE ?',"%#{params[:titulo]}%")
+      @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
     end
   end
 
