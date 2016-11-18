@@ -3,12 +3,17 @@ class FavorsController < ApplicationController
 
 
   def mis_favores
-    @favores = current_user.favors.all.order(:id)
-    
+    @favores = current_user.favors.all
   end
 
   def index
-    @favores = Favor.all.order(:id)
+     @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
+    if params[:orden] && params[:orden]== "visitas"
+      @favores = Favor.all.order(:visitas)
+      @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
+    else
+      @favores = Favor.all.order(:id)
+    end
   end
 
   def new
