@@ -1,97 +1,106 @@
 <div class="row">
-	<% if user_signed_in? %>
-    	<% if current_user.admin? %>
-            <div class="col-md-8">
-        <% else %>
-            <div class="col-md-8 col-md-offset-2">
-        <% end %>
-    <% else %>
-        <div class="col-md-8 col-md-offset-2">
-    <% end %>
-    <div class="panel panel-default">
- 		<div class="panel-body">
-			<% if current_user.admin? %>
-				<P ALIGN=right>
-			    	<button type="button" class="btn btn-default" href="/favors/new" >Pedí una gauchada ! </button>
-			    </P>
-			<% end %>
-			<table class="table">
-			 	<tr>
-			 		<th>
-						<font face="arial" size="5" color="orange"> Imagen  </font>
-					</th>
-					<th>
-						<font face="arial" size="5" color="orange"> Titulo </font>
-					</th>
-					<th>
-						<font face="arial" size="5" color="orange"> Detalle  </font>
-					</th>
-					<th>
-						<font face="arial" size="5" color="orange"> Ciudad </font>
-					</th>
-				</tr>
-				<% @favores.each do |f| %>
-					<tr> 
-						<td>
-							<font face="arial" size="3" color="black">
-								<%= image_tag f.imagen, size: '100x100' %>
-							</font>
-						</td>
-						<td>
-							<font face="arial" size="3" color="black">
-								<%= f.titulo %>
-							</font>
-						</td>
-						<td>
-							<font face="arial" size="3" color="black">
-								<%= f.descripcion.truncate(50) %>
-							</font>
-						</td>
-						<td>
-							<font face="arial" size="3" color="black">
-								<%= f.localidad %>
-							</font>
-						</td>	
-						<% if user_signed_in? %>
-							<td>
-								<font face="arial" size="3" color="black"> 
-										<%= link_to "Ver detalle", f %>
-								</font>
-							</td>
-							<% if current_user.admin? %>
-								<td>
-									<font face="arial" size="3" color="black">
-										<%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar la gauchada?' } %>
-									</font>
-								</td>
-							<% end %>
-						<% end %>
-					</tr>
-				<% end %>	 
-			</table>
-			<% if user_signed_in? %>
-				<p>
-					<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
-				</p> 
-			<% end %>
-		</div>	
-	</div>
+    <% if user_signed_in? %>
+       <% if current_user.admin? %>
+           <div class="col-md-8">
+       <% else %>
+           <div class="col-md-8 col-md-offset-2">
+       <% end %>
+   <% else %>
+       <div class="col-md-8 col-md-offset-2">
+   <% end %>
+   <div class="panel panel-default">
+        <div class="panel-body">
+        	<% if user_signed_in? %>
+                <td ALIGN=right>
+                    <a class="btn btn-default btn-lg" href="/favors/new" role="button"> Pedí una gauchada! </a>
+                </td>
+            <%end %>
+            <td ALIGN=left>
+                <a class="btn btn-default btn-lg" href="/favors?orden=visitas&order_by=<%= @order_by %>" role="button"> Ordenar por visitas  </a>
+            </td>
+            <table class="table">
+                 <tr>
+                     <th>
+                        <font face="arial" size="5" color="orange"> Imagen  </font>
+                    </th>
+                    <th>
+                        <font face="arial" size="5" color="orange"> Titulo </font>
+                    </th>
+                    <th>
+                        <font face="arial" size="5" color="orange"> Detalle  </font>
+                    </th>
+                    <th>
+                        <font face="arial" size="5" color="orange"> Ciudad </font>
+                    </th>
+                </tr>
+                <% @favores.each do |f| %>
+                    <tr> 
+                    	<td>
+                            <font face="arial" size="3" color="black">
+                                <%= f.visitas %>
+                            </font>
+                        </td>
+
+                        <td>
+                            <font face="arial" size="3" color="black">
+                                <%= image_tag f.imagen, size: '100x100' %>
+                            </font>
+                        </td>
+                        <td>
+                            <font face="arial" size="3" color="black">
+                                <%= f.titulo %>
+                            </font>
+                        </td>
+                        <td>
+                            <font face="arial" size="3" color="black">
+                                <%= f.descripcion.truncate(50) %>
+                            </font>
+                        </td>
+                        <td>
+                            <font face="arial" size="3" color="black">
+                                <%= f.localidad %>
+                            </font>
+                        </td>    
+                        <% if user_signed_in? %>
+                            <td>
+                                <font face="arial" size="3" color="black"> 
+                                        <%= link_to "Ver detalle", f %>
+                                </font>
+                            </td>
+                            <% if current_user.admin? %>
+                                <td>
+                                    <font face="arial" size="3" color="black">
+                                        <%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar la gauchada?' } %>
+                                    </font>
+                                </td>
+                            <% end %>
+                        <% end %>
+                    </tr>
+                <% end %>     
+            </table>
+            <% if user_signed_in? %>
+                <p>
+                    <a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
+                </p> 
+            <% end %>
+        </div>    
+    </div>
 </div>
 <div class="col-lg-2">
-	<div class="panel panel-default">
- 		<div class="panel-body">
-			<% if user_signed_in? %>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default" href="/favors?orden=visitas&order_by=<%= @order_by %>">Ordenar por visitas </button>
-						
-					<%= form_tag favors_path, method: :get do %>
-		          		<%= text_field_tag :titulo, params[:titulo], class: "form-control", placeholder: "Titulo" %>
-		        		<%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
-		      		<% end %>
-		      	</div> 	
-		    <% end %>
-		</div>
-	</div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+        <font face="arial" size="5" color="orange">
+                        <p>
+                            Búsqueda de guachadas:
+                        </p>
+            <% if user_signed_in? %>
+                    
+                        
+                    <%= form_tag favors_path, method: :get do %>
+                          <%= text_field_tag :titulo, params[:titulo], class: "form-control", placeholder: "Titulo" %>
+                        <%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
+                      <% end %>     
+            <% end %>
+        </div>
+    </div>
 </div>
-
-	

@@ -72,25 +72,14 @@ ActiveRecord::Schema.define(version: 20161116220402) do
     t.datetime "updated_at",            null: false
   end
 
-  create_table "postulacions", force: :cascade do |t|
-    t.integer  "id_favor"
-    t.integer  "id_userfav"
-    t.string   "fecha"
-    t.string   "descripcion"
-    t.boolean  "es_ganador"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "postulations", force: :cascade do |t|
     t.string   "descripcion"
     t.integer  "favor_id"
     t.integer  "user_id"
     t.string   "name"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.date     "fecha"
-    t.boolean  "aceptar",     default: false
   end
 
   create_table "users", force: :cascade do |t|
