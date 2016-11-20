@@ -1,14 +1,28 @@
 class FavorsController < ApplicationController
   before_action :get_favor, only: [:edit, :update, :destroy, :show]
 
-
   def mis_favores
-    @favores = Favor.all.order(:id)
-    
+    @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
+    if params[:orden] && params[:orden]== "visitas"
+      @favores = current_user.favors.all.order(:visitas)
+      @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
+    else
+      @favores = current_user.favors.all
+    end
   end
 
   def index
-    @favores = Favor.all.order(:id)
+    @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
+    if params[:orden] && params[:orden]== "visitas"
+      @favores = Favor.all.order(:visitas)
+      @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
+    else
+      @favores = Favor.all
+    end
+
+    if params[:titulo].present? 
+      @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
+    end
   end
 
   def new
@@ -20,7 +34,7 @@ class FavorsController < ApplicationController
   end
   
   def create
-    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad))
+    @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
     @favor.user = current_user
     if @favor.save
       current_user.puntos= current_user.puntos - 1
@@ -32,8 +46,8 @@ class FavorsController < ApplicationController
   end
 
   def update
-    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad))
-      redirect_to favors_path
+    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
+      redirect_to mis_favores_favors_path
     else
      render 'edit'
     end
@@ -41,7 +55,11 @@ class FavorsController < ApplicationController
 
   def destroy
     @favor.destroy
-    redirect_to favors_path
+    if (@favor.user == current_user)
+      redirect_to mis_favores_favors_path
+    else
+      redirect_to favors_path
+    end
   end
 
   def show
@@ -55,4 +73,4 @@ class FavorsController < ApplicationController
     @favor = Favor.find(params[:id])
   end
   
-end 
+end

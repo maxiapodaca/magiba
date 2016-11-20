@@ -9,6 +9,10 @@
 			            </a>
 
 		        <P ALIGN=left>
+
+		        <td ALIGN=left>
+	                <a class="btn btn-default btn-lg" href="/favors/mis_favores?orden=visitas&order_by=<%= @order_by %>" role="button"> Ordenar por visitas  </a>
+	            </td>
 				
 				<font face="arial" size="6" color="black">
 					Mis gauchadas
@@ -17,26 +21,31 @@
 				 
 		  		<table class="table">
 
-		 			<tr>
-		 				<th>
-							<font face="arial" size="5" color="orange"> Imagen  </font>
-						</th>
-						<th>
-							<font face="arial" size="5" color="orange"> Titulo </font>
-						</th>
-						<th>
-							<font face="arial" size="5" color="orange"> Detalle  </font>
-						</th>
-						<th>
-							<font face="arial" size="5" color="orange"> Ciudad </font>
-						</th>						   
+		  			<% if @favores.empty? %>
 
-					</tr>
+		  				<font face="arial" size="6" color="black">
+							Todavia no pediste ninguna gauchada!
+						</font>
 
-					
-					<% @favores.each do |f| %>
+			 		<% else %>
 
-						<% if f.user.id == current_user.id %>
+			 			<tr>
+			 				<th>
+								<font face="arial" size="5" color="orange"> Imagen  </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Titulo </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Detalle  </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Ciudad </font>
+							</th>						   
+
+						</tr>
+
+						<% @favores.each do |f| %>
 
 							<tr> 
 								<td>
@@ -60,10 +69,9 @@
 									</font>
 								</td>
 								
-								
 								<td>
 									<font face="arial" size="3" color="black"> 
-										<%= link_to "Ver detalle", f %>
+										<%= link_to "Editar", edit_favor_path(f)%>
 									</font>
 								</td>
 
@@ -73,9 +81,14 @@
 									</font>
 								</td>
 
-								
-							</tr> 
-						
+								<td>
+									<font face="arial" size="3" color="black"> 
+										<%= link_to "Ver detalle", f %>
+									</font>
+								</td>
+
+							</tr>
+
 						<% end %>
 
 					<% end %>
