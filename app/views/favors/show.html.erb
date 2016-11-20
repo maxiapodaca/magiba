@@ -80,7 +80,7 @@
 			                    		<%= p.label :Indicar_la_fecha_en_la_que_puede_resolver_la_gauchada %>
 			                    	</font>
 								       
-								    <%= p.date_field :fecha %>
+								    <%= p.date_field :fecha , :value => Time.now.strftime('%Y-%m-%d') %>
 							    </p>
 						    
 							    <p>
@@ -93,12 +93,14 @@
 		                    
 							    <p>								
 									<%= p.hidden_field :favor_id, value:@favor.id %> 
-								</p>
-
-						    	<%= p.submit 'Guardar' %>
+								</p>								
+						    	      <%= p.submit 'Guardar' %>
+						    	     
 						    <% end %>
 						</td>
 					<% end %>
+
+
 
 					<% if (user_signed_in?) && (@favor.user == current_user) %>
 		               	<td>

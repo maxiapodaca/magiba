@@ -53,8 +53,23 @@ Logro.create(id: '107', nombre:'Dios', descripcion: " El tipo te da lo que le pi
 
 
 puts "cargo postulaciones"
-Postulation.where(name:'Barby', user_id:'2', fecha: '12/12/2016' , descripcion: 'quiero ayudarte').first_or_create
+Postulation.where(name:'Barby', user_id:'1', favor_id:'2' ,fecha: '12/12/2016' , descripcion: 'quiero ayudarte').first_or_create
+Postulation.where(name:'Barby', user_id:'3', favor_id:'2' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
 
+
+
+Postulation.where(name:'Barby', user_id:'3', favor_id:'1' ,fecha: '1/12/2016' , descripcion: 'Me gustaria ayudarte, yo puedo el 1/12, esta bien?').first_or_create
+Postulation.where(name:'Barby', user_id:'2', favor_id:'1' ,fecha: '05/09/2016' , descripcion: 'hey  yo puedo ayudarte').first_or_create
+
+Postulation.where(name:'Barby', user_id:'1', favor_id:'3' ,fecha: '01/12/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
+Postulation.where(name:'Barby', user_id:'4', favor_id:'3' ,fecha: '15/11/2016' , descripcion: 'me gustaria poder ayudarte ').first_or_create
+Postulation.where(name:'Barby', user_id:'5', favor_id:'3' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
+
+Postulation.where(name:'Barby', user_id:'5', favor_id:'4' ,fecha: '01/01/2017' , descripcion: 'Yo puedo').first_or_create
+Postulation.where(name:'Barby', user_id:'2', favor_id:'4' ,fecha: '07/10/2016' , descripcion: 'Me gustaria cuidarlo').first_or_create
+
+Postulation.where(name:'Barby', user_id:'1', favor_id:'5' ,fecha: '11/02/2017' , descripcion: 'yo estudie dibujo ').first_or_create
+Postulation.where(name:'Barby', user_id:'3', favor_id:'5' ,fecha: '02/11/2016' , descripcion: 'conozco a alguien que puede restaurarlo').first_or_create
 
 puts "Cargo comentarios"
 Comment.where(favor_id: '2', user_id: '1', detalle:'que edad tiene el burrito?').first_or_create
