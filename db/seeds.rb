@@ -56,8 +56,6 @@ puts "cargo postulaciones"
 Postulation.where(name:'Barby', user_id:'1', favor_id:'2' ,fecha: '12/12/2016' , descripcion: 'quiero ayudarte').first_or_create
 Postulation.where(name:'Barby', user_id:'3', favor_id:'2' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
 
-
-
 Postulation.where(name:'Barby', user_id:'3', favor_id:'1' ,fecha: '1/12/2016' , descripcion: 'Me gustaria ayudarte, yo puedo el 1/12, esta bien?').first_or_create
 Postulation.where(name:'Barby', user_id:'2', favor_id:'1' ,fecha: '05/09/2016' , descripcion: 'hey  yo puedo ayudarte').first_or_create
 
