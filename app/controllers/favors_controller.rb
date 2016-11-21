@@ -19,10 +19,13 @@ class FavorsController < ApplicationController
     else
       @favores = Favor.all
     end
-
     if params[:titulo].present? 
       @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
     end
+    if params[:localidad].present? 
+      @favores = @favores.where('LOWER(localidad) LIKE ?',"%#{params[:localidad].downcase}%")
+    end
+
   end
 
   def new

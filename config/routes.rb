@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :cards
+  delete 'cards/destroy'
   resources :compras
 
     
