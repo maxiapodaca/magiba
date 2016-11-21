@@ -8,15 +8,12 @@ class HomeController < ApplicationController
       @favores = Favor.all
     end
 
-<<<<<<< HEAD
+
     if user_signed_in? 
       if params[:titulo].present? 
         @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
       end
-=======
-    if params[:titulo].present? 
-      @favores = Favor.where('titulo LIKE ?',"%#{params[:titulo]}%")
->>>>>>> 2171b009a0acce5c334a8a390576380584af4a6f
+
     end
 
   end

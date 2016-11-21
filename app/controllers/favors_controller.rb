@@ -19,8 +19,6 @@ class FavorsController < ApplicationController
     else
       @favores = Favor.all
     end
-
->>>>>>> 2171b009a0acce5c334a8a390576380584af4a6f
     if params[:titulo].present? 
       @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
     end

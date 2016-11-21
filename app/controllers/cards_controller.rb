@@ -16,7 +16,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(params.require(:card).permit(:numero,:nombre,:anio_vencimiento,:mes_vencimiento, :nombre_prop,:apellido_prop,:dni_titular,:cod_seguridad,:user_id))
+    @card = Card.new(params.require(:card).permit(:numero,:nombre,:anio_vencimiento,:mes_vencimiento, :nombre_prop,:apellido_prop,:dni_titular,:cod_seguridad,:recordar,:user_id))
     @card.user = current_user
     if @card.save
       flash[:notice] = "Se ha guardado su tarjeta exitosamente."
