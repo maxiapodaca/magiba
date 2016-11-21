@@ -80,22 +80,20 @@
         </div>    
     </div>
 </div>
-<div class="col-lg-2">
-    <div class="panel panel-default">
-        <div class="panel-body">
-        <font face="arial" size="5" color="orange">
-                        <p>
-                            Búsqueda de guachadas:
-                        </p>
-            <% if user_signed_in? %>
-                    
-                        
-                    <%= form_tag favors_path, method: :get do %>
-                          <%= text_field_tag :titulo, params[:titulo], class: "form-control", placeholder: "Titulo" %>
-                        <%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
-                      <% end %>     
-            <% end %>
-        </div>
-    </div>
-</div>
-	
+<% if user_signed_in? %>
+	<div class="col-lg-2 text-center">
+		<div class="panel panel-default">
+	 		<div class="panel-body">
+		 		<font face="arial" size="5" color="orange">
+					<p>
+						Menú de búsqueda:
+					</p>
+				<%= form_tag favors_path, method: :get do %>
+	          		<%= text_field_tag :titulo, params[:titulo], class: "form-control", placeholder: "Titulo" %>
+	          		<%= text_field_tag :localidad, params[:localidad], class: "form-control", placeholder: "Localidad" %>
+	        			<%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md"%>		
+			    <% end %>
+			</div>
+		</div>
+	</div>
+<% end %>
