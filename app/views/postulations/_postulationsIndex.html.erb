@@ -3,91 +3,135 @@
     <div class="col-md-17">
 
 	<div class="jumbotron"> 
-		
-
+	
         <p>
         </p>
-		
-		<font face="arial" size="6" color="black">
-			Listado de las postulaciones:
-		</font>
-		
-		<p>
+       	<font face="arial" size="6" color="black">
+					Postulaciones:
+				</font>
+						
+				<p>
 
-		</p>  
-  		<table class="table">
+				</p> 		  		
+				<% postulations = Favor.find(params[:id]).postulations.all.order(:id) %>
+				<% postulations.each do |p| %>
+				<table class="table">		
+		 			<tr>
+						<th>
+							<font face="arial" size="5" color="Grey"> Descripcion </font>
+						</th>
 
- 			<tr>
-				<th>
-					<font face="arial" size="5" color="Grey"> Descripcion </font>
-				</th>
+		                <th>
+							<font face="arial" size="5" color="Grey"> Fecha de realizacion de la guachada </font>
+						</th>
 
-                <th>
-					<font face="arial" size="5" color="Grey"> Fecha de realizacion de la guachada </font>
-				</th>
+						<th>
+							<font face="arial" size="5" color="Grey"> Email </font>
+						</th>
 
-				<th>
-					<font face="arial" size="5" color="Grey"> Email del usuario </font>
-				</th>
+						<th>
+							<font face="arial" size="5" color="Grey"> Nombre  </font>
+						</th>
 
-				<th>
-					<font face="arial" size="5" color="Grey"> Nombre del usuario  </font>
-				</th>
+						 <th>
+						   <font face="arial" size="5" color="Grey"> Localidad  </font>
+						 </th>
 
-				<th>
-				 </th>
-				 <th>
-				 </th>
+						
+					</tr>
+		            
+		              
+						<tr> 
+							<td>
+								<font face="arial" size="3" color="black">
+									<%= p.descripcion %>
+								</font>
+							</td>
 
+		                    <td>
+								<font face="arial" size="3" color="black">
+									<%= p.fecha %>
+								</font>
+							</td>
+
+							<td>
+								<font face="arial" size="3" color="black">
+									<%= p.user.email%>
+								</font>
+							</td>
+
+							<td>
+								<font face="arial" size="3" color="black">
+									<%= p.user.name %>
+									<%= p.user.apellido %>
+								</font>
+							</td>
+		                     <td>
+								<font face="arial" size="3" color="black">
+									<%= p.user.localidad%>
+								</font>
+							</td>
+		                     
+		                    
+		                    <% if p.fecha >= Date.today %>
+								<td> 
+									<div class="col-md-5">
+											<td> <%= link_to "Aceptar", p,class: 'btn btn-success btn-sm' %> </td>
+							 		</div>
+								</td>
+								<td> 
+									<div class="col-md-5">
+											<td> <%= link_to "Rechazar",p,class: 'btn btn-success btn-sm' %> </td>
+							 		</div>
+								</td>
+							<% else %>
+		                        <% if p.aceptar == false && p.noaceptar == true %>
+								     <td> 
+										<div class="col-md-5">	                               
+											<td>									
+												<%= link_to "Cumplio",evaluar_postulation_path(p, aceptar: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
+											</td>										
+								 		</div>
+									</td>  	
+									<td> 								    
+										<div class="col-md-5">
+												<td>
+													
+													<%= link_to "No Cumpliò", evaluar_postulation_path(p, noaceptar:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
+												</td>
+								 		</div>
+								 		
+									</td>
+									
+																
+								 <% end %>
+
+		                    <% end %>
+		                    <% if p.noaceptar == false %>
+                                        <th>
+											<font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra </font>
+										</th>
+
+									<% end %>
+							<% if p.aceptar == true %>
+
+                                <th>
+									<font face="calibri" size="4" color="orange"> Este usuario cumplio su palabra </font>
+								</th>
+
+							<% end %>
+                
+						</tr> 
+
+						
+			     </table>
+					<% end %>			
+    				
 				
-			</tr>
-            <% postulations = Favor.find(params[:id]).postulations.all.order(:id) %>
-			<% postulations.each do |p| %>
-             
-				<tr> 
-					<td>
-						<font face="arial" size="3" color="black">
-							<%= p.descripcion %>
-						</font>
-					</td>
-
-                    <td>
-						<font face="arial" size="3" color="black">
-							<%= p.fecha %>
-						</font>
-					</td>
-
-					<td>
-						<font face="arial" size="3" color="black">
-							<%= p.user.email%>
-						</font>
-					</td>
-
-					<td>
-						<font face="arial" size="3" color="black">
-							<%= p.user.name %>
-							<%= p.user.apellido %>
-						</font>
-					</td>
-					<td>
-						<% if p.aceptar %>
-							
-							<div class="col-md-5">
-								<td> <%= link_to "Aceptar", p,method: :delete, class: 'btn btn-success btn-sm' %> </td>
-				 			</div>
-						<% end %>
-				   	</td>
-
-				</tr> 
-
-				
-	
-			<% end %>
-
-		</table>
-		<p>
-			<a class="btn btn-warning btn-lg" href="/" role="button"> Volver </a>
-		</p> 
-	</div>	
+				<p>
+					<a class="btn btn-warning btn-lg" href="/" role="button"> Volver </a>
+				</p> 
+			</div>	
+			
 </div>
 

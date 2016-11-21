@@ -89,9 +89,7 @@
 				<%= form_tag favors_path, method: :get do %>
 	          		<%= text_field_tag :titulo, params[:titulo], class: "form-control", placeholder: "Titulo" %>
 	          		<%= text_field_tag :localidad, params[:localidad], class: "form-control", placeholder: "Localidad" %>
-	          		<div class="centered">
 	        			<%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md"%>		
-	        		</div>	
 			    <% end %>
 			</div>
 		</div>

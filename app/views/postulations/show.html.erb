@@ -1,0 +1,42 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-10">
+			<div class="jumbotron"> 
+		        <P ALIGN=left>         
+					<font face="arial" size="6" color="black">   </font>
+				
+						  	
+		  		<table class="table">
+		  			
+		 			<tr>
+		 						 				
+						<th>
+							<font face="arial" size="4" color="orange">   </font>
+						</th>
+		                
+					</tr>
+                   
+					 <% if @postulation.aceptar == true %>	
+		                <td>
+		               		<font face="arial" size="3" color="black"> Cumplio correctamente el favor </font>
+		                </td>
+
+                     <% end %>
+                      <% if @postulation.noaceptar == false %> 	
+		                <td>
+		               		<font face="arial" size="3" color="black"> NO Cumplio correctamente el favor </font>
+		                </td>
+                     <% end %>
+                     
+				</table>		
+
+				
+
+				<p>
+					<a class="btn btn-default btn-lg" href="/favors/mis_favores" role="button"> Volver </a>
+				</p> 
+
+			</div>
+		</div>
+	</div>
+</div>

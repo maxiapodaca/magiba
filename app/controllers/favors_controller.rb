@@ -1,19 +1,26 @@
 class FavorsController < ApplicationController
   before_action :get_favor, only: [:edit, :update, :destroy, :show]
 
-
   def mis_favores
-    @favores = current_user.favors.all
+    @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
+    if params[:orden] && params[:orden]== "visitas"
+      @favores = current_user.favors.all.order(:visitas)
+      @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
+    else
+      @favores = current_user.favors.all
+    end
   end
 
   def index
-     @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
+    @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
     if params[:orden] && params[:orden]== "visitas"
       @favores = Favor.all.order(:visitas)
       @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
     else
-      @favores = Favor.all.order(:id)
+      @favores = Favor.all
     end
+
+>>>>>>> 2171b009a0acce5c334a8a390576380584af4a6f
     if params[:titulo].present? 
       @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
     end
@@ -71,4 +78,4 @@ class FavorsController < ApplicationController
     @favor = Favor.find(params[:id])
   end
   
-end 
+end

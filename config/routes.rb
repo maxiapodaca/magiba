@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     get "mis_favores", on: :collection
   end
 
-  resources :postulations
+  resources :postulations do 
+    post "evaluar" , on: :member
+  end
   get "postulations/misPostulaciones"
   #get 'welcome/index'
 

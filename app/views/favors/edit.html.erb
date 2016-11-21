@@ -6,64 +6,41 @@
 				
 				<font face="arial" size="7" color="Black"> Publicar una gauchada </font>
 
-				<% if (current_user.puntos) >=  1 %>
+				<%= form_for(@favor) do |f| %>
 
-					<%= form_for(@favor) do |f| %>
-
-						<% if @favor.errors.any? %>
-				  			<div id="error_explanation">
-				    			<h2><%= pluralize(@favor.errors.count, "error") %> Esta publicacion no se ha guardado:</h2>
-				    			<ul>
-				    				<% @favor.errors.full_messages.each do |msg| %>
-				      					<li><%= msg %></li>
-				    				<% end %>
-				    			</ul>
-				  			</div>
-						<% end %>
-						
-						<p>
-							<%= f.label :titulo %>
-							<%= f.text_field :titulo, class: 'form-control', label: 'Titulo de la gauchada', placeholder: 'Ingrese el título'  %>
-						</p>
-						<p>
-							 <%= f.label :descripcion %>
-				             <%= f.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese la descripcion' %>
-						</p>
-						<p>
-							<%= f.label :localidad%>
-							<%= f.text_field :localidad, class: 'form-control', label: 'Ciudad', placeholder: 'Ingrese la ciudad' %>
-						</p>
-						<p>
-							<%= f.label :imagen%>
-							<%= f.text_field :imagen, class: 'form-control', label: 'URL imagen', placeholder: 'Ingrese el link de la imagen' %>
-						</p>
-
-
-						<%= f.submit 'Guardar' %>
-						
-				    <% end %>
-
-				<% else %>
+					<% if @favor.errors.any? %>
+			  			<div id="error_explanation">
+			    			<h2><%= pluralize(@favor.errors.count, "error") %> Esta publicacion no se ha guardado:</h2>
+			    			<ul>
+			    				<% @favor.errors.full_messages.each do |msg| %>
+			      					<li><%= msg %></li>
+			    				<% end %>
+			    			</ul>
+			  			</div>
+					<% end %>
+					
 					<p>
-						<font face="arial" size="5" > Parece que te quedaste sin puntos! </font>
+						<%= f.label :titulo %>
+						<%= f.text_field :titulo, class: 'form-control', label: 'Titulo de la gauchada', placeholder: 'Ingrese el título'  %>
+					</p>
+					<p>
+						 <%= f.label :descripcion %>
+			             <%= f.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese la descripcion' %>
+					</p>
+					<p>
+						<%= f.label :localidad%>
+						<%= f.text_field :localidad, class: 'form-control', label: 'Ciudad', placeholder: 'Ingrese la ciudad' %>
+					</p>
+					<p>
+						<%= f.label :imagen%>
+						<%= f.text_field :imagen, class: 'form-control', label: 'URL imagen', placeholder: 'Ingrese el link de la imagen' %>
 					</p>
 
-					<p>
-						<font face="arial" size="4" > Podrías hacerle la gauchada a alguien o.. Comprar puntos </font>
-					</p>
 
-					<p>
-						<a class="btn btn-default btn-lg" href="/favors" role="button">
-							Ver el listado de gauchadas
-		            	</a>
-
-		            	<a class="btn btn-default btn-lg" href="/compras/new" role="button">
-							Comprar puntos
-		            	</a>
-
-					</p>
-				<% end %>
-		 
+					<%= f.submit 'Guardar' %>
+					
+			    <% end %>
+ 
 		 	</div>
 		</div>
 	</div>
