@@ -3,42 +3,52 @@
     <div class="panel panel-default">   
       <div class="panel-body">
           <h1 class="text-center"> Realizar compra de puntos </h1> 
-		      <%= link_to "Volver al inicio", root_path, class: 'btn btn-info btn-xs' %>  
+		      <%= link_to "Volver al inicio", root_path, class: 'btn btn-info btn-xs' %> 
+          <p> </p>
+          <p> </p> 
 		      <%= form_for(@compra) do |f| %>
-            <div class="row">
-              <div class="col-md-4">
-                <%= f.label :cantidad_de_puntos_a_comprar %>
-                <%= f.text_field :cantidad_de_puntos, class: 'form-control', label: 'Cantidad de puntos', :cols => 3, :rows => 1 %>
+            <% if current_user.cards.count > 0 %>
+              <div class="row">
+                <div class="col-md-4">
+                  <%= f.label :"Cantidad de puntos :" %>
+                  <%= f.text_field :cantidad_de_puntos, class: 'form-control', label: 'Cantidad de puntos', :cols => 3, :rows => 1 %>
+                </div>
               </div>
-            </div>
-            <p> </p>
-            <div class="row">
-              <div class="col-md-8">
-                <%= f.label :"Modo_de_pago:" %>
-                <p> </p>
-                <% if (current_user.cards.count > 0 )  %>
+              <p> </p>
+              <div class="row">
+                <div class="col-lg-8 ">
+                  <%= f.label :"Modo_de_pago:" %>
+                  <div class="panel panel-default ">
+                    <p> </p>
                     <%= f.label :"Seleccione una de sus tarjetas registradas:" %>
-                    <%= f.collection_select :card_id, current_user.cards.all, :id, :numero %>
-                    
+                    <p> </p>
+                    <%= f.label :"Número de tarjeta:" %>
+                    <%= f.collection_select :card_id, current_user.cards.all, :id, :numero %>   
+                    <p> </p>   
+                <% else %>
+                  <%= f.label :"Usted no dispone de ninguna tarjeta de crédito registrada." %>
                 <% end %>
-                <p> </p>
-                <td>
-                  <%= link_to "Registrar nueva tarjeta",new_card_path, class: 'btn btn-info btn-sm' %>
-                </td> 
+                <p> </p> 
+                  <%= link_to "Ingresar una nueva tarjeta",new_card_path, class: 'btn btn-info btn-sm ' %>
+                  <p> </p> 
               </div>
             </div>
-            <p> </p>
-            <p> </p>
-            <%= f.submit "Confirmar compra", class: 'btn btn-primary' %>
-            <% if @compra.errors.any? %>
-              <ul>
-                <% @compra.errors.each do |atributo, mensaje| %>
-                  <li> <%= mensaje %> </li>
-                <% end %>
-              </ul>
-            <% end %>
+          <p> </p>
+          </div>
+            <% if current_user.cards.count > 0 %>
+              <p> </p>
+              <%= f.submit "Confirmar compra", class: 'btn btn-primary' %>
+              <p> </p>    
+            <%end%>
+          <% if @compra.errors.any? %>
+            <ul>
+              <% @compra.errors.each do |atributo, mensaje| %>
+                <li> <%= mensaje %> </li>
+              <% end %>
+            </ul>
           <% end %>
-		</div>
-      </div>
+        <% end %>
+	    </div>
     </div>
   </div>
+</div>

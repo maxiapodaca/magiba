@@ -1,4 +1,4 @@
-class LogrosController < ApplicationController
+  class LogrosController < ApplicationController
   before_action :get_logro, only: [:edit, :update, :destroy, :show, :marcar]
 
   def get_logro

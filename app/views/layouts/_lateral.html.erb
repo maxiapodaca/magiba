@@ -1,6 +1,5 @@
-<div class="panel-group">
-
-	<div class="col-md-2  list group">
+<div class="col-md-2  list group">
+	<div class="panel-group">
 
 		<% if user_signed_in? %>
 
@@ -31,7 +30,7 @@
 						<p> <%= link_to "Inicio", root_path %> </p>
 						<p> <%= link_to "Ver mis gauchadas", mis_favores_favors_path %> </p>
 						<p> <%= link_to "Ver Listado de gauchadas", favors_path %> </p>
-						<p> <%= link_to "Comprar puntos" %> </p>
+						<p> <%= link_to "Comprar puntos",new_compra_path %> </p>
 						
 					</div>
 				</div>
@@ -42,7 +41,7 @@
 					<div class="panel-body">
 						<p> <%= link_to "Inicio", favors_path %> </p>
 						<p> <%= link_to "Mis gauchadas", mis_favores_favors_path %> </p>
-						<p> <%= link_to "Comprar puntos" %> </p>
+						<p> <%= link_to "Comprar puntos", new_compras_path %> </p>
 										
 					</div>
 				</div>
