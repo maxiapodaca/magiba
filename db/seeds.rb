@@ -23,6 +23,20 @@ Es muy juguetón y muy buena compañía.", localidad:"La Plata", imagen: "http:/
 
 Favor.where(titulo: 'Restaurar obra de arte', descripcion: "La imagen de la izquierda es la original y la de la derecha mi intento por restaurarla. ¿Alguien me haría la gauchada de acomodarla para que se parezca más a la original? ", localidad:"La Plata", imagen: "http://fotos.subefotos.com/c8ec5edfb098fed2c5278b8ae0d26bc3o.jpg", user_id: '5' ).first_or_create
 
+Favor.where(titulo:'Busco profesor particular', descripcion: "Soy estudiante de medicina y necesito que alguien me", localidad:"La Plata", user_id: '1'  ).first_or_create
+
+Favor.where(titulo:'Busco acompañante de viaje', descripcion: "Soy camionero y busco una persona que me acompañe en mi viaje hasta Rawson porque sufro problemas de sueño. 
+Saldríamos el primer fin de semana de octubre y retornaríamos el fin de semana siguiente. 
+* Condición fundamental: debe cebar buenos mates", localidad:"La Plata", user_id: '1'  ).first_or_create
+
+Favor.where(titulo:'Busco acompañante de viaje', descripcion: "Soy camionero y busco una persona que me acompañe en mi viaje hasta Rawson porque sufro problemas de sueño. 
+Saldríamos el primer fin de semana de octubre y retornaríamos el fin de semana siguiente. 
+* Condición fundamental: debe cebar buenos mates", localidad:"La Plata", user_id: '1'  ).first_or_create
+
+Favor.where(titulo:'Busco acompañante de viaje', descripcion: "Soy camionero y busco una persona que me acompañe en mi viaje hasta Rawson porque sufro problemas de sueño. 
+Saldríamos el primer fin de semana de octubre y retornaríamos el fin de semana siguiente. 
+* Condición fundamental: debe cebar buenos mates", localidad:"La Plata", user_id: '1'  ).first_or_create
+
 
 puts "Cargo algunos usuarios"
 if User.where(email: 'barby@live.com.ar').empty?
@@ -52,24 +66,6 @@ Logro.create( nombre:'Nobleza gaucha', descripcion: " Está a punto de convertir
 Logro.create( nombre:'Dios', descripcion: " El tipo te da lo que le pidas, ayuda a todo el mundo.", limite_inferior_rango: '50', limite_superior_rango:'100', marca: 'true' )
 
 
-puts "cargo postulaciones"
-Postulation.where(name:'Barby', user_id:'1', favor_id:'2' ,fecha: '12/12/2016' , descripcion: 'quiero ayudarte').first_or_create
-Postulation.where(name:'Barby', user_id:'3', favor_id:'2' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
-
-Postulation.where(name:'Barby', user_id:'3', favor_id:'1' ,fecha: '1/12/2016' , descripcion: 'Me gustaria ayudarte, yo puedo el 1/12, esta bien?').first_or_create
-Postulation.where(name:'Barby', user_id:'2', favor_id:'1' ,fecha: '05/09/2016' , descripcion: 'hey  yo puedo ayudarte').first_or_create
-
-Postulation.where(name:'Barby', user_id:'1', favor_id:'3' ,fecha: '01/12/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
-Postulation.where(name:'Barby', user_id:'4', favor_id:'3' ,fecha: '15/11/2016' , descripcion: 'me gustaria poder ayudarte ').first_or_create
-Postulation.where(name:'Barby', user_id:'5', favor_id:'3' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
-
-Postulation.where(name:'Barby', user_id:'5', favor_id:'4' ,fecha: '01/01/2017' , descripcion: 'Yo puedo').first_or_create
-Postulation.where(name:'Barby', user_id:'2', favor_id:'4' ,fecha: '07/10/2016' , descripcion: 'Me gustaria cuidarlo').first_or_create
-
-Postulation.where(name:'Barby', user_id:'1', favor_id:'5' ,fecha: '11/02/2017' , descripcion: 'yo estudie dibujo ').first_or_create
-Postulation.where(name:'Barby', user_id:'3', favor_id:'5' ,fecha: '02/11/2016' , descripcion: 'conozco a alguien que puede restaurarlo').first_or_create
-
-
 puts "Cargo comentarios"
 Comment.where(favor_id: '1', user_id: '2', detalle:'Cuanto tiempo de viaje?').first_or_create
 Comment.where(favor_id: '1', user_id: '5', detalle:'Me podrias dejar de pasada en otro lugar?').first_or_create
@@ -90,3 +86,21 @@ Comment.where(favor_id: '4', user_id: '5', detalle:'Esta castrado?').first_or_cr
 Comment.where(favor_id: '5', user_id: '2', detalle:'noo mira como dejaste la obra').first_or_create
 Comment.where(favor_id: '5', user_id: '3', detalle:'Eso no se puede restaurar').first_or_create
 Comment.where(favor_id: '5', user_id: '1', detalle:'Ay que linnndooo').first_or_create
+
+
+puts "cargo postulaciones"
+Postulation.where(name:'Barby', user_id:'1', favor_id:'2' ,fecha: '12/12/2016' , descripcion: 'quiero ayudarte').first_or_create
+Postulation.where(name:'Barby', user_id:'3', favor_id:'2' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
+
+Postulation.where(name:'Barby', user_id:'3', favor_id:'1' ,fecha: '1/12/2016' , descripcion: 'Me gustaria ayudarte, yo puedo el 1/12, esta bien?').first_or_create
+Postulation.where(name:'Barby', user_id:'2', favor_id:'1' ,fecha: '05/09/2016' , descripcion: 'hey  yo puedo ayudarte').first_or_create
+
+Postulation.where(name:'Barby', user_id:'1', favor_id:'3' ,fecha: '01/12/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
+Postulation.where(name:'Barby', user_id:'4', favor_id:'3' ,fecha: '05/11/2016' , descripcion: 'me gustaria poder ayudarte ').first_or_create
+Postulation.where(name:'Barby', user_id:'5', favor_id:'3' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
+
+Postulation.where(name:'Barby', user_id:'5', favor_id:'4' ,fecha: '01/01/2017' , descripcion: 'Yo puedo').first_or_create
+Postulation.where(name:'Barby', user_id:'2', favor_id:'4' ,fecha: '07/10/2016' , descripcion: 'Me gustaria cuidarlo').first_or_create
+
+Postulation.where(name:'Barby', user_id:'1', favor_id:'5' ,fecha: '11/02/2017' , descripcion: 'yo estudie dibujo ').first_or_create
+Postulation.where(name:'Barby', user_id:'3', favor_id:'5' ,fecha: '02/11/2016' , descripcion: 'conozco a alguien que puede restaurarlo').first_or_create
