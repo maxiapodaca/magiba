@@ -25,7 +25,8 @@ class PostulationsController < ApplicationController
           @postulation.user = current_user
         if @postulation.save
           flash[:notice] = "Se ha postulado exitosamente."
-          redirect_to favors_path
+          redirect_to :back
+         # redirect_to favors_path
         else
           flash[:notice] = "Problemas en postulacion del logro, complete todos los campos."     
           redirect_to :back

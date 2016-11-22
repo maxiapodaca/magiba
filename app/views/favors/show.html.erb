@@ -61,42 +61,62 @@
 					<table class="table table-hover">
 						
 						<% if (user_signed_in?) && (@favor.user != current_user) %>
-							<tr>
-					            <th>
-									<font face="vijaya" size="7" color="black">
-										Quiero ayudar!
-									</font>
-								</th>
-							</tr>
-				        <% end %>
-				        
-			            <% if (user_signed_in?) && (@favor.user != current_user) %>
-			               	<td>
-				            	<%= form_for(Postulation.new) do |p| %>
-				               
-				                    <p>
-				                    	<font face="arial" size="3" color="grey">
-				                    		<%= p.label :Indicar_la_fecha_en_la_que_puede_resolver_la_gauchada %>
-				                    	</font>
-									       
-									    <%= p.date_field :fecha , :value => Time.now.strftime('%Y-%m-%d') %>
-								    </p>
-							    
-								    <p>
-				                    	<font face="arial" size="3" color="grey">
-				                    		<%= p.label :descripcion %>
-				                    	</font>
-									   
-										<%= p.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese una breve descripcion de tu postulacion' %>
-								    </p>
-			                    
-								    <p>								
-										<%= p.hidden_field :favor_id, value:@favor.id %> 
-									</p>								
-							    	      <%= p.submit 'Guardar' %>
-							    	     
-							    <% end %>
-							</td>
+
+							<% se_postulo=false %>
+							<% postulaciones= @favor.postulations.all%>
+							<% postulaciones.each do |p| %>
+
+								<% if p.user == current_user %>
+									<% se_postulo =true %>
+								<% else %>
+									<% se_postulo = false %>
+								<% end %>
+
+							<% end %>
+
+							<% if se_postulo == true %>
+								<p>
+									<font face="arial" size="6" > Estas postulado para resolver esta gauchada! </font>
+								</p>
+							<% else %>
+
+								<tr>
+						            <th>
+										<font face="vijaya" size="7" color="black">
+											Quiero ayudar!
+										</font>
+									</th>
+								</tr>
+					 
+				               	<td>
+					            	<%= form_for(Postulation.new) do |p| %>
+					               
+					                    <p>
+					                    	<font face="arial" size="3" color="grey">
+					                    		<%= p.label :Indicar_la_fecha_en_la_que_puede_resolver_la_gauchada %>
+					                    	</font>
+										       
+										    <%= p.date_field :fecha , :value => Time.now.strftime('%Y-%m-%d') %>
+									    </p>
+								    
+									    <p>
+					                    	<font face="arial" size="3" color="grey">
+					                    		<%= p.label :descripcion %>
+					                    	</font>
+										   
+											<%= p.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese una breve descripcion de tu postulacion' %>
+									    </p>
+				                    
+									    <p>								
+											<%= p.hidden_field :favor_id, value:@favor.id %> 
+										</p>								
+								    	      <%= p.submit 'Guardar' %>
+								    	     
+								    <% end %>
+								</td>
+
+							<% end %>
+
 						<% end %>
 
 						<% if (user_signed_in?) && (@favor.user == current_user) %>

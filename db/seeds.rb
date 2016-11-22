@@ -69,23 +69,24 @@ Postulation.where(name:'Barby', user_id:'2', favor_id:'4' ,fecha: '07/10/2016' ,
 Postulation.where(name:'Barby', user_id:'1', favor_id:'5' ,fecha: '11/02/2017' , descripcion: 'yo estudie dibujo ').first_or_create
 Postulation.where(name:'Barby', user_id:'3', favor_id:'5' ,fecha: '02/11/2016' , descripcion: 'conozco a alguien que puede restaurarlo').first_or_create
 
-puts "Cargo comentarios"
-Comment.where(favor_id: '2', user_id: '1', detalle:'que edad tiene el burrito?').first_or_create
-Comment.where(favor_id: '2', user_id: '2', detalle:'Para cuando lo necesitarias?').first_or_create
-Comment.where(favor_id: '2', user_id: '3', detalle:'Cual es tu problema fisico?').first_or_create
-Comment.where(favor_id: '2', user_id: '4', detalle:'Ay que linnndooo').first_or_create
 
+puts "Cargo comentarios"
 Comment.where(favor_id: '1', user_id: '2', detalle:'Cuanto tiempo de viaje?').first_or_create
 Comment.where(favor_id: '1', user_id: '5', detalle:'Me podrias dejar de pasada en otro lugar?').first_or_create
 Comment.where(favor_id: '1', user_id: '5', detalle:'Prefiero terere').first_or_create
 
+Comment.where(favor_id: '2', user_id: '1', detalle:'que edad tiene el burrito?').first_or_create
+Comment.where(favor_id: '2', user_id: '5', detalle:'Para cuando lo necesitarias?').first_or_create
+Comment.where(favor_id: '2', user_id: '3', detalle:'Cual es tu problema fisico?').first_or_create
+
 Comment.where(favor_id: '3', user_id: '1', detalle:'En que zona ocurrio el accidente?').first_or_create
 Comment.where(favor_id: '3', user_id: '5', detalle:'a que hora fue el accidente?').first_or_create
-Comment.where(favor_id: '3', user_id: '3', detalle:'no se puede hacer eso u.u').first_or_create
+Comment.where(favor_id: '3', user_id: '2', detalle:'no se puede hacer eso u.u').first_or_create
 
-Comment.where(favor_id: '4', user_id: '4', detalle:'Ese perro tiene cara de malo').first_or_create
+Comment.where(favor_id: '4', user_id: '3', detalle:'Ese perro tiene cara de malo').first_or_create
 Comment.where(favor_id: '4', user_id: '2', detalle:'Me lo puedo llevar a mi casa?').first_or_create
 Comment.where(favor_id: '4', user_id: '5', detalle:'Esta castrado?').first_or_create
 
 Comment.where(favor_id: '5', user_id: '2', detalle:'noo mira como dejaste la obra').first_or_create
 Comment.where(favor_id: '5', user_id: '3', detalle:'Eso no se puede restaurar').first_or_create
+Comment.where(favor_id: '5', user_id: '1', detalle:'Ay que linnndooo').first_or_create
