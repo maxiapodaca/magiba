@@ -59,4 +59,5 @@
     end
     redirect_to logros_path
   end
+  def asingarpuntos
 end

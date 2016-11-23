@@ -6,6 +6,9 @@
 		      <%= link_to "Volver al inicio", root_path, class: 'btn btn-info btn-xs' %> 
           <p> </p>
           <p> </p> 
+          <li> ¡Disponer de puntos te permite pedir gauchadas! </li>
+          <li> El valor de cada punto es de $12. </li>
+          <li> También podes conseguir puntos realizando gauchadas a otros usuarios. </li>
 		      <%= form_for(@compra) do |f| %>
             <% if current_user.cards.count > 0 %>
               <div class="row">

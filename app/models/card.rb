@@ -4,8 +4,8 @@ class Card < ActiveRecord::Base
 	has_many :compras	
 	include ActiveModel::Validations  #necesario para agregar las condiciones de validacion
     validates :nombre, :presence => {:message => "Usted debe ingresar el tipo de tarjeta. Ej: Cabal."}
-	validates :anio_vencimiento, :presence => {:message => "Usted debe ingresar el año de vencimiento de la tarjeta."},:numericality => {:message =>  "Error!Sólo de admite valor numéricos para el año."}, :numericality => { :greater_than_or_equal_to => @año_actual, :message => "Se ha ingresado un año de vencimiento inferior al año actual!"} 
-	validates :mes_vencimiento, :presence => {:message => "Usted debe ingresar el mes de vencimiento de la tarjeta."}, :numericality => {:message =>  "Error!Sólo de admite valor numéricos para el mes."}, :numericality => { :less_than_or_equal_to => 12, :message => "Se ha ingresado un mes de vencimiento inválido."}
+	validates :anio_vencimiento, :presence => {:message => "Usted debe ingresar el año de vencimiento de la tarjeta."},:numericality => {:message =>  "Error!Sólo de admite valor numéricos para el año."}, :numericality => { :greater_than_or_equal_to => @año_actual, :message => "Se ha ingresado un año de vencimiento inferior al año actual."} 
+	validates :mes_vencimiento, :presence => {:message => "Usted debe ingresar el mes de vencimiento de la tarjeta."}, :numericality => {:message =>  "Error!Sólo de admite valor numéricos para el mes."}, :numericality => { :less_than_or_equal_to => 12, :message => "Se ha ingresado un mes de vencimiento inválido."},:numericality => { :greater_than_or_equal_to => 1, :message => "Se ha ingresado un mes de vencimiento inválido."}
 	validates :nombre_prop, :presence => {:message => "Usted debe ingresar el nombre del titular."}
 	validates :apellido_prop, :presence => {:message => "Usted debe ingresar el apelido del titular."}
 	validates :cod_seguridad, :presence => {:message => "Usted debe ingresar el código de seguridad de la tarjeta."}, :numericality => {:message =>  "Error! El código de seguridad solo admite valores numéricos."}, length: {is: 3, :message =>  "Error! El códgio de seguridad debe contener 3 números." }
