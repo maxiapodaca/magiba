@@ -99,7 +99,7 @@ Postulation.where(name:'Barby', user_id:'1', favor_id:'3' ,fecha: '01/12/2016' ,
 Postulation.where(name:'Barby', user_id:'4', favor_id:'3' ,fecha: '05/11/2016' , descripcion: 'me gustaria poder ayudarte ').first_or_create
 Postulation.where(name:'Barby', user_id:'5', favor_id:'3' ,fecha: '11/11/2016' , descripcion: 'hola, quisiera ayudarte :)').first_or_create
 
-Postulation.where(name:'Barby', user_id:'5', favor_id:'4' ,fecha: '01/01/2017' , descripcion: 'Yo puedo').first_or_create
+Postulation.where(name:'Barby', user_id:'5', favor_id:'4' ,fecha: '01/01/2016' , descripcion: 'Yo puedo').first_or_create
 Postulation.where(name:'Barby', user_id:'2', favor_id:'4' ,fecha: '07/10/2016' , descripcion: 'Me gustaria cuidarlo').first_or_create
 
 Postulation.where(name:'Barby', user_id:'1', favor_id:'5' ,fecha: '11/02/2017' , descripcion: 'yo estudie dibujo ').first_or_create
