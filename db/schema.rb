@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20161121163352) do
     t.string   "titulo"
     t.string   "descripcion"
     t.string   "localidad"
-    t.string   "imagen",          default: "http://fotos.subefotos.com/c4472a12d1a15e9517d1cd0862cdfd23o.png"
+    t.string   "imagen",          default: "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
     t.string   "fecha_caducidad"
     t.string   "id_ganador"
     t.datetime "created_at",                                                                                   null: false
@@ -78,25 +78,24 @@ ActiveRecord::Schema.define(version: 20161121163352) do
     t.integer  "favor_id"
     t.integer  "user_id"
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.date     "fecha"
     t.boolean  "aceptar",     default: false
     t.boolean  "noaceptar",   default: true
     t.string   "comentario"
-
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
+    t.integer  "logro_id"
     t.string   "name"
     t.boolean  "admin",                  default: false
     t.string   "apellido"
     t.string   "dni",                    default: "",    null: false
     t.string   "localidad",              default: "",    null: false
     t.string   "telefono"
-    t.integer  "logro_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

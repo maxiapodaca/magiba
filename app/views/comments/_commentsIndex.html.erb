@@ -11,35 +11,40 @@
 			<div class="panel-body">
 
 				<% comments = Favor.find(params[:id]).comments.all.order(:id)%>
-				<% comments.each do |c| %>
-								
-					<table class="table">
-					
-						<tr> 
-							<td>
-								<font face="arial" size="4" color="black">
-									<%= c.user.name %>
-									<%= c.user.apellido %>
-								</font>
-							</td>
-							<td>
-								<font face="arial" size="3" color="grey">
-									<%= c.created_at%>
-								</font>
-							</td>
-						</tr>
 
-						<tr>
-							<td>
-								<font face="arial" size="3" color="grey">
-									<%= c.detalle %>
-								</font>
-							</td>
-						</tr> 
+				<% if comments.empty? %>
+           			<p>
+						<font face="arial" size="5" > No tienes comentarios </font>
+					</p>
+           		<% else %>
+					<% comments.each do |c| %>
+									
+						<table class="table">
+						
+							<tr> 
+								<td>
+									<font face="arial" size="4" color="black">
+										<%= c.user.name %>
+										<%= c.user.apellido %>
+									</font>
+									    Escribió el: <%= c.created_at%>
+								</td>
+							</tr>
 
-					</table>
+							<tr>
+								<td>
+									<font face="arial" size="3" color="grey">
+										<%= c.detalle %>
+									</font>
+								</td>
+							</tr> 
 
-				<% end %>
+						</table>
+
+					<% end %>
+
+            	<% end %>
+
 			</div>
 		</div>
 	</div>
