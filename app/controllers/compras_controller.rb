@@ -21,7 +21,7 @@ class ComprasController < ApplicationController
       current_user.puntos= current_user.puntos + @compra.cantidad_de_puntos
       current_user.save
       @plata=@compra.cantidad_de_puntos * 12
-      flash[:notice] = "Se ha realizado la compra de #{@compra.cantidad_de_puntos} puntos exitosamente,se debitaron $#{@plata} de su tarjeta de crédito."
+      flash[:notice] = "Se ha realizado la compra de #{@compra.cantidad_de_puntos} puntos exitosamente, se debitaron $#{@plata} de su tarjeta de crédito."
       current_user.cards.each do |l|
         if l.recordar == false
           current_user.cards.find(l.id).destroy
