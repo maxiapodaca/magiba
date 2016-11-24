@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116220402) do
+ActiveRecord::Schema.define(version: 20161121163352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.integer  "numero"
+    t.string   "numero"
     t.integer  "anio_vencimiento"
     t.integer  "mes_vencimiento"
     t.string   "nombre_prop"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20161116220402) do
     t.string   "dni_titular"
     t.string   "cod_seguridad"
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "nombre"
+    t.boolean  "recordar",         default: false
   end
 
   create_table "comments", force: :cascade do |t|
