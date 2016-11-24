@@ -1,12 +1,12 @@
 <div class="row">
     <% if user_signed_in? %>
        <% if current_user.admin? %>
-           <div class="col-md-8">
+           <div class="col-md-10">
        <% else %>
-           <div class="col-md-8 col-md-offset-2">
+           <div class="col-md-10">
        <% end %>
    <% else %>
-       <div class="col-md-8 col-md-offset-2">
+       <div class="col-md-12">
    <% end %>
    <div class="panel panel-default">
         <div class="panel-body">
@@ -14,11 +14,12 @@
                 <td ALIGN=right>
                     <a class="btn btn-default btn-lg" href="/favors/new" role="button"> Pedí una gauchada! </a>
                 </td>
+            
+                <td ALIGN=left>
+                    <a class="btn btn-default btn-lg" href="/?orden=visitas&order_by=<%= @order_by %>" role="button"> Ordenar por visitas  </a>
+                </td>
             <%end %>
-            <td ALIGN=left>
-                <a class="btn btn-default btn-lg" href="/favors?orden=visitas&order_by=<%= @order_by %>" role="button"> Ordenar por visitas  </a>
-            </td>
-            <table class="table">
+            <table class="table table-hover">
                  <tr>
                      <th>
                         <font face="arial" size="5" color="orange"> Imagen  </font>
@@ -32,7 +33,22 @@
                     <th>
                         <font face="arial" size="5" color="orange"> Ciudad </font>
                     </th>
+
+                    <% if user_signed_in? %>
+                        <th>
+                            
+                        </th>
+                        <% if current_user.admin? %>
+                            <th>
+                                
+                            </th>
+                        <% end %>
+                        <th>
+                            <font face="arial" size="5" color="orange"> Visitas </font>
+                        </th>
+                    <% end %>
                 </tr>
+
                 <% @favores.each do |f| %>
                     <tr>
                         <td>
@@ -68,33 +84,33 @@
                                     </font>
                                 </td>
                             <% end %>
+                            <td ALIGN=center>
+                                 <font face="arial" size="3" color="black">
+                                    <%= f.visitas %>
+                                </font>
+                            </td>
                         <% end %>
+                            
                     </tr>
                 <% end %>     
             </table>
-            <% if user_signed_in? %>
-                <p>
-                    <a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
-                </p> 
-            <% end %>
         </div>    
     </div>
 </div>
-<div class="col-lg-2">
-    <div class="panel panel-default">
-        <div class="panel-body">
-        <font face="arial" size="5" color="orange">
-                        <p>
-                            Búsqueda de guachadas:
-                        </p>
-            <% if user_signed_in? %>
-                    
-                        
-                    <%= form_tag favors_path, method: :get do %>
-                          <%= text_field_tag :titulo, params[:titulo], class: "form-control", placeholder: "Titulo" %>
-                        <%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
-                      <% end %>     
-            <% end %>
-        </div>
-    </div>
-</div>
+<% if user_signed_in? %>
+	<div class="col-lg-2 text-center">
+		<div class="panel panel-default">
+	 		<div class="panel-body">
+		 		<font face="arial" size="5" color="orange">
+					<p>
+						Menú de búsqueda:
+					</p>
+				<%= form_tag favors_path, method: :get do %>
+	          		<%= text_field_tag :titulo, params[:titulo], class: "form-control", placeholder: "Titulo" %>
+	          		<%= text_field_tag :localidad, params[:localidad], class: "form-control", placeholder: "Localidad" %>
+	        			<%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md"%>		
+			    <% end %>
+			</div>
+		</div>
+	</div>
+<% end %>

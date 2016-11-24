@@ -20,19 +20,25 @@ class PostulationsController < ApplicationController
   def create
     #@favor = Favor.find(params[:id])    
     #(params[:postulation][:fecha] == nil) && 
-    if (params[:postulation][:fecha].to_date >= Date.today) 
+    if  (params[:postulation][:fecha].to_date == nil)
+        flash[:notice] = "Debe ingresar una fecha"
+        redirect_to :back
+    else
+      if (params[:postulation][:fecha].to_date >= Date.today)
           @postulation= Postulation.new(params.require(:postulation).permit(:favor_id, :fecha, :descripcion ))
           @postulation.user = current_user
         if @postulation.save
           flash[:notice] = "Se ha postulado exitosamente."
-          redirect_to favors_path
+          redirect_to :back
+         # redirect_to favors_path
         else
           flash[:notice] = "Problemas en postulacion del logro, complete todos los campos."     
           redirect_to :back
         end
-    else
-      flash[:notice] = "La fecha es incorrecta "     
-      redirect_to :back
+      else
+        flash[:notice] = "La fecha es incorrecta "     
+        redirect_to :back
+    end
         
     end    
   end

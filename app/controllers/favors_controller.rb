@@ -20,8 +20,13 @@ class FavorsController < ApplicationController
       @favores = Favor.all
     end
 
-    if params[:titulo].present? 
-      @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
+    if user_signed_in?
+      if params[:titulo].present? 
+        @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
+      end
+      if params[:localidad].present? 
+        @favores = @favores.where('LOWER(localidad) LIKE ?',"%#{params[:localidad].downcase}%")
+      end
     end
   end
 
@@ -39,7 +44,7 @@ class FavorsController < ApplicationController
     if @favor.save
       current_user.puntos= current_user.puntos - 1
       current_user.save
-      redirect_to favors_path
+      redirect_to root_path
     else
       render 'new'
     end
@@ -58,7 +63,7 @@ class FavorsController < ApplicationController
     if (@favor.user == current_user)
       redirect_to mis_favores_favors_path
     else
-      redirect_to favors_path
+      redirect_to root_path
     end
   end
 

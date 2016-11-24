@@ -18,8 +18,16 @@ class ComprasController < ApplicationController
   def create
     @compra = Compra.new(params.require(:compra).permit(:cantidad_de_puntos,:user_id,:card_id))
     if @compra.save
-      flash[:notice] = "Se ha realizado la compra exitosamente."
-      render :index
+      current_user.puntos= current_user.puntos + @compra.cantidad_de_puntos
+      current_user.save
+      @plata=@compra.cantidad_de_puntos * 12
+      flash[:notice] = "Se ha realizado la compra de #{@compra.cantidad_de_puntos} puntos exitosamente, se debitaron $#{@plata} de su tarjeta de crédito."
+      current_user.cards.each do |l|
+        if l.recordar == false
+          current_user.cards.find(l.id).destroy
+        end
+      end
+      redirect_to favors_path
     else
       flash[:notice] = "Problemas en la realización de la compra."
       render :new

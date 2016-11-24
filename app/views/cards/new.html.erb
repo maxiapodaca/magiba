@@ -4,44 +4,58 @@
       <div class="panel-body">
           <h1 class="text-center"> Registrar nueva tarjeta de credito </h1> 
           <%= link_to "Volver al menú de compra", new_compra_path, class: 'btn btn-info btn-xs' %>
-          <%= form_for(@logro) do |f| %>
+          <%= form_for(@card) do |f| %>
             <div class="row">
-              <div class="col-md-3">
-                <%= f.label :nombre %>
-                <%= f.text_field :nombre, class: 'form-control', label: 'Nombre', :cols => 5, :rows => 1 %>
+              <div class="col-md-5">
+                <%= f.label :"Tipo de tarjeta" %>
+                <%= f.text_field :nombre, class: 'form-control', label: 'nombre', placeholder: 'Ej:Mastercard ' %>
               </div>
             </div>
-            <p> </p>
             <div class="row">
-              <div class="col-md-6">
-                <%= f.label :descripcion %>
-                <%= f.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese la descripcion' %>
+              <div class="col-md-5">
+                <%= f.label :numero %>
+                <%= f.text_field :numero, class: 'form-control', label: 'Número', placeholder: 'XXXX-XXXX-XXXX-XXXX  ' %>
               </div>
             </div>
             <p> </p>
             <div class="row">
               <div class="col-md-4">
-                <%= f.label :rango_de_puntos %>
-                <%= f.text_field :limite_inferior_rango, class: 'form-control', label: 'limite_inferior_rango' , placeholder: 'Límite   inferior' %>
-                <%= f.text_field :limite_superior_rango, class: 'form-control', label: 'limite_superior_rango', placeholder: 'Límite superior' %>
+                <%= f.label :Fecha_de_vencimiento %>                
+                  <%= f.text_field :anio_vencimiento, class: 'form-control', label: 'anio_vencimiento', placeholder: 'Año ' %>
+                  <%= f.text_field :mes_vencimiento, class: 'form-control', label: 'mes_vencimiento', placeholder: 'Mes' %>
+                </p>
               </div>
             </div>
+            <p> </p>
+            <div class="row">
+              <div class="col-md-4">
+                <%= f.label :"Datos del titular" %>
+                <%= f.text_field :nombre_prop, class: 'form-control', label: 'nombre_prop' , placeholder: 'Nombre' %>
+                <%= f.text_field :apellido_prop, class: 'form-control', label: 'apellido_prop', placeholder: 'Apellido ' %>
+                <%= f.text_field :dni_titular, class: 'form-control', label: 'dni_titular', placeholder: 'DNI ' %>
+              </div>
+            </div>
+            <p> </p>
             <div class='row'>
               <div class="col-md-5">
-                <%= f.label :'categoría activa' %>
-                <%= f.check_box :marca, label: 'categoría activa', checked:"checked" %>
+                <%= f.label :'Código de seguridad' %>
+                <%= f.text_field :cod_seguridad, class: 'form-control', label: 'cod_seguridad', :cols => 5, :rows => 1 %>
               </div>
-            </div> 
-            <%= f.submit "Crear logro", class: 'btn btn-primary' %>
-            <% if @logro.errors.any? %>
-              <ul>
-                <% @logro.errors.each do |atributo, mensaje| %>
-                  <li> <%= mensaje %> </li>
-                <% end %>
-              </ul>
-            <% end %>
+            </div>
+            <p> </p> 
+            <%= f.label :'Recordar tarjeta:' %>
+            <%= f.check_box :recordar, label: 'Recordar tarjeta', checked:"unchecked_value" %>
+            <p> </p> 
+            <%= f.submit "Guardar tarjeta", class: 'btn btn-primary' %>
+            
           <% end %>
-        </div>
       </div>
+      <% if @card.errors.any? %>
+          <ul>
+            <% @card.errors.each do |atributo, mensaje| %>
+              <li> <%= mensaje %> </li>
+            <% end %>
+          </ul>
+      <% end %>
     </div>
   </div>
