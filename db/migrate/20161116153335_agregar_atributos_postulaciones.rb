@@ -4,6 +4,8 @@ class AgregarAtributosPostulaciones < ActiveRecord::Migration
   	add_column :postulations, :fecha, :date 
   	add_column :postulations, :aceptar, :boolean, default: false
   	add_column :postulations, :noaceptar, :boolean , default: true
+  	add_column :postulations, :cumplio, :boolean, default: false
+  	add_column :postulations, :nocumplio, :boolean, default: true
   	add_column :postulations, :comentario , :string
   end
 end

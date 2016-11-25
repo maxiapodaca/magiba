@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
-    	<div class="col-md-17">
+    	<div class="col-lg-17">
 			<div class="panel panel-default">
 		        <div class="panel-body">
 			
@@ -19,21 +19,28 @@
 							</th>
 
 							<th>
-								<font face="arial" size="4" color="Grey"> Email </font>
-							</th>
-
-							<th>
-								<font face="arial" size="4" color="Grey"> Nombre  </font>
+								<font face="arial" size="4" color="Grey"> Nombre y Apellido </font>
 							</th>
 
 							 <th>
 							   <font face="arial" size="4" color="Grey"> Localidad  </font>
 							 </th>
+
+							 <th>
+							   <font face="arial" size="4" color="Grey"> Cant de puntos  </font>
+							 </th>
+
+							 <th>
+							   <font face="arial" size="4" color="Grey"> Logro  </font>
+							 </th>
 						</tr>
 			            
-			            <% postulations = Favor.find(params[:id]).postulations.all.order(:id) %>
+                        
+						<% postulations = Favor.find(params[:id]).postulations.all.order(:id) %>
 						<% postulations.each do |p| %>
-							<tr> 
+						
+
+						<tr> 
 								<td>
 									<font face="arial" size="3" color="black">
 										<%= p.descripcion %>
@@ -45,12 +52,7 @@
 										<%= p.fecha %>
 									</font>
 								</td>
-
-								<td>
-									<font face="arial" size="3" color="black">
-										<%= p.user.email%>
-									</font>
-								</td>
+							
 
 								<td>
 									<font face="arial" size="3" color="black">
@@ -65,34 +67,59 @@
 									</font>
 								</td>
 			                     
-			                    
-			                    <% if p.fecha >= Date.today %>
-									<td> 
+			                    <td>
+									<font face="arial" size="3" color="black">
+										<%= p.user.puntos %>
+									</font>
+								</td> 
+
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= current_user.logro.nombre %>
+									</font>
+								</td> 
+                                   
+                                  <% if p.aceptar == true %>
+                                     <td>
 										<div class="col-md-5">
-												<td> <%= link_to "Aceptar", p,class: 'btn btn-success btn-sm' %> </td>
+										     <td>
+										          <font face="calibri" size="4" color="black"> Aceptaste esta postulacion! contacta al usuario <%= p.user.email %>  </font>
+										      </td>
+
+									   </div>									    
+                                     </td>
+								  <% end %> 						    
+								 		
+			                    
+			                    <% if p.fecha >= Date.today  && p.aceptar == false  %>
+									<td> 
+										<div class="col-md-3">
+												<td> <%= link_to "Aceptar",evaluar_postulation_path(p, aceptar: "true"), method: :post, class: 'btn btn-info btn-sm' %>
+												 </td>
 								 		</div>
 									</td>
 									<td> 
-										<div class="col-md-5">
-												<td> <%= link_to "Rechazar",p,class: 'btn btn-success btn-sm' %> </td>
+										<div class="col-md-3">
+												<td> <%= link_to "Rechazar",evaluar_postulation_path(p, rechazar: "false"), method: :post, class: 'btn btn-info btn-sm' %>
+												 </td>
 								 		</div>
 									</td>
 
 								<% else %>
 
-			                        <% if p.aceptar == false && p.noaceptar == true %>
+			                        <% if p.aceptar == true  %>
 									     <td> 
-											<div class="col-md-5">	                               
+											<div class="col-md-3">	                               
 												<td>									
-													<%= link_to "Cumplio",evaluar_postulation_path(p, aceptar: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
+													<%= link_to "Cumplio",evaluar_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
 												</td>										
 									 		</div>
 										</td>  	
 										<td> 								    
-											<div class="col-md-5">
+											<div class="col-md-3">
 												<td>
 													
-													<%= link_to "No Cumpliò", evaluar_postulation_path(p, noaceptar:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
+													<%= link_to "No Cumpliò", evaluar_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
 												</td>
 									 		</div>
 										</td>
@@ -101,20 +128,29 @@
 
 			                    <% end %>
 
-			                    <% if p.noaceptar == false %>
-                                    <th>
-										<font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra </font>
-									</th>
+			                    <% if p.nocumplio == false %>
+                                    
+                                   <td>
+										<div class="col-md-3">
+                                         <th>
+										     <font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra </font>
+									    </th>
+                                         </div>
+								   </td>
+
 								<% end %>
 								
-								<% if p.aceptar == true %>
-
-	                                <th>
-										<font face="calibri" size="4" color="orange"> Este usuario cumplio su palabra </font>
-									</th>
-
+								<% if p.cumplio == true %>
+                                   <td>
+										<div class="col-md-3">
+				                                <th>
+													<font face="calibri" size="4" color="orange"> Este usuario cumplio su palabra </font>
+												</th>
+	                                    </div>
+							       </td>
 								<% end %>
-	                
+
+								
 							</tr> 
 
 						<% end %>	

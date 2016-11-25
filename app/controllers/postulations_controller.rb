@@ -49,12 +49,7 @@ class PostulationsController < ApplicationController
   end
 
   def destroy
-    if @postulation.aceptar
-        @postulation.aceptar=false
-    else
-        @postulation.aceptar=true
-    end
-      @postulation.save
+    @postulation.destroy
   end
 
   def edit
@@ -65,6 +60,8 @@ class PostulationsController < ApplicationController
    @postulation = Postulation.find(params[:id])
    @postulation.update(aceptar:params[:aceptar])
    @postulation.update(noaceptar:params[:noaceptar])
+   @postulation.update(cumplio:params[:cumplio])
+   @postulation.update(nocumplio:params[:nocumplio])
    user = @postulation.user
    if params[:aceptar] == "true"
     user.puntos += 1     
@@ -76,7 +73,7 @@ class PostulationsController < ApplicationController
       end      
    end
    user.save 
-   redirect_to @postulation  
+   redirect_to :back  
  end
 
 end
