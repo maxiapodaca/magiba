@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 20161125165645) do
     t.date     "fecha"
     t.boolean  "aceptar",     default: false
     t.boolean  "noaceptar",   default: true
+    t.boolean  "cumplio",     default: false
+    t.boolean  "nocumplio",   default: true
     t.string   "comentario"
   end
 
