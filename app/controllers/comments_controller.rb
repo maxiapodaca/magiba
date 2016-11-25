@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :get_comment, only: [:edit, :update, :destroy, :show]
 
   def index
-    
+    @comments = Comment.all
   end
 
   def show

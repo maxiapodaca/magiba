@@ -1,6 +1,7 @@
 class Favor < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments, dependent: :destroy
+	has_many :answers, dependent: :destroy
 	has_many :postulations, dependent: :destroy
 
 	validates_presence_of :descripcion

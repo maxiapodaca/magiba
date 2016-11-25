@@ -10,7 +10,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 
-				<% comments = Favor.find(params[:id]).comments.all.order(:id)%>
+				<% comments = Favor.find(params[:id]).comments.all%>
 
 				<% if comments.empty? %>
            			<p>
@@ -18,8 +18,8 @@
 					</p>
            		<% else %>
 					<% comments.each do |c| %>
-									
-						<table class="table">
+
+						<table class="table table-hover">
 						
 							<tr> 
 								<td>
@@ -27,7 +27,10 @@
 										<%= c.user.name %>
 										<%= c.user.apellido %>
 									</font>
-									    Escribió el: <%= c.created_at%>
+									<font face="arial" size="3" color="grey">
+										Escribió el 
+										<%= c.created_at.day %>/<%= c.created_at.month %>/<%= c.created_at.year %> a las <%= c.created_at.hour %>:<%= c.created_at.min %> 
+									</font>
 								</td>
 							</tr>
 
@@ -37,9 +40,13 @@
 										<%= c.detalle %>
 									</font>
 								</td>
-							</tr> 
+							</tr>
 
 						</table>
+
+						<% @comentario= c %>
+						<%= render "answers/answersIndex" %>
+						<%= render "answers/answersNew"%>
 
 					<% end %>
 

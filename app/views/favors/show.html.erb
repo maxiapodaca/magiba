@@ -48,7 +48,9 @@
 							</td>
 
 							<td>
-								<font face="arial" size="3" color="black"> <%= @favor.created_at %> </font>
+								<font face="arial" size="3" color="black">
+									<%= @favor.created_at.day %>/<%= @favor.created_at.month %>/<%= @favor.created_at.year %>
+								</font>
 							</td>
 			                
 			                <td>
@@ -134,32 +136,7 @@
 					    
 			        </table>  
 
-			        <% if (current_user != @favor.user) %>
-						<table class="table table-hover">
-							<tr>
-					            <th>
-									<font face="arial" size="5" color="black">
-										Dejá tu comentario
-									</font>
-								</th>
-							</tr>
-				 
-			               	<td>
-				            	<%= form_for(Comment.new) do |c| %>
-				               
-				                	<p>								   
-										<%= c.text_area :detalle, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese su comentario' %>
-								    </p>
-			                    
-								    <p>								
-										<%= c.hidden_field :favor_id, value:@favor.id %> 
-									</p>								
-							    	      <%= c.submit 'Guardar' %>
-							    	     
-							    <% end %>
-							</td>
-						</table>
-					<% end %>
+			        <%= render "comments/commentsNew" %>
 
 					<%= render "comments/commentsIndex" %>
 

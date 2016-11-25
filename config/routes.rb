@@ -1,10 +1,26 @@
 Rails.application.routes.draw do
 
+  #get 'answers/index'
+
+  #get 'answers/show'
+
+ # get 'answers/new'
+
+  #get 'answers/edit'
+
+ # get 'answers/create'
+
+ # get 'answers/update'
+
+ # get 'answers/destroy'
+
   resources :cards
   delete 'cards/destroy'
   resources :compras
 
   resources :comments
+
+  resources :answers
 
   resources :logros
 
