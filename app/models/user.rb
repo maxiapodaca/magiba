@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
   has_many :cards
   belongs_to :logro
 
-  belongs_to :postulation
-  has_many :favors
-  has_many :comments
+  has_many :postulation, dependent: :destroy
+  has_many :favors, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable 
 
-    validates :name, presence: true, length: { minimum: 3 }
+  validates :name, presence: true, length: { minimum: 3 }
 	validates :apellido, presence: true, length: { minimum: 3 }
 	validates :telefono, presence: true, length: { minimum: 3 }
 	validates :localidad, presence: true, length: { minimum: 3 }

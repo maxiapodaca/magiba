@@ -41,6 +41,9 @@ class FavorsController < ApplicationController
   def create
     @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
     @favor.user = current_user
+    if @favor.imagen.empty?
+      @favor.imagen = "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
+    end
     if @favor.save
       current_user.puntos= current_user.puntos - 1
       current_user.save
@@ -51,6 +54,9 @@ class FavorsController < ApplicationController
   end
 
   def update
+    if @favor.imagen.empty?
+      @favor.imagen = "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
+    end
     if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
       redirect_to mis_favores_favors_path
     else

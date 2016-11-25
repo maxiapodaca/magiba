@@ -4,24 +4,7 @@ Rails.application.routes.draw do
   delete 'cards/destroy'
   resources :compras
 
-    
-  get 'comments/index'
-
-  get 'comments/show'
-
-  get 'comments/new'
-
-  get 'comments/edit'
-
-  get 'comments/create'
-
-  get 'comments/update'
-
-  get 'comments/destroy'
-
-  get 'postulaciones/index'
-
-
+  resources :comments
 
   resources :logros
 
