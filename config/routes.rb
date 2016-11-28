@@ -1,21 +1,8 @@
 Rails.application.routes.draw do
 
-  #get 'answers/index'
-
-  #get 'answers/show'
-
- # get 'answers/new'
-
-  #get 'answers/edit'
-
- # get 'answers/create'
-
- # get 'answers/update'
-
- # get 'answers/destroy'
-
   resources :cards
   delete 'cards/destroy'
+  
   resources :compras
 
   resources :comments
@@ -32,14 +19,12 @@ Rails.application.routes.draw do
     post "evaluar" , on: :member
   end
   get "postulations/misPostulaciones"
-  #get 'welcome/index'
-
+  
   root 'home#index'
-   #resources :welcome
   
   devise_for :users, controllers: { registrations: "registrations" } 
   
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

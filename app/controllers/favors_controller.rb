@@ -54,10 +54,12 @@ class FavorsController < ApplicationController
   end
 
   def update
+    @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
     if @favor.imagen.empty?
       @favor.imagen = "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
     end
-    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
+   # if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
+    if @favor.save
       redirect_to mis_favores_favors_path
     else
      render 'edit'

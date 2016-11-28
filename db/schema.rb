@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20161125165645) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "detalle"
-    t.string   "favor_id"
-    t.string   "user_id"
-    t.string   "comment_id"
+    t.integer  "favor_id"
+    t.integer  "user_id"
+    t.integer  "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20161125165645) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "user_id"
-    t.string   "favor_id"
+    t.integer  "user_id"
+    t.integer  "favor_id"
     t.string   "detalle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

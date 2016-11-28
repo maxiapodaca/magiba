@@ -40,19 +40,19 @@ Saldríamos el primer fin de semana de octubre y retornaríamos el fin de semana
 
 puts "Cargo algunos usuarios"
 if User.where(email: 'barby@live.com.ar').empty?
-    u1=User.create(email: 'barby@live.com.ar',name:'Barbara', apellido: 'Acosta', telefono: '4527175', dni: '37363795',localidad: 'La Plata', password: 'contraseña' , password_confirmation: 'contraseña', admin: 'false',logro_id: '1')
+    u1=User.create(email: 'barby@live.com.ar',name:'Barbara', apellido: 'Acosta', telefono: '4527175', dni: '37363795',localidad: 'La Plata', password: 'contraseña' , password_confirmation: 'contraseña', admin: 'false',logro_id: '1', puntos: '15')
 end
 if User.where(email: 'maximiliano.apodaca@gmail.com.ar').empty?
-    u2=User.create(email: 'maximiliano.apodaca@gmail.com.ar', name: 'Maximiliano', apellido: 'Apodaca',telefono: '4255588', dni: '37370098', localidad: 'La Plata', password: 'contraseña',  password_confirmation: 'contraseña', admin: 'false',logro_id: '7')
+    u2=User.create(email: 'maximiliano.apodaca@gmail.com.ar', name: 'Maximiliano', apellido: 'Apodaca',telefono: '4255588', dni: '37370098', localidad: 'La Plata', password: 'contraseña',  password_confirmation: 'contraseña', admin: 'false',logro_id: '7',puntos: '25')
 end
 if User.where(email: 'gina@live.com.ar').empty?
-    u3=User.create(email: 'gina@live.com.ar', name: 'Gina', apellido: 'Galvez Huerta',telefono: '4418635', dni: '34569874', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'false',logro_id:'2')
+    u3=User.create(email: 'gina@live.com.ar', name: 'Gina', apellido: 'Galvez Huerta',telefono: '4418635', dni: '34569874', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'false',logro_id:'2',puntos: '45')
 end
 if User.where(email: 'ulises.sunetri@gmail.com').empty?
-	u5=User.create(email: 'ulises.sunetri@gmail.com', name: 'Ulises', apellido: 'Sunetri',telefono: '42530564', dni: '14187518', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'true', logro_id: '3')
+	u5=User.create(email: 'ulises.sunetri@gmail.com', name: 'Ulises', apellido: 'Sunetri',telefono: '42530564', dni: '14187518', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'true', logro_id: '3',puntos: '65')
 end
 if User.where(email: 'nancy@gmail.com').empty?
-	u6=User.create(email: 'nancy@gmail.com', name: 'Nancy', apellido: 'Diaz',telefono: '425110564', dni: '26278818', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'true', logro_id: '1')
+	u6=User.create(email: 'nancy@gmail.com', name: 'Nancy', apellido: 'Diaz',telefono: '425110564', dni: '26278818', localidad: 'La Plata',password: 'contraseña',  password_confirmation: 'contraseña', admin: 'true', logro_id: '1',puntos: '90')
 end
 
 puts "Cargo algunos logros"

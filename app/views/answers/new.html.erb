@@ -1,1 +1,3 @@
-<%= render "answers/answersNew" %>
+<% if user_signed_in? %>
+	<%= render "answers/answersNew" %>
+<% end %>

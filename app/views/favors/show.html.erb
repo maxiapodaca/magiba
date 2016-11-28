@@ -1,151 +1,127 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-10">
-			<div class="panel panel-default">
-	        	<div class="panel-body">
-			        <P ALIGN=left>         
-						<font face="arial" size="6" color="black"> Gauchada pedida por <%=@favor.user.name%>  </font>
-					
-					<P ALIGN=right>
-						<p> Visitas: <%= @favor.visitas %> </p>
-			  	
-			  		<table class="table table-hover">
-			  			
-			 			<tr>
+<% if user_signed_in? %>
+	<div class="col-lg-10">
+		<div class="panel panel-default">
+        	<div class="panel-body">
+		        <P ALIGN=left>         
+					<font face="arial" size="6" color="black"> Gauchada pedida por <%=@favor.user.name%>  </font>
+				<P ALIGN=right>
+					<p> Visitas: <%= @favor.visitas %> </p>
+		  	
+		  		<table class="table table-hover">
+		 			<tr>
+		 				<th>
+							<font face="arial" size="4" color="orange">  Imagen </font>
+						</th>
+		 				<th>
+		 					<font face="arial" size="4" color="orange">  Titulo </font>
+		 				</th>
+		 				<th>
+		 					<font face="arial" size="4" color="orange">  Ciudad </font>
+		 				</th>
+		 				<th>
+		 					<font face="arial" size="4" color="orange">  Fecha </font>
+		 				</th>
+						<th>
+							<font face="arial" size="4" color="orange">  Detalle </font>
+						</th>
+					</tr>
+					<tr>
+						<td>
+		                	<%= image_tag @favor.imagen, size: '200x200' %>
+		                </td>
+						<td>
+							<font face="arial" size="3" color="black"> <%= @favor.titulo %> </font>
+						</td>
+						<td>
+							<font face="arial" size="3" color="black"> <%= @favor.localidad %> </font>
+						</td>
+						<td>
+							<font face="arial" size="3" color="black">
+								<%= @favor.created_at.day %>/<%= @favor.created_at.month %>/<%= @favor.created_at.year %>
+							</font>
+						</td>
+		                <td>
+		               		<font face="arial" size="3" color="black"> <%= @favor.descripcion %> </font>
+		                </td>
+		            </tr>
+				</table>
+				<table class="table table-hover">
+					<% if (user_signed_in?) && (@favor.user != current_user) %>
 
-			 				<th>
-								<font face="arial" size="4" color="orange">  Imagen </font>
-							</th>
-
-			 				<th>
-			 					<font face="arial" size="4" color="orange">  Titulo </font>
-			 				</th>
-
-			 				<th>
-			 					<font face="arial" size="4" color="orange">  Ciudad </font>
-			 				</th>
-
-			 				<th>
-			 					<font face="arial" size="4" color="orange">  Fecha </font>
-			 				</th>
-			 				
-							<th>
-								<font face="arial" size="4" color="orange">  Detalle </font>
-							</th>
-			                
-						</tr>
-
-							<td>
-			                	<%= image_tag @favor.imagen, size: '200x200' %>
-			                </td>
-
-							<td>
-								<font face="arial" size="3" color="black"> <%= @favor.titulo %> </font>
-							</td>
-
-							<td>
-								<font face="arial" size="3" color="black"> <%= @favor.localidad %> </font>
-							</td>
-
-							<td>
-								<font face="arial" size="3" color="black">
-									<%= @favor.created_at.day %>/<%= @favor.created_at.month %>/<%= @favor.created_at.year %>
-								</font>
-							</td>
-			                
-			                <td>
-			               		<font face="arial" size="3" color="black"> <%= @favor.descripcion %> </font>
-			                </td>
-
-					</table>
-
-
-					<table class="table table-hover">
-						
-						<% if (user_signed_in?) && (@favor.user != current_user) %>
-
-							<% se_postulo=false %>
-							<% postulaciones= @favor.postulations.all%>
-							<% postulaciones.each do |p| %>
-
-								<% if p.user == current_user %>
-									<% se_postulo =true %>
-								<% else %>
-									<% se_postulo = false %>
-								<% end %>
-
-							<% end %>
-
-							<% if se_postulo == true %>
-								<p>
-									<font face="arial" size="6" > Estas postulado para resolver esta gauchada! </font>
-								</p>
+						<% se_postulo=false %>
+						<% postulaciones= @favor.postulations.all%>
+						<% postulaciones.each do |p| %>
+							<% if p.user == current_user %>
+								<% se_postulo =true %>
 							<% else %>
-
-								<tr>
-						            <th>
-										<font face="vijaya" size="7" color="black">
-											Quiero ayudar!
-										</font>
-									</th>
-								</tr>
-					 
-				               	<td>
-					            	<%= form_for(Postulation.new) do |p| %>
-					               
-					                    <p>
-					                    	<font face="arial" size="3" color="grey">
-					                    		<%= p.label :Indicar_la_fecha_en_la_que_puede_resolver_la_gauchada %>
-					                    	</font>
-										       
-										    <%= p.date_field :fecha , :value => Time.now.strftime('%Y-%m-%d') %>
-									    </p>
-								    
-									    <p>
-					                    	<font face="arial" size="3" color="grey">
-					                    		<%= p.label :descripcion %>
-					                    	</font>
-										   
-											<%= p.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese una breve descripcion de tu postulacion' %>
-									    </p>
-				                    
-									    <p>								
-											<%= p.hidden_field :favor_id, value:@favor.id %> 
-										</p>								
-								    	
-								    	<%= p.submit 'Guardar' %>
-								    	     
-								    <% end %>
-								</td>
-
+								<% se_postulo = false %>
 							<% end %>
-
 						<% end %>
 
-						<% if (user_signed_in?) && (@favor.user == current_user) %>
+						<% if se_postulo == true %>
+							<p>
+								<font face="arial" size="6" > Estas postulado para resolver esta gauchada! </font>
+							</p>
+						<% else %>
+							<tr>
+					            <th>
+									<font face="vijaya" size="7" color="black">
+										Quiero ayudar!
+									</font>
+								</th>
+							</tr>
+				 
 			               	<td>
-			               		<% if @favor.postulations.empty? %>
-			               			<p>
-										<font face="arial" size="5" > Parece que nadie se ha postulado aún! </font>
-									</p>
-			               		<% else %>
-				            		<%= render "postulations/postulationsIndex" %>
-				            	<% end %>
+				            	<%= form_for(Postulation.new) do |p| %>
+				               
+				                    <p>
+				                    	<font face="arial" size="3" color="grey">
+				                    		<%= p.label :Indicar_la_fecha_en_la_que_puede_resolver_la_gauchada %>
+				                    	</font>
+									       
+									    <%= p.date_field :fecha , :value => Time.now.strftime('%Y-%m-%d') %>
+								    </p>
+							    
+								    <p>
+				                    	<font face="arial" size="3" color="grey">
+				                    		<%= p.label :descripcion %>
+				                    	</font>
+									   
+										<%= p.text_area :descripcion, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese una breve descripcion de tu postulacion' %>
+								    </p>
+			                    
+								    <p>								
+										<%= p.hidden_field :favor_id, value:@favor.id %> 
+									</p>								
+							    	
+							    	<%= p.submit 'Guardar' %>
+							    	     
+							    <% end %>
 							</td>
 						<% end %>
-					    
-			        </table>  
+					<% end %>
 
-			        <%= render "comments/commentsNew" %>
+					<% if (user_signed_in?) && (@favor.user == current_user) %>
+		               	<td>
+		               		<% if @favor.postulations.empty? %>
+		               			<p>
+									<font face="arial" size="5" > Parece que nadie se ha postulado aún! </font>
+								</p>
+		               		<% else %>
+			            		<%= render "postulations/postulationsIndex" %>
+			            	<% end %>
+						</td>
+					<% end %>
+		        </table>  
 
-					<%= render "comments/commentsIndex" %>
+		        <%= render "comments/commentsNew" %>
 
-					<p>
-						<a class="btn btn-default btn-lg" href="/" role="button"> Volver a inicio </a>
-					</p> 
+				<%= render "comments/commentsIndex" %>
 
-				</div>
+				<p>
+					<a class="btn btn-default btn-lg" href="/" role="button"> Volver a inicio </a>
+				</p> 
 			</div>
 		</div>
 	</div>
-</div>
+<% end %>
