@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121163352) do
+ActiveRecord::Schema.define(version: 20161125201515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 20161121163352) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "card_id"
+    t.date     "fecha_inf"
+    t.date     "fecha_sup"
+    t.float    "ganancias"
   end
 
   create_table "favors", force: :cascade do |t|
@@ -84,6 +87,13 @@ ActiveRecord::Schema.define(version: 20161121163352) do
     t.boolean  "aceptar",     default: false
     t.boolean  "noaceptar",   default: true
     t.string   "comentario"
+  end
+
+  create_table "rango_fechas", force: :cascade do |t|
+    t.date     "inf"
+    t.date     "sup"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

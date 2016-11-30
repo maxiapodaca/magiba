@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get 'postulaciones/index'
 
 
-
   resources :logros
 
   resources :favors do
