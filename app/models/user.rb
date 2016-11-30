@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :cards
   #belongs_to :logro
 
-  has_many :postulation, dependent: :destroy
+  has_many :postulations, dependent: :destroy
   has_many :favors, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :answers, dependent: :destroy

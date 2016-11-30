@@ -1,4 +1,12 @@
 class PostulationsController < ApplicationController
+
+
+  def mis_postulaciones
+    if user_signed_in?
+      @my_postulations = current_user.postulations
+    end
+  end
+
   def index
     #@postulation = Postulation.all.order(:id)
     #@postulation.favor = Favor.find(params[:id])

@@ -24,6 +24,7 @@
 						<p> <%= link_to "Inicio", root_path %> </p>
 						<p> <%= link_to "Mis gauchadas", mis_favores_favors_path %> </p>
 						<p> <%= link_to "Comprar puntos",new_compra_path %> </p>
+						<p> <%= link_to "Mis postulaciones vigentes",mis_postulaciones_postulations_path %> </p>
 					</div>
 				</div>
 			<% else %>
@@ -31,7 +32,8 @@
 					<div class="panel-body">
 						<p> <%= link_to "Inicio", root_path %> </p>
 						<p> <%= link_to "Mis gauchadas", mis_favores_favors_path %> </p>
-						<p> <%= link_to "Comprar puntos", new_compra_path %> </p>			
+						<p> <%= link_to "Comprar puntos", new_compra_path %> </p>
+						<p> <%= link_to "Mis postulaciones vigentes",mis_postulaciones_postulations_path %> </p>			
 					</div>
 				</div>
 			<% end %>

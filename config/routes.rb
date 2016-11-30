@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   resources :postulations do 
     post "evaluar" , on: :member
+    get "mis_postulaciones", on: :collection
   end
-  get "postulations/misPostulaciones"
   
   root 'home#index'
   
