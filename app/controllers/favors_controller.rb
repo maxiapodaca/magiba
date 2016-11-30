@@ -16,15 +16,15 @@ class FavorsController < ApplicationController
   def index
     @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
     if params[:orden] && params[:orden]== "visitas"
-      @favores = Favor.all.order(:visitas)
+      @favores = Favor.where(estado: 0).order(:visitas)
       @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
     else
-      @favores = Favor.all
+      @favores = Favor.where(estado: 0)
     end
 
     if user_signed_in?
       if params[:titulo].present? 
-        @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
+        @favores = @favores.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
       end
       if params[:localidad].present? 
         @favores = @favores.where('LOWER(localidad) LIKE ?',"%#{params[:localidad].downcase}%")
@@ -81,11 +81,22 @@ class FavorsController < ApplicationController
     @favor.visitas= @favor.visitas + 1
     @favor.save
   end
-
+def republicar
+    @favor = Favor.find(params[:id])
+    @favor.update(estado: 0)
+    @favor.postulations.destroy_all
+     
+    #@postulacion= @favor.postulation
+    #@aux=@favor
+    #@favor.destroy
+  end
   private
 
   def get_favor
     @favor = Favor.find(params[:id])
   end
   
+  
+
+
 end

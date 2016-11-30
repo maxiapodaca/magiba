@@ -6,7 +6,7 @@
 					<font face="arial" size="6" color="black"> Gauchada pedida por <%=@favor.user.name%>  </font>
 				<P ALIGN=right>
 					<p> Visitas: <%= @favor.visitas %> </p>
-		  	
+		  	    
 		  		<table class="table table-hover">
 		 			<tr>
 		 				<th>
@@ -45,7 +45,7 @@
 		                </td>
 		            </tr>
 				</table>
-				<table class="table table-hover">
+				<table class="table table-hover"> 
 					<% if (user_signed_in?) && (@favor.user != current_user) %>
 
 						<% se_postulo=false %>
@@ -108,7 +108,8 @@
 									<font face="arial" size="5" > Parece que nadie se ha postulado aún! </font>
 								</p>
 		               		<% else %>
-			            		<%= render "postulations/postulationsIndex" %>
+			            		<%= render "postulations/postulationsIndex" if @favor.estado == 0 %>
+			            		<%= render "postulations/selectedPostulation" if @favor.estado == 1 %>
 			            	<% end %>
 						</td>
 					<% end %>

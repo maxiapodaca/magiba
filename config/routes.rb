@@ -13,14 +13,16 @@ Rails.application.routes.draw do
 
   resources :favors do
     get "mis_favores", on: :collection
+    get "republicar", on: :member 
   end
 
   resources :postulations do 
     post "evaluar" , on: :member
     get "mis_postulaciones", on: :collection
+    post "evaluar1" , on: :member 
   end
   
-  root 'home#index'
+  root 'favors#index'
   
   devise_for :users, controllers: { registrations: "registrations" } 
   

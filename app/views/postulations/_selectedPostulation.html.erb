@@ -35,8 +35,8 @@
 						</tr>
 			            
                         
-						<% postulations = Favor.find(params[:id]).postulations.all.order(:id) %>
-						<% postulations.each do |p| %>
+						<% p = Favor.find(params[:id]).postulations.all.order(:id).find_by(aceptar: true)  %>
+						
 						
 
 						<tr> 
@@ -90,45 +90,28 @@
                                      </td>
 								  <% end %> 						    
 								 		
+		                    
+		                        <% if p.aceptar == true && p.cumplio == false %>           	
+
+									    <td> 
+										<div class="col-md-3">	                               
+											<td>									
+												<%= link_to "Cumplio",evaluar1_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
+											</td>										
+								 		</div>
+									</td>  	
+									<td> 								    
+										<div class="col-md-3">
+											<td>
+												
+												<%= link_to "No Cumpliò", evaluar1_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
+											</td>
+								 		</div>
+									</td>
+
+                                     					
+								 <% end %>
 			                    
-			                    <% if p.fecha >= Date.today  && p.aceptar == false  %>
-									<td> 
-										<div class="col-md-3">
-												<td> <%= link_to "Aceptar",evaluar_postulation_path(p, aceptar: "true"), method: :post, class: 'btn btn-info btn-sm' %>
-												 </td>
-								 		</div>
-									</td>
-									<td> 
-										<div class="col-md-3">
-												<td> <%= link_to "Rechazar",evaluar_postulation_path(p, noaceptar: "false"), method: :post, class: 'btn btn-info btn-sm' %>
-												 </td>
-								 		</div>
-									</td>
-
-								<% else %>
-
-			                        <% if p.aceptar == true && p.cumplio == false %>           	
-
-   									    <td> 
-											<div class="col-md-3">	                               
-												<td>									
-													<%= link_to "Cumplio",evaluar1_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
-												</td>										
-									 		</div>
-										</td>  	
-										<td> 								    
-											<div class="col-md-3">
-												<td>
-													
-													<%= link_to "No Cumpliò", evaluar1_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
-												</td>
-									 		</div>
-										</td>
-
-                                         					
-									 <% end %>
-
-			                    <% end %>
 
 			                    <% if p.nocumplio == false %>
                                     
@@ -146,6 +129,8 @@
                                    <td>
 										<div class="col-md-3">
 				                                <th>
+
+				                                    
 													<font face="calibri" size="4" color="orange"> Este usuario cumplio su palabra </font>
 												</th>
 	                                    </div>
@@ -155,7 +140,7 @@
 								
 							</tr> 
 
-						<% end %>	
+							
 				    </table>
 					
 			</div>	
@@ -163,3 +148,5 @@
 	</div>	
 </div>
 
+ 
+ 

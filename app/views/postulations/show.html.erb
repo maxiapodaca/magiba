@@ -15,7 +15,8 @@
 						</th>
 		                
 					</tr>
-                   
+					   
+                    
 					 <% if @postulation.cumplio == true %>	
 		                <td>
 		               		<font face="arial" size="3" color="black"> Cumplio correctamente el favor </font>
@@ -24,8 +25,9 @@
                      <% end %>
                       <% if @postulation.nocumplio == false %> 	
 		                <td>
-		               		<font face="arial" size="3" color="black"> NO Cumplio correctamente el favor </font>
-		                </td>
+		               		<font face="arial" size="3" color="black"> NO Cumplio correctamente el favor  <%= link_to "Republica tu favor", republicar_favor_path(@postulation.favor) %> </font>
+		                </td>		                
+
                      <% end %>
                      
 				</table>		
