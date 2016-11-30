@@ -1,0 +1,56 @@
+<% if user_signed_in? %>
+	<% if current_user.admin? %>
+		<div class="col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h1 class="text-center">
+						 <font color="black"> Ranking de Usuarios </font>
+					</h1>
+					<div class="row">
+			            <table class="table table-hover">
+			                 <tr>
+			                     <th>
+			                        <font face="arial" size="4" color="grey"> Nombre y apellido </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> correo  </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Logro </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Puntos </font>
+			                    </th>
+			                </tr>
+			                <% usuarios = User.all.order(puntos: :desc) %>
+			                <% usuarios.each do |u| %>
+			                    <tr>
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= u.name %> <%= u.apellido%>
+			                            </font>
+			                        </td>
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= u.email %>
+			                            </font>
+			                        </td>
+			                         <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= u.logro.nombre %>
+			                            </font>
+			                        </td>
+			                         <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= u.puntos %>
+			                            </font>
+			                        </td>                       
+			                    </tr>
+			                <% end %>     
+			            </table>		        
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>	

@@ -1,34 +1,25 @@
 <nav class="navbar navbar-default"> 
-	
-    	<div class="col-xs-12 col-md-12"> <%= link_to root_path do %>
-				<%= image_tag "http://fotos.subefotos.com/2d78bdf0c0a8935f9afa3dce01cd47c8o.png", title:"Gauchada",class:"img-responsive", size: '2000x2000'%>
-				<% end %>
-		</div>
-	
-
-	
+	<div class="col-xs-12 col-md-12"> <%= link_to root_path do %>
+			<%= image_tag "http://fotos.subefotos.com/2d78bdf0c0a8935f9afa3dce01cd47c8o.png", title:"Gauchada",class:"img-responsive", size: '2000x2000'%>
+			<% end %>
+	</div>
 	<div class="container-fluid">
 		<div class="row">
-		    <div class="col-md-10">
+		    <div class="col-md-9">
 		        <% if user_signed_in? %>
 		            <td> <P ALIGN=left>
 	            	<h0>
-
 		            	<font face="arial" size="4" color="brown">
-						<%= current_user.name %> <%= current_user.apellido %>						
+							<%= current_user.name %> <%= current_user.apellido %>						
 						</font>
-						
 					</h0>
 				<% end %>			
 		    </div>
-		  	<div class="col-md-2"> 
-		  	    
-		  		   <% if user_signed_in? %>
-		  		             
-					<%= link_to "Modificar mis datos",edit_user_registration_path %>
+		  	<div class="col-md-3"> 
+		  		<% if user_signed_in? %>
+		  			<%= link_to "Modificar mis datos",edit_user_registration_path %>
 					<%= link_to "Cerrar Sesión", destroy_user_session_path, method:'delete' , class:'btn btn-default' %>
-					
-				  <% else %>
+				<% else %>
 					<%= link_to "Iniciar Sesión", new_user_session_path , class:'btn btn-default' %>
 					<%= link_to "Registrarme","/users/sign_up", class:'btn btn-default'%>
 				<% end %>		

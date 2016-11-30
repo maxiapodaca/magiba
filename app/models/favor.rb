@@ -4,8 +4,8 @@ class Favor < ActiveRecord::Base
 	has_many :postulations, dependent: :destroy
 
 	validates_presence_of :descripcion
-	validates_presence_of :imagen
-	
+	validates :imagen, :format => URI::regexp(%w(http https))
+		
 	validates :titulo, presence: true, length: { minimum: 4 }
 	validates :localidad, presence: true, length: { minimum: 4 }
 	#has_many :preguntas

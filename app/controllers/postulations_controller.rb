@@ -58,8 +58,8 @@ class PostulationsController < ApplicationController
 
  def evaluar
   @postulation = Postulation.find(params[:id])
-  @postulation.update(aceptar:params[:aceptar])
-  @postulation.update(noaceptar:params[:noaceptar])   
+  @postulation.update(aceptar:params[:aceptar], noaceptar:params[:noaceptar])
+  @postulation.favor.update(estado: 1)
   if params[:aceptar] == "true"       
    flash[:notice] = "Postulacion aceptada"
   else 
@@ -72,8 +72,8 @@ end
 
 def evaluar1
   @postulation = Postulation.find(params[:id])
-  @postulation.update(cumplio:params[:cumplio])
-  @postulation.update(nocumplio:params[:nocumplio])
+  @postulation.update(cumplio:params[:cumplio], nocumplio:params[:nocumplio])
+  @postulation.favor.update(estado: 2)  
   user = @postulation.user
   if params[:cumplio] == "true"
    user.puntos += 1     

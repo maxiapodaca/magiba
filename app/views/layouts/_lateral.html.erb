@@ -1,41 +1,32 @@
-<div class="col-md-2  list group">
-	<div class="panel-group">
-
-		<% if user_signed_in? %>
-
+<% if user_signed_in? %>
+	<div class="col-md-2  list group">
+		<div class="panel-group">
 			<% if current_user.admin? %>
-
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<font face="arial" size="5" color="orange">
-						<p>
-							Menú administrador:
-						</p>
+							<p>
+								Menú administrador:
+							</p>
 						</font>
-				 
 						<p> <%= link_to "Menú de Logros", logros_path %> </p>
 						<p> <%= link_to "Ver reportes de ganancias" %> </p>
-						<p> <%= link_to "Ver reportes de usuarios" %> </p>
+						<p> <%= link_to "Ver ranking de usuarios", users_path %> </p>
 					</div>
 				</div>
-
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<font face="arial" size="5" color="orange">
-						<p>
-							Menú usuario:
-						</p>
+							<p>
+								Menú usuario:
+							</p>
 						</font>
-
 						<p> <%= link_to "Inicio", root_path %> </p>
 						<p> <%= link_to "Mis gauchadas", mis_favores_favors_path %> </p>
 						<p> <%= link_to "Comprar puntos",new_compra_path %> </p>
-
 					</div>
 				</div>
-
 			<% else %>
-
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<p> <%= link_to "Inicio", root_path %> </p>
@@ -43,10 +34,7 @@
 						<p> <%= link_to "Comprar puntos", new_compra_path %> </p>			
 					</div>
 				</div>
-
 			<% end %>
-			
-		<% end %>
-
+		</div>
 	</div>
-</div>
+<% end %>
