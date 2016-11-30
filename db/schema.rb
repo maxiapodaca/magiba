@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20161121163352) do
     t.integer  "visitas",         default: 0
     t.integer  "user_id"
     t.integer  "comment_id"
+    t.integer  "estado",          default: 0
   end
 
   create_table "logros", force: :cascade do |t|

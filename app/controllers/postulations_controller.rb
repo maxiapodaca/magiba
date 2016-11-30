@@ -57,23 +57,35 @@ class PostulationsController < ApplicationController
   end
 
  def evaluar
-   @postulation = Postulation.find(params[:id])
-   @postulation.update(aceptar:params[:aceptar])
-   @postulation.update(noaceptar:params[:noaceptar])
-   @postulation.update(cumplio:params[:cumplio])
-   @postulation.update(nocumplio:params[:nocumplio])
-   user = @postulation.user
-   if params[:aceptar] == "true"
-    user.puntos += 1     
-    flash[:notice] = "Postulacion aceptada"
-   else 
-      if params[:noaceptar] == "false"      
-         flash[:notice] = "Postulacion NO aceptada"   
-         user.puntos -= 2 
-      end      
-   end
-   user.save 
-   redirect_to :back  
+  @postulation = Postulation.find(params[:id])
+  @postulation.update(aceptar:params[:aceptar])
+  @postulation.update(noaceptar:params[:noaceptar])   
+  if params[:aceptar] == "true"       
+   flash[:notice] = "Postulacion aceptada"
+  else 
+     if params[:noaceptar] == "false"      
+        flash[:notice] = "Postulacion NO aceptada"         
+     end      
+  end   
+  redirect_to @postulation  
+end
+
+def evaluar1
+  @postulation = Postulation.find(params[:id])
+  @postulation.update(cumplio:params[:cumplio])
+  @postulation.update(nocumplio:params[:nocumplio])
+  user = @postulation.user
+  if params[:cumplio] == "true"
+   user.puntos += 1     
+   flash[:notice] = "Postulacion cumplida"
+     if params[:nocumplio] == "false"      
+        flash[:notice] = "Postulacion NO cumplio"   
+        user.puntos -= 2 
+     end      
+  end
+  user.save 
+  redirect_to @postulation  
  end
 
+ 
 end

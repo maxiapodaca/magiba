@@ -27,7 +27,7 @@
 							 </th>
 
 							 <th>
-							   <font face="arial" size="4" color="Grey"> Cant de puntos  </font>
+							   <font face="arial" size="4" color="Grey"> Cantidad de puntos  </font>
 							 </th>
 
 							 <th>
@@ -75,9 +75,11 @@
 
 								<td>
 									<font face="arial" size="3" color="black">
-										<%= current_user.logro.nombre %>
+										<%= p.user.logro.nombre %>
 									</font>
 								</td> 
+
+								
                                    
                                   <% if p.aceptar == true %>
                                      <td>
@@ -85,7 +87,6 @@
 										     <td>
 										          <font face="calibri" size="4" color="black"> Aceptaste esta postulacion! contacta al usuario <%= p.user.email %>  </font>
 										      </td>
-
 									   </div>									    
                                      </td>
 								  <% end %> 						    
@@ -100,18 +101,19 @@
 									</td>
 									<td> 
 										<div class="col-md-3">
-												<td> <%= link_to "Rechazar",evaluar_postulation_path(p, rechazar: "false"), method: :post, class: 'btn btn-info btn-sm' %>
+												<td> <%= link_to "Rechazar",evaluar_postulation_path(p, noaceptar: "false"), method: :post, class: 'btn btn-info btn-sm' %>
 												 </td>
 								 		</div>
 									</td>
 
 								<% else %>
 
-			                        <% if p.aceptar == true  %>
-									     <td> 
+			                        <% if p.aceptar == true  %>			                        	
+
+   									    <td> 
 											<div class="col-md-3">	                               
 												<td>									
-													<%= link_to "Cumplio",evaluar_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
+													<%= link_to "Cumplio",evaluar1_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
 												</td>										
 									 		</div>
 										</td>  	
@@ -119,11 +121,12 @@
 											<div class="col-md-3">
 												<td>
 													
-													<%= link_to "No Cumpliò", evaluar_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
+													<%= link_to "No Cumpliò", evaluar1_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
 												</td>
 									 		</div>
 										</td>
-																
+
+                                         					
 									 <% end %>
 
 			                    <% end %>
@@ -133,7 +136,7 @@
                                    <td>
 										<div class="col-md-3">
                                          <th>
-										     <font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra </font>
+										     <font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra, puede republicar el favor! </font>
 									    </th>
                                          </div>
 								   </td>

@@ -84,4 +84,12 @@ class FavorsController < ApplicationController
     @favor = Favor.find(params[:id])
   end
   
+  private
+
+  def republicar
+    @favor = Favor.find(params[:id])
+    #@aux=@favor
+    #@favor.destroy
+  end
+
 end

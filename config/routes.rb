@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
   resources :favors do
     get "mis_favores", on: :collection
+    get "republicar", on: :member 
   end
 
   resources :postulations do 
     post "evaluar" , on: :member
+    post "evaluar1" , on: :member   
   end
   get "postulations/misPostulaciones"
   #get 'welcome/index'
