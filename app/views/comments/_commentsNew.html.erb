@@ -1,0 +1,24 @@
+<% if (current_user != @favor.user) %>
+
+	<font face="arial" size="5" color="black">
+		Dejá tu comentario
+	</font>
+	
+	<table class="table table-hover">
+
+       	<td>
+        	<%= form_for(Comment.new) do |c| %>
+           
+            	<p>								   
+					<%= c.text_area :detalle, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese su comentario' %>
+			    </p>
+            
+			    <p>								
+					<%= c.hidden_field :favor_id, value:@favor.id %> 
+				</p>								
+		    	      <%= c.submit 'Guardar' %>
+		    	     
+		    <% end %>
+		</td>
+	</table>
+<% end %>

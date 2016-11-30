@@ -1,8 +1,11 @@
-<% if user_signed_in? %>
-	<div class="container-fluid">
-		<div class="row">
-	    	<div class="col-lg-10">
-	    		<font face="arial" size="7" color="Black"> Edita tu gauchada </font>
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-lg-10">
+
+			<div class="jumbotron"> 
+				
+				<font face="arial" size="7" color="Black"> Republicar una gauchada </font>
+
 				<%= form_for(@favor) do |f| %>
 
 					<% if @favor.errors.any? %>
@@ -32,9 +35,15 @@
 						<%= f.label :imagen%>
 						<%= f.text_field :imagen, class: 'form-control', label: 'URL imagen', placeholder: 'Ingrese el link de la imagen' %>
 					</p>
-					<%= f.submit 'Guardar' %>			
+
+
+					<%= f.submit 'Guardar' %>
+					
 			    <% end %>
+ 
 		 	</div>
 		</div>
 	</div>
-<%end%> 
+	
+</div> 
+ 

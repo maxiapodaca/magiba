@@ -1,108 +1,100 @@
-<div class="container-fluid">
-	<div class="row">
-	    <div class="col-md-10">
-
-			<div class="panel panel-default">
-        		<div class="panel-body"> 
-					<P ALIGN=right>
-				            <a class="btn btn-default btn-lg" href="/favors/new" role="button">
-				            	Publicá una gauchada!
-				            </a>
-
-			        <P ALIGN=left>
-
-			        <td ALIGN=left>
-		                <a class="btn btn-default btn-lg" href="/favors/mis_favores?orden=visitas&order_by=<%= @order_by %>" role="button"> Ordenar por visitas  </a>
-		            </td>
-					<p>
-					<font face="arial" size="6" color="black">
-						Mis gauchadas
-					</font>
-					</p>
-					 
-			  		<table class="table table-hover">
-
-			  			<% if @favores.empty? %>
-
-			  				<font face="arial" size="6" color="black">
-								Todavia no pediste ninguna gauchada!
-							</font>
-
-				 		<% else %>
-
-				 			<tr>
-				 				<th>
-									<font face="arial" size="5" color="orange"> Imagen  </font>
-								</th>
-								<th>
-									<font face="arial" size="5" color="orange"> Titulo </font>
-								</th>
-								<th>
-									<font face="arial" size="5" color="orange"> Detalle  </font>
-								</th>
-								<th>
-									<font face="arial" size="5" color="orange"> Ciudad </font>
-								</th>						   
-
+<% if user_signed_in? %>
+    <div class="col-md-10">
+		<div class="panel panel-default">
+    		<div class="panel-body"> 
+				<P ALIGN=right>
+			            <a class="btn btn-default btn-lg" href="/favors/new" role="button">
+			            	Publicá una gauchada!
+			            </a>
+		        <P ALIGN=left>
+		        <td ALIGN=left>
+	                <a class="btn btn-default btn-lg" href="/favors/mis_favores?orden=visitas&order_by=<%= @order_by %>" role="button"> Ordenar por visitas  </a>
+	            </td>
+				<p>
+				<font face="arial" size="6" color="black">
+					Mis gauchadas
+				</font>
+				</p>
+				 
+		  		<table class="table table-hover">
+		  			<% if @favores.empty? %>
+		  				<font face="arial" size="6" color="black">
+							Todavia no pediste ninguna gauchada!
+						</font>
+			 		<% else %>
+			 			<tr>
+			 				<th>
+								<font face="arial" size="5" color="orange"> Imagen  </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Titulo </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Detalle  </font>
+							</th>
+							<th>
+								<font face="arial" size="5" color="orange"> Ciudad </font>
+							</th>
+							<th>
+	                        </th>
+	                        <th>
+	                        </th>
+	                        <th>
+	                        </th>
+	                        <th>
+	                            <font face="arial" size="5" color="orange"> Visitas </font>
+	                        </th>
+						</tr>
+						<% @favores.each do |f| %>
+							<tr> 
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= image_tag f.imagen, size: '100x100' %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= f.titulo %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= f.descripcion.truncate(50) %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= f.localidad %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black"> 
+										<%= link_to "Editar", edit_favor_path(f)%>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black">
+										<%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar su gauchada?' } %>
+									</font>
+								</td>
+								<td>
+									<font face="arial" size="3" color="black"> 
+										<%= link_to "Ver detalle", f %>
+									</font>
+								</td>
+								 <td ALIGN=center>
+	                                 <font face="arial" size="3" color="black">
+	                                    <%= f.visitas %>
+	                                </font>
+	                            </td>
 							</tr>
-
-							<% @favores.each do |f| %>
-
-								<tr> 
-									<td>
-										<font face="arial" size="3" color="black">
-											<%= image_tag f.imagen, size: '100x100' %>
-										</font>
-									</td>
-									<td>
-										<font face="arial" size="3" color="black">
-											<%= f.titulo %>
-										</font>
-									</td>
-									<td>
-										<font face="arial" size="3" color="black">
-											<%= f.descripcion.truncate(50) %>
-										</font>
-									</td>
-									<td>
-										<font face="arial" size="3" color="black">
-											<%= f.localidad %>
-										</font>
-									</td>
-									
-									<td>
-										<font face="arial" size="3" color="black"> 
-											<%= link_to "Editar", edit_favor_path(f)%>
-										</font>
-									</td>
-
-									<td>
-										<font face="arial" size="3" color="black">
-											<%= link_to "Eliminar", f, method: :delete, data: { confirm: 'Esta seguro de eliminar su gauchada?' } %>
-										</font>
-									</td>
-
-									<td>
-										<font face="arial" size="3" color="black"> 
-											<%= link_to "Ver detalle", f %>
-										</font>
-									</td>
-
-								</tr>
-
-							<% end %>
-
 						<% end %>
-
-					</table>
-
-					<p>
-						<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
-					</p> 
-				</div>
+					<% end %>
+				</table>
+				<p>
+					<a class="btn btn-default btn-lg" href="/" role="button"> Volver </a>
+				</p> 
 			</div>
 		</div>
-	</div>	
-</div>
-
-
+	</div>
+<% end %>

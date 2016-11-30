@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161125201515) do
+=======
+ActiveRecord::Schema.define(version: 20161125165645) do
+>>>>>>> df2995aeaa5a49ed692510ef8f25b6ffa2b207b9
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "detalle"
+    t.integer  "favor_id"
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cards", force: :cascade do |t|
     t.string   "numero"
@@ -32,8 +45,8 @@ ActiveRecord::Schema.define(version: 20161125201515) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "user_id"
-    t.string   "favor_id"
+    t.integer  "user_id"
+    t.integer  "favor_id"
     t.string   "detalle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,6 +99,8 @@ ActiveRecord::Schema.define(version: 20161125201515) do
     t.date     "fecha"
     t.boolean  "aceptar",     default: false
     t.boolean  "noaceptar",   default: true
+    t.boolean  "cumplio",     default: false
+    t.boolean  "nocumplio",   default: true
     t.string   "comentario"
   end
 

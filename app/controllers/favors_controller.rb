@@ -2,27 +2,29 @@ class FavorsController < ApplicationController
   before_action :get_favor, only: [:edit, :update, :destroy, :show]
 
   def mis_favores
-    @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
-    if params[:orden] && params[:orden]== "visitas"
-      @favores = current_user.favors.all.order(:visitas)
-      @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
-    else
-      @favores = current_user.favors.all
+    if user_signed_in?
+      @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
+      if params[:orden] && params[:orden]== "visitas"
+        @favores = current_user.favors.all.order(:visitas)
+        @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
+      else
+        @favores = current_user.favors.all
+      end
     end
   end
 
   def index
     @order_by = (params[:order_by] && params[:order_by] == "asc") ? "desc" : "asc"
     if params[:orden] && params[:orden]== "visitas"
-      @favores = Favor.all.order(:visitas)
+      @favores = Favor.where(estado: 0).order(:visitas)
       @favores = @favores.reverse_order if params[:order_by] && params[:order_by] == "desc"
     else
-      @favores = Favor.all
+      @favores = Favor.where(estado: 0)
     end
 
     if user_signed_in?
       if params[:titulo].present? 
-        @favores = Favor.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
+        @favores = @favores.where('LOWER(titulo) LIKE ?',"%#{params[:titulo].downcase}%")
       end
       if params[:localidad].present? 
         @favores = @favores.where('LOWER(localidad) LIKE ?',"%#{params[:localidad].downcase}%")
@@ -41,6 +43,9 @@ class FavorsController < ApplicationController
   def create
     @favor= Favor.new(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
     @favor.user = current_user
+    if @favor.imagen.empty?
+      @favor.imagen = "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
+    end
     if @favor.save
       current_user.puntos= current_user.puntos - 1
       current_user.save
@@ -51,7 +56,12 @@ class FavorsController < ApplicationController
   end
 
   def update
-    if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
+    @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
+    if @favor.imagen.empty?
+      @favor.imagen = "http://fotos.subefotos.com/13534e7f5bc5c0ee7147a0a0b782afc7o.png"
+    end
+   # if @favor.update_attributes(params.require(:favor).permit(:titulo, :descripcion, :localidad, :imagen))
+    if @favor.save
       redirect_to mis_favores_favors_path
     else
      render 'edit'
@@ -71,11 +81,22 @@ class FavorsController < ApplicationController
     @favor.visitas= @favor.visitas + 1
     @favor.save
   end
-
+def republicar
+    @favor = Favor.find(params[:id])
+    @favor.update(estado: 0)
+    @favor.postulations.destroy_all
+     
+    #@postulacion= @favor.postulation
+    #@aux=@favor
+    #@favor.destroy
+  end
   private
 
   def get_favor
     @favor = Favor.find(params[:id])
   end
   
+  
+
+
 end
