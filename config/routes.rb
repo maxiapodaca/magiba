@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   get "postulations/misPostulaciones"
   
-  root 'favors#index'
+  root 'home#index'
   
   devise_for :users, controllers: { registrations: "registrations" } 
   

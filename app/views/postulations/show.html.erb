@@ -3,36 +3,43 @@
 		<div class="col-lg-10">
 			<div class="jumbotron"> 
 		        <P ALIGN=left>         
-					<font face="arial" size="6" color="black">   </font>
+					<font face="arial" size="6" color="orange"> Estado de postulaciones   </font>
 				
 						  	
 		  		<table class="table">
 		  			
-		 			<tr>
-		 						 				
-						<th>
-							<font face="arial" size="4" color="orange">   </font>
-						</th>
-		                
-					</tr>
+		 			
 					   
-                    
+                    <th>
 					 <% if @postulation.cumplio == true %>	
 		                <td>
-		               		<font face="arial" size="3" color="black"> Cumplio correctamente el favor </font>
+		               		<font face="arial" size="5" color="black"> Cumplio correctamente el favor </font>
 		                </td>
 
                      <% end %>
+                    </th>
+                    <th> 
                       <% if @postulation.nocumplio == false %> 	
 		                <td>
-		               		<font face="arial" size="3" color="black"> NO Cumplio correctamente el favor  <%= link_to "Republica tu favor", republicar_favor_path(@postulation.favor) %> </font>
+		               		<font face="arial" size="5" color="black"> NO Cumplio correctamente el favor   </font>
 		                </td>		                
 
+                        <td>
+		               		<font face="arial" size="5" color="black"> <%= link_to "Republica tu favor", republicar_favor_path(@postulation.favor) %>   </font>
+		                </td>
+                         
                      <% end %>
+                    </th> 
                      
-				</table>		
+                     <td>
+					 <% if @postulation.aceptar == true %>	
+		                   <th>
+		               		<font face="arial" size="5" color="black"> Aceptaste esta postulacion! </font>
+		                   </th>
 
-				
+                     <% end %>
+                    </td>
+				</table>
 
 				<p>
 					<a class="btn btn-default btn-lg" href="/favors/mis_favores" role="button"> Volver </a>
