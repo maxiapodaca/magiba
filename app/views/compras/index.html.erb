@@ -1,2 +1,43 @@
-<h1>Compras#index</h1>
-<p>Find me in app/views/compras/index.html.erb</p>
+<% if user_signed_in? %>
+     <% if current_user.admin? %>
+		<div class="col-md-6 col-md-4 list group">  
+		  	<div class="panel-group">
+		    	<div class="panel panel-default">   
+		      		<div class="panel-body">
+		      			<%= link_to "Volver inicio", root_path, class: 'btn btn-info btn-xs' %>
+		          		<h1 class="text-center"> Menú de ganancias </h1>
+		          		<p> </p>
+						<h4> Ingrese la fecha de inicio y fin del intervalo en el que se quiere calcular las ganancias: </h4>
+						<p> </p>
+		    			<%= form_tag compras_path, method: :get do %>
+		    				<div class="input-group">
+			    				<h5> -Límite inferior: </h5>
+			  					<%= date_field_tag :fecha_inf , "", maxlength: 8, class: "form-control", required: true %>
+			  					<p> </p>
+			  					<p> </p>
+			  					<h5> -Límite superior: </h5>
+				  				<%= date_field_tag :fecha_sup , Time.now.strftime('%Y-%m-%d') ,class: "form-control" , :cols => 2, :rows => 1, required: true %>
+				  			</div>
+				  			
+		  					<%= submit_tag "Calcular", name: nil, class: "btn btn-primary btn-md"%>
+		  				<% end %>
+				       	<% if (@compras_a_sumar != nil) %>
+			          		<% tot=0 %>
+			          		<% @compras_a_sumar.each do |c| %>
+			          			<tr>
+									<td> <% tot=tot+c.cantidad_de_puntos*12 %> </td>
+								</tr>
+							<% end %>
+						<% end %>
+						<p> </p>
+			  			<p> </p>
+			  			<% if @testigo == true %>
+							<%=  "Ganancias computadas entre las fechas: $ #{tot}.00"  %>
+						<% end %>
+		              <p> </p> 
+		    		</div>	
+		    	</div>
+		  	</div>
+		</div>
+	<% end %>
+<% end %>

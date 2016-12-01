@@ -7,6 +7,34 @@ class ComprasController < ApplicationController
   end
 
   def index
+    if params[:fecha_inf].present? and params[:fecha_sup].present? 
+      if params[:fecha_inf] > params[:fecha_sup]
+        flash[:alert] = "Error. La fecha superior debe ser posterior a la fecha inferior. Re-ingrese las fechas."
+        @testigo = false
+      else
+        @testigo = true
+        if params[:fecha_inf].to_date > Date.today  
+          flash[:alert] = "Error. La fecha superior no puede ser superior a la fecha actual. Re-ingrese la fecha superior."
+          @testigo = false
+          render :index
+        else
+          @compras_a_sumar = Compra.where('created_at >= ?',"%#{params[:fecha_inf].to_date.beginning_of_day}%")
+        end
+        if params[:fecha_sup].to_date > Date.today
+            flash[:alert] = "Error. La fecha superior no puede ser superior a la fecha actual. Re-ingrese la fecha superior."
+            @testigo = false
+            render :index
+        else
+            if @compras_a_sumar != nil 
+              @compras_a_sumar = @compras_a_sumar.where('created_at <= ?',"%#{params[:fecha_sup].to_date.to_date.end_of_day}%")
+            else
+              @compras_a_sumar = Compra.where('created_at <= ?',"%#{params[:fecha_sup].to_date}%")
+            end
+        end
+      end
+    else
+      @testigo = false
+    end
   end
 
   def show
