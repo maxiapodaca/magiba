@@ -34,11 +34,7 @@
 
 										 <th>
 										   <font face="arial" size="4" color="black"> Logro  </font>
-										 </th>
-
-										  <th>
-										   <font face="arial" size="4" color="Grey"> </font>
-										 </th>
+										 </th>									  
 
 										  
 									</tr>
@@ -86,47 +82,59 @@
 												</font>
 											</th> 
 											
-			                                 <th>  
-			                                  <% if p.aceptar == true %>
-										          <font face="arial" size="4" color="black"> Aceptaste esta postulación! contacta al usuario:  <font face="arial" size="4" color="orange"> <%= p.user.email %> </font> </font>						    
-			                                     
-											  <% end %> 						    
-											</th>	
-									</tr>				
-					                         <th>
-					                        <% if p.aceptar == true && p.cumplio == false %>           	
-
-													<td>									
-														<%= link_to "Cumplio",evaluar1_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' , data: { confirm: 'Esta seguro de que este usuario cumplio su palabra ?' } %>	
-														            		
-													</td>	    
-												
-													<td>
+			                                
+									</tr>
+									<tr> 
+									    
+											<div class="col-md-12">
+											    <div class="panel-body">				
+					                                  <table class="table table-hover">
+                                                     <th>  
+						                                  <% if p.aceptar == true %>
+													          <font face="arial" size="4" color="black"> Aceptaste esta postulación! contacta al usuario:  <font face="arial" size="4" color="orange"> <%= p.user.email %> </font> </font>	
+														  <% end %> 						    
+											        </th>	
+ 													<th>
+                                                    </th>
+                                                    <th>
+                                                    </th>
+                                                    <th>
+                                                    </th>
+                                                    <th>
+                                                    </th>
+                                                    <th>
+                                                    </th>	
+					                                <th>  
+							                            <% if p.aceptar == true && p.cumplio == false %>           	
+							                        																									
+															<%= link_to "Cumplio",evaluar1_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' , data: { confirm: 'Esta seguro de que este usuario cumplio su palabra ?' } %>	
+															            		
+																														
+															<%= link_to "No Cumpliò", evaluar1_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' , data: { confirm: 'Esta seguro de que este usuario no cumplio su palabra?' } %> 
 														
-														<%= link_to "No Cumpliò", evaluar1_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' , data: { confirm: 'Esta seguro de que este usuario no cumplio su palabra?' } %> 
-													</td>
-											 		
-															
-											<% end %>
+											 		    <% end %>
+													</th>
 
-											
+										
+										   <th>
 			                                <% if p.nocumplio == false %>                                  
 						                            <td>                  
 												     <font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra, puedes republicar el favor!  <%= link_to "Republica tu favor", republicar_favor_path(p.favor) %> </font>
 											    	</td>
-											<% end %>
-
-											
-
-																						
+											<% end %>								
 											<% if p.cumplio == true %>                               
 				                                   <td> 
 				                                    <% p.nocumplio = false %>		                                    
 													<font face="calibri" size="4" color="green"> Este usuario cumplio su palabra </font>
 												   </td>
 				                            <% end %>
-                                            
-										</th>									
+				                            </th>
+                                         
+									                 </table> 
+									            </div>
+									     </div>
+									       
+									</tr>										
 										
 							    </table>
                             </div>
