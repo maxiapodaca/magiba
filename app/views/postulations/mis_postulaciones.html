@@ -3,7 +3,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<h1 class="text-center">
-					 <font color="black"> Favores en los que soy candidato </font>
+					 <font color="black"> Mis postulaciones </font>
 				</h1>
 				<div class="row">
 		            <table class="table table-hover">
@@ -22,6 +22,12 @@
 		                    </th>
 		                    <th>
 		                        <font face="arial" size="4" color="grey"> Descripcion de postulacion </font>
+		                    </th>
+		                    <th>
+		                        <font face="arial" size="4" color="grey"> Fecha </font>
+		                    </th>
+		                    <th>
+		                        <font face="arial" size="4" color="grey"> Estado </font>
 		                    </th>
 		                </tr>
 		                
@@ -54,12 +60,36 @@
 		                        </td>
 		                        <td>
 		                            <font face="arial" size="3" color="black">
-		                                <%= p.fecha %>
+		                                <%= p.fecha.day %>/<%= p.fecha.month %>/<%= p.fecha.year %>
+		                            </font>
+		                        </td>
+		                         <td>
+		                            <font face="arial" size="3" color="black">
+		                            	<% if (p.fecha < Date.today) && (p.favor.estado == 0) %>
+		                            		Postulacion vencida
+		                            	<% end %>
+		                                <% if (p.favor.estado == 0) && (p.fecha >= Date.today) %>
+		                               		Pendiente
+		                                <% end %>
+		                                <% if (p.favor.estado == 1) && (p.aceptar == true)%>
+		                            		Aceptada
+		                            	<% else %>
+			                            	<% if p.favor.estado == 2 %>
+			                            		<% if p.cumplio == true %>
+				                                	Cumplida
+				                                <% else %>
+					                                No cumplida
+					                            <% end %>
+			                            	<% end %>
+			                            <% end %>
+		                                <% if (p.favor.estado == 2) && (p.noaceptar== true) %>
+		                                	Rechazada
+		                                <% end %>
 		                            </font>
 		                        </td>
 		                        <td>
 	                                <font face="arial" size="3" color="black"> 
-	                                        <%= link_to "Ver detalle", p.favor %>
+	                                    <%= link_to "Ver detalle", p.favor %>
 	                                </font>
 	                            </td>                    
 		                    </tr>
