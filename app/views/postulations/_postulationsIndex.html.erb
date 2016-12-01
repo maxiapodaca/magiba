@@ -37,7 +37,6 @@
                         
 						<% postulations = Favor.find(params[:id]).postulations.all.order(:id) %>
 						<% postulations.each do |p| %>
-						
 
 						<tr> 
 								<td>
@@ -82,6 +81,7 @@
                                    
                                   <% if p.aceptar == true %>
                                      <td>
+                                     	<% p.noaceptar = false %>
 										<div class="col-md-5">
 										     <td>
 										          <font face="calibri" size="4" color="black"> Aceptaste esta postulacion! contacta al usuario <%= p.user.email %>  </font>
@@ -146,6 +146,7 @@
                                    <td>
 										<div class="col-md-3">
 				                                <th>
+				                                	<% p.nocumplio = false %>
 													<font face="calibri" size="4" color="orange"> Este usuario cumplio su palabra </font>
 												</th>
 	                                    </div>

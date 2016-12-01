@@ -1,20 +1,22 @@
 <% if (current_user == @favor.user) %>
-	<table class="table table-hover">
-		<td>
-        	<%= form_for(Answer.new) do |a| %>
-           
-            	<p>								   
-					<%= a.text_area :detalle, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese su respuesta' %>
-			    </p>
-            
-			    <p>								
-					<%= a.hidden_field :favor_id, value:@favor.id %>
-					<%= a.hidden_field :comment_id, value:@comentario.id %>
-				</p>								
-		    	
-		    	<%= a.submit 'Guardar' %>
-		    	     
-		    <% end %>
-		</td>
-	</table>
+	<% if (@favor.estado == 0) %>
+		<table class="table table-hover">
+			<td>
+	        	<%= form_for(Answer.new) do |a| %>
+	           
+	            	<p>								   
+						<%= a.text_area :detalle, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese su respuesta'%>
+				    </p>
+	            
+				    <p>								
+						<%= a.hidden_field :favor_id, value:@favor.id %>
+						<%= a.hidden_field :comment_id, value:@comentario.id %>
+					</p>								
+			    	
+			    	<%= a.submit 'Guardar' %>
+			    	     
+			    <% end %>
+			</td>
+		</table>
+	<% end %>
 <% end %>

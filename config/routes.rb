@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     post "evaluar1" , on: :member 
   end
   
-  root 'favors#index'
+  root 'home#index'
   
   devise_for :users, controllers: { registrations: "registrations" } 
   

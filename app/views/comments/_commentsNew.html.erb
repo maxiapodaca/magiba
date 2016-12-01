@@ -1,24 +1,27 @@
 <% if (current_user != @favor.user) %>
+	<% if (@favor.estado == 0) %>
+		<font face="arial" size="5" color="black">
+			Dejá tu comentario
+		</font>
+		
+		<table class="table table-hover">
 
-	<font face="arial" size="5" color="black">
-		Dejá tu comentario
-	</font>
-	
-	<table class="table table-hover">
-
-       	<td>
-        	<%= form_for(Comment.new) do |c| %>
-           
-            	<p>								   
-					<%= c.text_area :detalle, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese su comentario' %>
-			    </p>
-            
-			    <p>								
-					<%= c.hidden_field :favor_id, value:@favor.id %> 
-				</p>								
-		    	      <%= c.submit 'Guardar' %>
-		    	     
-		    <% end %>
-		</td>
-	</table>
+	       	<td>
+	        	<%= form_for(Comment.new) do |c| %>
+	           
+	            	<p>								   
+						<%= c.text_area :detalle, class: 'form-control', label: 'Descripcion', placeholder: 'Ingrese su comentario' %>
+				    </p>
+	            
+				    <p>								
+						<%= c.hidden_field :favor_id, value:@favor.id %> 
+					</p>								
+			    	      <%= c.submit 'Guardar' %>
+			    	     
+			    <% end %>
+			</td>
+		</table>
+	<% else %>
+		<font face="arial" size="4" color="red"> Esta gauchada no se encuentra vigente para comentar </font>
+	<% end %>
 <% end %>
