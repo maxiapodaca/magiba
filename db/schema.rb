@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161125201515) do
-=======
-ActiveRecord::Schema.define(version: 20161125165645) do
->>>>>>> df2995aeaa5a49ed692510ef8f25b6ffa2b207b9
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +72,7 @@ ActiveRecord::Schema.define(version: 20161125165645) do
     t.integer  "visitas",         default: 0
     t.integer  "user_id"
     t.integer  "comment_id"
+    t.integer  "estado",          default: 0
   end
 
   create_table "logros", force: :cascade do |t|

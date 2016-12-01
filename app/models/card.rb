@@ -25,8 +25,8 @@ class Card < ActiveRecord::Base
 		end	
 	end
 	def tarjeta_existe_aleatorio
-		if (rand(2) == 1) 
-			errors.add(:no_existe, "Error! La tarjeta ingresada no existe, intente nuevamente.")
+		if (numero[18]=="0") 
+			errors.add(:tarjeta_existe_aleatorio, "Error! La tarjeta ingresada no existe, intente nuevamente.")
 		end
 	end
 end

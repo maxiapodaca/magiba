@@ -1,0 +1,88 @@
+<% if user_signed_in? %>
+	<div class="col-md-10">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h1 class="text-center">
+					 <font color="black"> Favores resueltos: </font>
+				</h1>
+				<% if @my_postulations_concluidas != nil %>
+					<% if @my_postulations_concluidas.count > 0 %>
+						<div class="row">
+				            <table class="table table-hover">
+				                <tr>
+				                	<th>
+				                        <font face="arial" size="4" color="grey"> Imagen </font>
+				                    </th>
+				                    <th>
+				                        <font face="arial" size="4" color="grey"> Titulo </font>
+				                    </th>
+				                    <th>
+				                        <font face="arial" size="4" color="grey"> Detalle </font>
+				                    </th>
+				                    <th>
+				                        <font face="arial" size="4" color="grey"> Ciudad </font>
+				                    </th>
+				                    <th>
+				                        <font face="arial" size="4" color="grey"> Descripcion de postulacion </font>
+				                    </th>
+				                </tr>
+				                
+				                <% @my_postulations_concluidas.each do |p| %>
+				                    <tr>
+				                        <td>
+				                            <font face="arial" size="3" color="black">
+				                                <%= image_tag p.favor.imagen, size: '50x50' %>
+				                            </font>
+				                        </td>
+				                        <td>
+				                            <font face="arial" size="3" color="black">
+				                                <%= p.favor.titulo %>
+				                            </font>
+				                        </td>
+				                        <td>
+				                            <font face="arial" size="3" color="black">
+				                                <%= p.favor.descripcion.truncate(50) %>
+				                            </font>
+				                        </td>
+				                        <td>
+				                            <font face="arial" size="3" color="black">
+				                                <%= p.favor.localidad %>
+				                            </font>
+				                        </td> 
+				                        <td>
+				                            <font face="arial" size="3" color="black">
+				                                <%= p.descripcion %>
+				                            </font>
+				                        </td>
+				                        <td>
+				                            <font face="arial" size="3" color="black">
+				                                <%= p.fecha %>
+				                            </font>
+				                        </td>
+				                        <td>
+			                                <font face="arial" size="3" color="black"> 
+			                                        <%= link_to "Ver detalle", p.favor %>
+			                                </font>
+			                            </td>                    
+				                    </tr>
+				                <% end %>    
+				            </table>		        
+						</div>
+					<% else %>
+						<p> </p>
+	                    <p> </p>
+	                    <h1 class="text-center">  Hasta el momento no has resuelto ninguna gauchada. </h1>
+	                    <p> </p>
+	                    <p> </p> 
+			    	<% end %> 
+				<% else %>
+                	<p> </p>
+                    <p> </p>
+                    <h1 class="text-center">  Hasta el momento no has resuelto ninguna gauchada. </h1>
+                    <p> </p>
+                    <p> </p> 
+			    <% end %> 
+			</div>
+		</div>
+	</div>
+<% end %>	

@@ -6,6 +6,11 @@ class PostulationsController < ApplicationController
       @my_postulations = current_user.postulations
     end
   end
+  def mis_postulaciones_resueltas
+    if user_signed_in?
+      @my_postulations_concluidas = current_user.postulations.where("aceptar = true AND (cumplio=true OR nocumplio=true)")
+    end
+  end
 
   def index
     #@postulation = Postulation.all.order(:id)

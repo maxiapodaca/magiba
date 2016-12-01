@@ -22,7 +22,7 @@ class CardsController < ApplicationController
       flash[:notice] = "Se ha guardado su tarjeta exitosamente."
       redirect_to new_compra_path
     else
-      flash[:notice] = "Problemas en el registro de su tarjeta."
+      flash[:alert] = "Problemas en el registro de su tarjeta."
       render :new
     end
   end

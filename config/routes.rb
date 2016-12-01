@@ -20,10 +20,12 @@ Rails.application.routes.draw do
   resources :postulations do 
     post "evaluar" , on: :member
     get "mis_postulaciones", on: :collection
+    get "mis_postulaciones_resueltas", on: :collection
+   
     post "evaluar1" , on: :member 
   end
   
-  root 'favors#index'
+  root 'home#index'
   
   devise_for :users, controllers: { registrations: "registrations" } 
   
