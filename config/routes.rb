@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
+
   resources :answers
 
   resources :logros
@@ -18,9 +19,9 @@ Rails.application.routes.draw do
 
   resources :postulations do 
     post "evaluar" , on: :member
-    post "evaluar1" , on: :member   
+    get "mis_postulaciones", on: :collection
+    post "evaluar1" , on: :member 
   end
-  get "postulations/misPostulaciones"
   
   root 'home#index'
   
