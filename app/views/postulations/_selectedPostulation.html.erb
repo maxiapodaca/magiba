@@ -1,152 +1,148 @@
-<div class="container-fluid">
-	<div class="row">
-    	<div class="col-lg-17">
-			<div class="panel panel-default">
-		        <div class="panel-body">
-			
-			       	<font face="arial" size="6" color="black">
+ <div class="panel-group">
+	<div class="col-md-12">
+		<div class="panel panel-default">			
+			<div class="panel-body">
+				<font face="arial" size="6" color="black">
 						Postulaciones:
-					</font>				 	
-					<table class="table table-hover">		
-			 			<tr>
-							<th>
-								<font face="arial" size="4" color="Grey"> Descripcion </font>
-							</th>
+				</font>	
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="panel panel-default">
+        			        <div class="panel-body">
 
-			                <th>
-								<font face="arial" size="4" color="Grey"> Fecha de realizacion de la guachada </font>
-							</th>
+								<table class="table table-hover">		
+						 			<tr>
+										<th>
+											<font face="arial" size="4" color="black"> Descripcion </font>
+										</th>
 
-							<th>
-								<font face="arial" size="4" color="Grey"> Nombre y Apellido </font>
-							</th>
+						                <th>
+											<font face="arial" size="4" color="black"> Fecha de realizacion de la gauchada </font>
+										</th>
 
-							 <th>
-							   <font face="arial" size="4" color="Grey"> Localidad  </font>
-							 </th>
+										<th>
+											<font face="arial" size="4" color="black"> Nombre y Apellido </font>
+										</th>
 
-							 <th>
-							   <font face="arial" size="4" color="Grey"> Cantidad de puntos  </font>
-							 </th>
+										 <th>
+										   <font face="arial" size="4" color="black"> Localidad  </font>
+										 </th>
 
-							 <th>
-							   <font face="arial" size="4" color="Grey"> Logro  </font>
-							 </th>
-						</tr>
-			            
-                        
-						<% p = Favor.find(params[:id]).postulations.all.order(:id).find_by(aceptar: true)  %>
-						
-						
+										 <th>
+										   <font face="arial" size="4" color="black"> Cantidad de puntos  </font>
+										 </th>
 
-						<tr> 
-								<td>
-									<font face="arial" size="3" color="black">
-										<%= p.descripcion %>
-									</font>
-								</td>
+										 <th>
+										   <font face="arial" size="4" color="black"> Logro  </font>
+										 </th>									  
 
-			                    <td>
-									<font face="arial" size="3" color="black">
-										<%= p.fecha %>
-									</font>
-								</td>
-							
+										  
+									</tr>
+						            
+			                        
+									<% p = Favor.find(params[:id]).postulations.all.order(:id).find_by(aceptar: true)  %>
+									
 
-								<td>
-									<font face="arial" size="3" color="black">
-										<%= p.user.name %>
-										<%= p.user.apellido %>
-									</font>
-								</td>
+									<tr> 
+											<th>
+												<font face="arial" size="3" color="Grey">
+													<%= p.descripcion %>
+												</font>
+											</th>
 
-			                    <td>
-									<font face="arial" size="3" color="black">
-										<%= p.user.localidad%>
-									</font>
-								</td>
-			                     
-			                    <td>
-									<font face="arial" size="3" color="black">
-										<%= p.user.puntos %>
-									</font>
-								</td> 
+						                    <th>
+												<font face="arial" size="3" color="Grey">
+													<%= p.fecha %>
+												</font>
+											</th>
+										
 
-								<td>
-									<font face="arial" size="3" color="black">
-										<%= p.user.logro.nombre %>
-									</font>
-								</td> 
+											<th>
+												<font face="arial" size="3" color="Grey">
+													<%= p.user.name %>
+													<%= p.user.apellido %>
+												</font>
+											</th>
 
-								
-                                   
-                                  <% if p.aceptar == true %>
-                                     <td>
-										<div class="col-md-5">
-										     <td>
-										          <font face="calibri" size="4" color="black"> Aceptaste esta postulacion! contacta al usuario <%= p.user.email %>  </font>
-										      </td>
-									   </div>									    
-                                     </td>
-								  <% end %> 						    
-								 		
-		                    
-		                        <% if p.aceptar == true && p.cumplio == false %>           	
+						                    <th>
+												<font face="arial" size="3" color="Grey">
+													<%= p.user.localidad%>
+												</font>
+											</th>
+						                     
+						                    <th>
+												<font face="arial" size="3" color="Grey">
+													<%= p.user.puntos %>
+												</font>
+											</th> 
 
-									    <td> 
-										<div class="col-md-3">	                               
-											<td>									
-												<%= link_to "Cumplio",evaluar1_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' %>		
-											</td>										
-								 		</div>
-									</td>  	
-									<td> 								    
-										<div class="col-md-3">
-											<td>
-												
-												<%= link_to "No Cumpliò", evaluar1_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' %> 
-											</td>
-								 		</div>
-									</td>
+											<th>
+												<font face="arial" size="3" color="Grey">
+													<%= p.user.logro.nombre %>
+												</font>
+											</th> 
+											
+			                                
+									</tr>
+									<tr> 
+									    
+											<div class="col-md-12">
+											    <div class="panel-body">				
+					                                  <table class="table table-hover">
+                                                     <th>  
+						                                  <% if p.aceptar == true %>
+													          <font face="arial" size="4" color="black"> Aceptaste esta postulación! contacta al usuario:  <font face="arial" size="4" color="orange"> <%= p.user.email %> </font> </font>	
+														  <% end %> 						    
+											        </th>	
+ 													<th>
+                                                    </th>
+                                                    <th>
+                                                    </th>
+                                                    <th>
+                                                    </th>
+                                                    <th>
+                                                    </th>
+                                                    <th>
+                                                    </th>	
+					                                <th>  
+							                            <% if p.aceptar == true && p.cumplio == false %>           	
+							                        																									
+															<%= link_to "Cumplio",evaluar1_postulation_path(p, cumplio: "true"), method: :post, class: 'btn btn-info btn-sm' , data: { confirm: 'Esta seguro de que este usuario cumplio su palabra ?' } %>	
+															            		
+																														
+															<%= link_to "No Cumpliò", evaluar1_postulation_path(p, nocumplio:  "false"), method: :post ,class: 'btn btn-success btn-sm' , data: { confirm: 'Esta seguro de que este usuario no cumplio su palabra?' } %> 
+														
+											 		    <% end %>
+													</th>
 
-                                     					
-								 <% end %>
-			                    
+										
+										   <th>
+			                                <% if p.nocumplio == false %>                                  
+						                            <td>                  
+												     <font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra, puedes republicar el favor!  <%= link_to "Republica tu favor", republicar_favor_path(p.favor) %> </font>
+											    	</td>
+											<% end %>								
+											<% if p.cumplio == true %>                               
+				                                   <td> 
+				                                    <% p.nocumplio = false %>		                                    
+													<font face="calibri" size="4" color="green"> Este usuario cumplio su palabra </font>
+												   </td>
+				                            <% end %>
+				                            </th>
+                                         
+									                 </table> 
+									            </div>
+									     </div>
+									       
+									</tr>										
+										
+							    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-			                    <% if p.nocumplio == false %>
-                                    
-                                   <td>
-										<div class="col-md-3">
-                                         <th>
-										     <font face="calibri" size="4" color="Red"> Este usuario no cumplio su palabra, puede republicar el favor! </font>
-									    </th>
-                                         </div>
-								   </td>
-
-								<% end %>
-								
-								<% if p.cumplio == true %>
-                                   <td>
-										<div class="col-md-3">
-				                                <th>
-
-				                                    
-													<font face="calibri" size="4" color="orange"> Este usuario cumplio su palabra </font>
-												</th>
-	                                    </div>
-							       </td>
-								<% end %>
-
-								
-							</tr> 
-
-							
-				    </table>
-					
-			</div>	
+			</div>
 		</div>
-	</div>	
+	</div>
 </div>
-
- 
- 

@@ -85,7 +85,7 @@ def republicar
     @favor = Favor.find(params[:id])
     @favor.update(estado: 0)
     @favor.postulations.destroy_all
-     
+    @favor.visitas = 0 
     #@postulacion= @favor.postulation
     #@aux=@favor
     #@favor.destroy

@@ -4,7 +4,10 @@
 
 			<div class="jumbotron"> 
 				
-				<font face="arial" size="7" color="Black"> Republicar una gauchada </font>
+				<font face="arial" size="7" color="orange"> Republica tu gauchada </font> </br>
+				<font face="arial" size="5" color="Black"> Tambien puedes cambiar el titulo ,agregar especificaciones a la descripcion o cambiar la imagen que la identifica!  </font> 
+				<p>
+				</p>
 
 				<%= form_for(@favor) do |f| %>
 
@@ -35,12 +38,11 @@
 						<%= f.label :imagen%>
 						<%= f.text_field :imagen, class: 'form-control', label: 'URL imagen', placeholder: 'Ingrese el link de la imagen' %>
 					</p>
-
-
-					<%= f.submit 'Guardar' %>
+ 
+					<%= f.submit 'Listo' %>
 					
 			    <% end %>
- 
+                 
 		 	</div>
 		</div>
 	</div>

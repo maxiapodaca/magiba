@@ -11,7 +11,7 @@
 						</font>
 						<p> <%= link_to "Menú de Logros", logros_path %> </p>
 						<p> <%= link_to "Ver reportes de ganancias", compras_path %> </p>
-						<p> <%= link_to "Ver reportes de usuarios", users_path %> </p> %> </p>
+						<p> <%= link_to "Ver reportes de usuarios", users_path %> </p> </p>
 
 					</div>
 				</div>
@@ -25,8 +25,8 @@
 						<p> <%= link_to "Inicio", root_path %> </p>
 						<p> <%= link_to "Mis gauchadas", mis_favores_favors_path %> </p>
 						<p> <%= link_to "Comprar puntos",new_compra_path %> </p>
-						<p> <%= link_to "Mis postulaciones vigentes",mis_postulaciones_postulations_path %> </p>
 						<p> <%= link_to "Mis gauchadas echas a otros",mis_postulaciones_resueltas_postulations_path %> </p>
+						<p> <%= link_to "Mis postulaciones",mis_postulaciones_postulations_path %> </p>
 					</div>
 				</div>
 			<% else %>
@@ -35,9 +35,9 @@
 						<p> <%= link_to "Inicio", root_path %> </p>
 						<p> <%= link_to "Mis gauchadas", mis_favores_favors_path %> </p>
 						<p> <%= link_to "Comprar puntos", new_compra_path %> </p>
-						<p> <%= link_to "Mis postulaciones vigentes",mis_postulaciones_postulations_path %> </p>	
 						<p> <%= link_to "Mis gauchadas echas a otros",mis_postulaciones_resueltas_postulations_path %> </p>
 		
+						<p> <%= link_to "Mis postulaciones",mis_postulaciones_postulations_path %> </p>			
 					</div>
 				</div>
 			<% end %>
