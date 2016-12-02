@@ -86,6 +86,7 @@ def republicar
     @favor.update(estado: 0)
     @favor.postulations.destroy_all
     @favor.visitas = 0 
+    @favor.save
     #@postulacion= @favor.postulation
     #@aux=@favor
     #@favor.destroy
