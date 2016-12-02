@@ -7,107 +7,113 @@
 				</h1>
 				<div class="row">
 		            <table class="table table-hover">
-		                <tr>
-		                	<th>
-		                        <font face="arial" size="4" color="grey"> Imagen </font>
-		                    </th>
-		                    <th>
-		                        <font face="arial" size="4" color="grey"> Titulo </font>
-		                    </th>
-		                    <th>
-		                        <font face="arial" size="4" color="grey"> Detalle </font>
-		                    </th>
-		                    <th>
-		                        <font face="arial" size="4" color="grey"> Ciudad </font>
-		                    </th>
-		                    <th>
-		                        <font face="arial" size="4" color="grey"> Descripcion de postulacion </font>
-		                    </th>
-		                    <th>
-		                        <font face="arial" size="4" color="grey"> Fecha </font>
-		                    </th>
-		                    <th>
-		                        <font face="arial" size="4" color="grey"> Estado </font>
-		                    </th>
-		                </tr>
-		                
-		                <% @my_postulations.each do |p| %>
-		                    <tr>
-		                        <td>
-		                            <font face="arial" size="3" color="black">
-		                                <%= image_tag p.favor.imagen, size: '50x50' %>
-		                            </font>
-		                        </td>
-		                        <td>
-		                            <font face="arial" size="3" color="black">
-		                                <%= p.favor.titulo %>
-		                            </font>
-		                        </td>
-		                        <td>
-		                            <font face="arial" size="3" color="black">
-		                                <%= p.favor.descripcion.truncate(50) %>
-		                            </font>
-		                        </td>
-		                        <td>
-		                            <font face="arial" size="3" color="black">
-		                                <%= p.favor.localidad %>
-		                            </font>
-		                        </td> 
-		                        <td>
-		                            <font face="arial" size="3" color="black">
-		                                <%= p.descripcion %>
-		                            </font>
-		                        </td>
-		                        <td>
-		                            <font face="arial" size="3" color="black">
-		                                <%= p.fecha.day %>/<%= p.fecha.month %>/<%= p.fecha.year %>
-		                            </font>
-		                        </td>
-		                         <td>
-		                            <font face="arial" size="3" color="black">
-		                            	
-		                            	<% if (p.fecha < Date.today) && (p.favor.estado == 0) %>                  		
-		                            		 
-						                        <font face="arial" size="4" color="grey"> Postulacion vencida </font>
-						                    
-		                            	<% end %>
+		            	<% if @my_postulations.empty? %>
+			  				<font face="arial" size="6" color="black">
+								Todavía no te postulaste a ningun favor
+							</font>
+				 		<% else %>
+			                <tr>
+			                	<th>
+			                        <font face="arial" size="4" color="grey"> Imagen </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Titulo </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Detalle </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Ciudad </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Descripcion de postulacion </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Fecha </font>
+			                    </th>
+			                    <th>
+			                        <font face="arial" size="4" color="grey"> Estado </font>
+			                    </th>
+			                </tr>
+			                
+			                <% @my_postulations.each do |p| %>
+			                    <tr>
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= image_tag p.favor.imagen, size: '50x50' %>
+			                            </font>
+			                        </td>
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= p.favor.titulo %>
+			                            </font>
+			                        </td>
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= p.favor.descripcion.truncate(50) %>
+			                            </font>
+			                        </td>
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= p.favor.localidad %>
+			                            </font>
+			                        </td> 
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= p.descripcion %>
+			                            </font>
+			                        </td>
+			                        <td>
+			                            <font face="arial" size="3" color="black">
+			                                <%= p.fecha.day %>/<%= p.fecha.month %>/<%= p.fecha.year %>
+			                            </font>
+			                        </td>
+			                         <td>
+			                            <font face="arial" size="3" color="black">
+			                            	
+			                            	<% if (p.fecha < Date.today) && (p.favor.estado == 0) %>                  		
+			                            		 
+							                        <font face="arial" size="4" color="black"> Postulacion vencida </font>
+							                    
+			                            	<% end %>
 
-		                                <% if (p.favor.estado == 0) && (p.fecha >= Date.today) && p.noaceptar == true  %>
-		                               		
-						                    <font face="arial" size="4" color="black">Pendiente </font>
-						                    
-		                                <% end %>
+			                                <% if (p.favor.estado == 0) && (p.fecha >= Date.today) && p.noaceptar == true  %>
+			                               		
+							                    <font face="arial" size="4" color="grey">Pendiente </font>
+							                    
+			                                <% end %>
 
-		                                <% if p.aceptar == true && p.cumplio == false%> 
+			                                <% if p.aceptar == true && p.cumplio == false%> 
 
-						                    <font face="arial" size="4" color="green"> Aceptado </font>		                    
-		                            	<% end %>
+							                    <font face="arial" size="4" color="green"> Aceptado </font>		                    
+			                            	<% end %>
 
-	                            		<% if p.aceptar == true && p.cumplio == true %>  
+		                            		<% if p.aceptar == true && p.cumplio == true %>  
 
-		                                    <font face="arial" size="4" color="blue">Cumplido</font>
+			                                    <font face="arial" size="4" color="blue">Cumplido</font>
 
-			                            <% end %>
-			                            
-		                                <% if p.aceptar == true && p.nocumplio == false %> 
+				                            <% end %>
+				                            
+			                                <% if p.aceptar == true && p.nocumplio == false %> 
 
-		                                	<font face="arial" size="4" color="brown">No cumpliste este favor</font> 
+			                                	<font face="arial" size="4" color="brown">No cumpliste este favor</font> 
 
-		                                <% end %>
+			                                <% end %>
 
-		                                <% if p.favor.estado == 1 && p.noaceptar == true %>
-		                                	<font face="arial" size="4" color="red">Rechazado</font> 
-		                                <% end %>
-                                        
-		                            </font>
-		                        </td>
-		                        <td>
-	                                <font face="arial" size="3" color="black"> 
-	                                    <%= link_to "Ver detalle", p.favor %>
-	                                </font>
-	                            </td>                    
-		                    </tr>
-		                <% end %>     
+			                                <% if p.favor.estado == 1 && p.noaceptar == true %>
+			                                	<font face="arial" size="4" color="red">Rechazado</font> 
+			                                <% end %>
+	                                        
+			                            </font>
+			                        </td>
+			                        <td>
+		                                <font face="arial" size="3" color="black"> 
+		                                    <%= link_to "Ver detalle", p.favor %>
+		                                </font>
+		                            </td>                    
+			                    </tr>
+			                <% end %>
+			            <% end %>     
 		            </table>		        
 				</div>
 			</div>
