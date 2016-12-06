@@ -85,7 +85,8 @@
 
 			                                <% if p.aceptar == true && p.cumplio == false%> 
 
-							                    <font face="arial" size="4" color="green"> Aceptado </font>		                    
+							                    <font face="arial" size="4" color="green"> Aceptado </font>	
+							                    <font face="arial" size="4" color="black"> Ponete en contacto con el dueño de la gauchada <%= p.favor.user.email%> </font>	                    
 			                            	<% end %>
 
 		                            		<% if p.aceptar == true && p.cumplio == true %>  
